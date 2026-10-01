@@ -1,0 +1,1 @@
+- [Prior-credit evidence semantics](prior-credit-evidence.md) — preserve supplied aggregate measures while distinguishing historical prior credit from current participation.

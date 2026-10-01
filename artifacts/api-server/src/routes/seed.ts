@@ -101,6 +101,19 @@ function dayForDate(date: string): number | null {
   return diff;
 }
 
+function calendarInputError(body: unknown): string | null {
+  if (!body || typeof body !== "object") return "Enter valid calendar dates.";
+  const fields = body as Record<string, unknown>;
+  if (typeof fields.effectiveDate !== "string" || dayForDate(fields.effectiveDate) == null) {
+    return "Effective date must be a valid calendar date in YYYY-MM-DD format.";
+  }
+  if (fields.followUpDate != null &&
+      (typeof fields.followUpDate !== "string" || dayForDate(fields.followUpDate) == null)) {
+    return "Follow-up date must be a valid calendar date in YYYY-MM-DD format.";
+  }
+  return null;
+}
+
 function dayLabel(day: number): string {
   const date = dateForDay(day);
   const instant = new Date(`${date}T00:00:00.000Z`);
@@ -204,7 +217,7 @@ function matchesAcademicFilters(
   ) {
     return false;
   }
-  if (filters.department && record.department !== filters.department) return false;
+  if (filters.department && !record.department.toLocaleLowerCase().includes(filters.department.toLocaleLowerCase())) return false;
   if (filters.reviewStatus && record.reviewStatus !== filters.reviewStatus) return false;
   if (includeCategory && filters.category && record.category !== filters.category) return false;
   return true;
@@ -457,6 +470,11 @@ router.get("/records/:learnerId/:courseCode", async (req, res): Promise<void> =>
 });
 
 router.put("/records/:learnerId/:courseCode/review", async (req, res): Promise<void> => {
+  const calendarProblem = calendarInputError(req.body);
+  if (calendarProblem) {
+    res.status(400).json({ error: calendarProblem });
+    return;
+  }
   const params = SaveReviewParams.safeParse(req.params);
   if (!params.success) {
     res.status(400).json({ error: params.error.message });
@@ -493,7 +511,12 @@ router.put("/records/:learnerId/:courseCode/review", async (req, res): Promise<v
     updatedAt: new Date(),
   };
   const outcomePart = input.outcome ? ` · ${input.outcome}` : "";
-  const summary = `Review saved · ${input.reviewStatus}${outcomePart}`;
+  const summary = [
+    `Review saved · ${input.reviewStatus}${outcomePart}`,
+    input.nextAction ? `Next action: ${input.nextAction}` : "No next action",
+    input.followUpDate ? `Follow-up: ${isoDate(input.followUpDate)}${input.followUpCompleted ? " (completed)" : ""}` : "No follow-up date",
+    `Contact: ${input.contactStatus}`,
+  ].join(" · ");
   const saved = await db.transaction(async (tx) => {
     const [row] = await tx
       .insert(advisorReviewsTable)
@@ -511,6 +534,7 @@ router.put("/records/:learnerId/:courseCode/review", async (req, res): Promise<v
           ? "no_response_updated"
           : "review_saved",
       effectiveDate: effective,
+      note: input.advisorNotes || null,
       summary:
         input.contactStatus === "No response"
           ? `${summary} · advisor explicitly recorded no response`
@@ -523,6 +547,11 @@ router.put("/records/:learnerId/:courseCode/review", async (req, res): Promise<v
 });
 
 router.post("/records/:learnerId/:courseCode/contact", async (req, res): Promise<void> => {
+  const calendarProblem = calendarInputError(req.body);
+  if (calendarProblem) {
+    res.status(400).json({ error: calendarProblem });
+    return;
+  }
   const params = LogContactParams.safeParse(req.params);
   const parsed = LogContactBody.safeParse(req.body);
   if (!params.success) {
@@ -536,6 +565,10 @@ router.post("/records/:learnerId/:courseCode/contact", async (req, res): Promise
   const { learnerId, courseCode } = params.data;
   if (!(await ensureRecord(learnerId, courseCode, res))) return;
   const input: ContactInput = parsed.data;
+  if (!input.method.trim()) {
+    res.status(400).json({ error: "Enter a contact method." });
+    return;
+  }
   const effective = isoDate(input.effectiveDate);
   if (!effective) {
     res.status(400).json({ error: "Enter a valid contact date." });
@@ -594,6 +627,11 @@ router.post("/records/:learnerId/:courseCode/contact", async (req, res): Promise
 });
 
 router.post("/records/:learnerId/:courseCode/response", async (req, res): Promise<void> => {
+  const calendarProblem = calendarInputError(req.body);
+  if (calendarProblem) {
+    res.status(400).json({ error: calendarProblem });
+    return;
+  }
   const params = LogResponseParams.safeParse(req.params);
   const parsed = LogResponseBody.safeParse(req.body);
   if (!params.success) {

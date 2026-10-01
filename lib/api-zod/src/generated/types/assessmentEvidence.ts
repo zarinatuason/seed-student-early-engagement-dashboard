@@ -15,6 +15,9 @@ export interface AssessmentEvidence {
   category: string;
   priorCredit: boolean;
   availableFromDay: number;
+  /** @nullable */
+  availableUntilDay: number | null;
+  learnerOpportunityDays: number;
   availabilityStatus: AssessmentEvidenceAvailabilityStatus;
   /** @nullable */
   applicableDueDate: Date | null;

@@ -103,7 +103,7 @@ function readCsv(prefix: string): CsvRow[] {
   const configuredDirectory = process.env.SEED_DATA_DIR;
   const directory =
     configuredDirectory ??
-    path.resolve(__dirname, "../../data/academic");
+     path.resolve(__dirname, "../data/academic");
   const matches = readdirSync(directory).filter(
     (name) => name.startsWith(`${prefix}_`) && name.endsWith(".csv"),
   );
@@ -313,11 +313,16 @@ function makeAssessmentEvidence(record: AcademicRecord): AssessmentEvidence[] {
   const schedule = assessmentsByOffering.get(`${record.summary.courseCode}\u001f${offering}`) ?? [];
 
   return schedule
-    .map((assessment) => {
+    .map((assessment): AssessmentEvidence => {
       const submission = submissionsByAssessment.get(
         `${record.key}\u001f${offering}\u001f${assessment.assessment_id}`,
       );
       const availableFromDay = integerValue(assessment.assessment_available_from_day);
+      const availableUntilDay = numberValue(assessment.assessment_available_until_day);
+      const registeredFromDay = integerValue(record.enrolment.registration_day);
+      const opportunityStart = Math.max(registeredFromDay, availableFromDay);
+      const opportunityEnd = Math.min(EVIDENCE_DAY, availableUntilDay ?? EVIDENCE_DAY);
+      const learnerOpportunityDays = Math.max(0, opportunityEnd - opportunityStart + 1);
       const nominalDueDay = numberValue(assessment.assessment_due_day);
       const applicableDueDay =
         numberValue(submission?.applicable_due_day) ?? nominalDueDay;
@@ -325,9 +330,9 @@ function makeAssessmentEvidence(record: AcademicRecord): AssessmentEvidence[] {
       const releaseDay = numberValue(submission?.score_released_day);
       const priorCredit = trueValue(submission?.prior_credit_flag);
       const isDueByCutoff =
-        !priorCredit && applicableDueDay != null && applicableDueDay <= EVIDENCE_DAY;
+        applicableDueDay != null && applicableDueDay <= EVIDENCE_DAY;
       const submittedByCutoff =
-        !priorCredit && submittedDay != null && submittedDay <= EVIDENCE_DAY;
+        submittedDay != null && submittedDay <= EVIDENCE_DAY;
       const result =
         submittedByCutoff &&
         releaseDay != null &&
@@ -344,8 +349,8 @@ function makeAssessmentEvidence(record: AcademicRecord): AssessmentEvidence[] {
 
       let submissionStatus: AssessmentEvidence["submissionStatus"];
       if (priorCredit) submissionStatus = "Prior credit";
-      else if (!isDueByCutoff) submissionStatus = "Not yet due";
       else if (submittedByCutoff) submissionStatus = "Submitted";
+      else if (!isDueByCutoff) submissionStatus = "Not yet due";
       else if (submission) submissionStatus = "Not submitted by Day 28";
       else submissionStatus = "No submission record";
 
@@ -355,10 +360,14 @@ function makeAssessmentEvidence(record: AcademicRecord): AssessmentEvidence[] {
         category: assessment.assessment_category,
         priorCredit,
         availableFromDay,
+        availableUntilDay,
+        learnerOpportunityDays,
         availabilityStatus:
-          availableFromDay <= EVIDENCE_DAY
-            ? "Available by Day 28"
-            : "Not yet available by Day 28" as AssessmentEvidence["availabilityStatus"],
+          availableFromDay > EVIDENCE_DAY
+            ? "Not yet available by Day 28"
+            : learnerOpportunityDays === 0
+              ? "Availability ended before registration"
+              : "Available during registered opportunity",
         applicableDueDate:
           applicableDueDay == null || applicableDueDay <= 0
             ? null
@@ -480,16 +489,16 @@ function makeReferenceGuide(): ReferenceGuide {
     "High Priority":
       "Multiple supplied concern flags are present. The source data include learning-activity, assessment-participation, and early-performance combinations; the exact reason is shown on each record.",
     "Review Recommended":
-      "At least one supplied concern domain is flagged: learning activity, assessment participation, or early performance. The record shows the specific domain and supplied explanation.",
+      "Exactly one supplied concern domain is flagged: learning activity, assessment participation, or early performance. The record shows the specific domain and supplied explanation.",
     "Insufficient Evidence":
-      "The supplied data mark the Day 28 evidence as insufficient. This is not a conclusion that the learner is disengaged or needs a particular intervention.",
+      "The source insufficient-evidence flag is set and the concern flags are false. This is not a finding of disengagement or a recommendation for a particular intervention.",
     "No Current Concern":
-      "The supplied Day 28 indicators do not meet a concern threshold. This is a time-bounded snapshot, not a guarantee about later outcomes.",
+      "All supplied concern flags are false at Day 28. This is a time-bounded snapshot, not a guarantee about later outcomes.",
   };
 
   const indicators: Record<string, string> = {
     "Eligible resources":
-      "Learning resources available to the learner by the Day 28 evidence cutoff, as counted in the supplied indicator file.",
+      "Resources available by Day 28 during the learner's registered opportunity, as counted in the supplied indicator file. The detail list shows interacted resources only, not every eligible resource.",
     "Interacted resources":
       "Distinct eligible resources with at least one recorded activity event. This does not prove the learner read, completed, or understood a resource.",
     "Engagement coverage":
@@ -499,15 +508,17 @@ function makeReferenceGuide(): ReferenceGuide {
     "Days since last activity":
       "Elapsed days from the latest recorded resource activity to the Day 28 cutoff. Zero means activity on Day 28; unavailable means no activity date was recorded.",
     "Assessments due":
-      "Assessments with an applicable learner due date by Day 28.",
+      "Supplied count of assessments nominally due by Day 28, including assessments whose availability ended before a late registration. Individual rows retain learner-specific due dates and distinguish prior credit and registration opportunity.",
     "Submitted assessments":
-      "Assessments with a submission date recorded by Day 28, following the supplied aggregate indicator.",
+      "Supplied count of submission records dated on or before Day 28; includes prior-credit and early submissions. A prior-credit row is not a current-offering submission and is identified separately.",
     "Weighted submission coverage":
       "The supplied submission coverage adjusted by assessment weight. It is not recalculated from advisor actions.",
     "Released results":
-      "Assessment results with a release date on or before Day 28. Later releases are withheld from checkpoint evidence.",
+      "Supplied count of assessment results released by Day 28, including prior-credit results. Later releases are withheld from checkpoint evidence.",
     "Weighted average available score":
-      "The supplied weighted average of results available by Day 28. Unreleased or missing results are not treated as zero.",
+      "The supplied weighted average of results available by Day 28, including prior-credit results. Unreleased or missing results are not treated as zero.",
+    "Missing values":
+      "Unavailable means no value was supplied; 0 is a reported zero. A missing activity date is not zero-day recency. Underlying flag thresholds and the interpretation of prior credit as current participation require confirmation with the source owner; no new risk rules are inferred.",
   };
   const categories = CATEGORY_ORDER.map((category) => ({
     category,

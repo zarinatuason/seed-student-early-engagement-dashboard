@@ -412,7 +412,9 @@ components:
         category: { type: string }
         priorCredit: { type: boolean }
         availableFromDay: { type: integer }
-        availabilityStatus: { type: string, enum: [Available by Day 28, Not yet available by Day 28] }
+        availableUntilDay: { type: ["integer", "null"] }
+        learnerOpportunityDays: { type: integer }
+        availabilityStatus: { type: string, enum: [Available during registered opportunity, Not yet available by Day 28, Availability ended before registration] }
         applicableDueDate: { type: ["string", "null"], format: date }
         dueDay: { type: ["integer", "null"] }
         dueState: { type: string, enum: [Due by Day 28, Not yet due, Prior credit, Not applicable] }
@@ -421,7 +423,7 @@ components:
         weightPercent: { type: number }
         result: { type: ["number", "null"] }
         resultAvailable: { type: boolean }
-      required: [assessmentId, assessmentName, category, priorCredit, availableFromDay, availabilityStatus, applicableDueDate, dueDay, dueState, submissionStatus, submissionDate, weightPercent, result, resultAvailable]
+      required: [assessmentId, assessmentName, category, priorCredit, availableFromDay, availableUntilDay, learnerOpportunityDays, availabilityStatus, applicableDueDate, dueDay, dueState, submissionStatus, submissionDate, weightPercent, result, resultAvailable]
     AssessmentParticipation:
       type: object
       properties:

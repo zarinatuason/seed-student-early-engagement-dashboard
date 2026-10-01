@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider, useQueryClient } from '@tanstack/react-query';
-import { Link, Route, Switch, Router as WouterRouter, useLocation, useParams } from 'wouter';
+import { Link, Route, Switch, Router as WouterRouter, useLocation as useWouterLocation, useSearch, useParams } from 'wouter';
 import {
   Activity, ArrowDown, ArrowLeft, ArrowRight, BookOpen, CalendarDays, Check, CheckCircle2,
   ChevronDown, CircleHelp, Clock3, FileText, Filter, Leaf, Search, Send, Sprout, Users,
@@ -31,6 +31,11 @@ const dateLabel = (value?: string | null) => value ? new Intl.DateTimeFormat('en
 const dateTimeLabel = (value?: string | null) => value ? new Intl.DateTimeFormat('en-NZ', { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'Pacific/Auckland' }).format(new Date(value)) : empty;
 const pct = (value?: number | null) => value == null ? unavailable : `${Number(value.toFixed(1))}%`;
 const demoDayOption = (day: number) => `Day ${day} · ${dateLabel(new Date(Date.UTC(2026, 6, 20) + (day - 1) * 86_400_000).toISOString())}`;
+function useLocation() {
+  const [pathname, navigate] = useWouterLocation();
+  const search = useSearch();
+  return [`${pathname}${search ? `?${search}` : ''}`, navigate] as const;
+}
 function apiErrorMessage(error: unknown, fallback: string) {
   const value = error as { data?: unknown; response?: { data?: unknown } };
   for (const candidate of [value?.data, value?.response?.data]) {
@@ -57,16 +62,16 @@ function Shell({ children }: { children: ReactNode }) {
   const currentPage = location.split('?')[0];
   const nav = [
     { href: '/', title: 'Overview', icon: Activity },
-    { href: '/records', title: 'Academic records', icon: FileText },
-    { href: '/tracker', title: 'Follow-up tracker', icon: CheckCircle2 },
-    { href: '/reference', title: 'Reference guide', icon: BookOpen },
+    { href: '/records', title: 'Academic Records', icon: FileText },
+    { href: '/tracker', title: 'Review Tracker', icon: CheckCircle2 },
+    { href: '/reference', title: 'Reference Guide', icon: BookOpen },
   ];
   return <div className="app-shell">
     <aside className="sidebar">
       <Logo />
       <div className="side-caption">WORKSPACE</div>
       <nav className="side-nav" aria-label="Main navigation">
-        {nav.map(({ href, title, icon: Icon }) => <Link key={href} href={href} className={`nav-link ${currentPage === href ? 'active' : ''}`} aria-current={currentPage === href ? 'page' : undefined} data-testid={`nav-${title.toLowerCase().replaceAll(' ', '-')}`}>
+        {nav.map(({ href, title, icon: Icon }) => <Link key={href} href={href} className={`nav-link ${currentPage === href ? 'active' : ''}`} aria-label={title} title={title} aria-current={currentPage === href ? 'page' : undefined} data-testid={`nav-${title.toLowerCase().replaceAll(' ', '-')}`}>
           <Icon size={18} strokeWidth={1.8} /><span>{title}</span>{currentPage === href && <span className="nav-indicator" />}
         </Link>)}
       </nav>
@@ -78,7 +83,7 @@ function Shell({ children }: { children: ReactNode }) {
     <div className="main-frame">
       <header className="topbar">
         <div className="mobile-brand"><Logo /></div>
-        <div className="topbar-context"><span className="context-mark" /><span>Student advising</span><span className="context-divider">/</span><span className="context-muted">{nav.find(n => n.href === currentPage)?.title || (currentPage.startsWith('/records/') ? 'Record review' : 'Workspace')}</span></div>
+        <div className="topbar-context"><span className="context-mark" /><span>SEED</span><span className="context-divider">/</span><span className="context-muted">{nav.find(n => n.href === currentPage)?.title || (currentPage.startsWith('/records/') ? 'Record review' : 'Workspace')}</span></div>
         <div className="date-control">
           <CalendarDays size={16} />
           <label htmlFor="demo-day">Demo review date</label>
@@ -113,8 +118,8 @@ function CategoryPill({ category }: { category: AcademicCategoryType }) { return
 function Overview() {
   const summary = useGetAdvisorSummary({ query: { queryKey: getGetAdvisorSummaryQueryKey() } });
   const date = useGetDemoDate({ query: { queryKey: getGetDemoDateQueryKey() } });
-  if (summary.isLoading || date.isLoading) return <div className="page-enter"><PageIntro eyebrow="ADVISOR OVERVIEW" title="Good work starts with a closer look." desc="Your learner–paper review workspace." /><LoadingRows /></div>;
-  if (summary.isError || !summary.data) return <><PageIntro eyebrow="ADVISOR OVERVIEW" title="Good work starts with a closer look." desc="Your learner–paper review workspace." /><ErrorState retry={() => { summary.refetch(); date.refetch(); }} /></>;
+  if (summary.isLoading || date.isLoading) return <div className="page-enter"><PageIntro eyebrow="ADVISOR OVERVIEW" title="Overview" desc="Your learner–paper review workspace." /><LoadingRows /></div>;
+  if (summary.isError || !summary.data) return <><PageIntro eyebrow="ADVISOR OVERVIEW" title="Overview" desc="Your learner–paper review workspace." /><ErrorState retry={() => { summary.refetch(); date.refetch(); }} /></>;
   const s = summary.data;
   const categories = [
     { label: AcademicCategory.High_Priority, count: s.academicCategories.highPriority, tone: 'urgent', note: 'Evidence suggests a timely review' },
@@ -123,7 +128,7 @@ function Overview() {
     { label: AcademicCategory.No_Current_Concern, count: s.academicCategories.noCurrentConcern, tone: 'clear', note: 'No current signal for concern' },
   ];
   return <div className="page-enter">
-    <div className="welcome-band"><div className="welcome-copy"><div className="eyebrow light">ADVISOR OVERVIEW <span className="live-dot" /> LIVE WORKSPACE</div><h1>Good work starts<br />with a closer look.</h1><p>A clear view of the evidence, and a thoughtful next step for every learner.</p><Link href="/records" className="button welcome-button">Explore academic records <ArrowRight size={16} /></Link></div>
+    <div className="welcome-band"><div className="welcome-copy"><div className="eyebrow light">ADVISOR OVERVIEW <span className="live-dot" /> LIVE WORKSPACE</div><h1>Overview</h1><p>A clear view of the evidence, and a thoughtful next step for every learner.</p><Link href="/records" className="button welcome-button">Browse all records <ArrowRight size={16} /></Link></div>
       <div className="welcome-art" aria-hidden="true"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="plant-stem" /><i className="plant-leaf leaf-a" /><i className="plant-leaf leaf-b" /><i className="plant-leaf leaf-c" /><span className="art-caption">OBSERVE · UNDERSTAND · ACT</span></div>
       <div className="welcome-date"><span>SEMESTER TWO 2026 · WEEK {date.data?.week ?? s.demoDate.week}</span><strong>Day {date.data?.day ?? s.demoDate.day}</strong><small>Review date: {date.data?.dateLabel ?? s.demoDate.dateLabel}</small><small className="muted-light">Evidence through Day 28 · {date.data?.evidenceThrough ? dateLabel(date.data.evidenceThrough) : '16 Aug 2026'}</small></div>
     </div>
@@ -136,7 +141,7 @@ function Overview() {
     <section className="section-block"><div className="section-heading"><div><div className="eyebrow">ACADEMIC CATEGORIES</div><h2>Where a closer look may help</h2></div><Link className="text-link" href="/records">View all records <ArrowRight size={15} /></Link></div>
       <div className="category-grid">{categories.map(c => <Link key={c.label} href={`/records?category=${encodeURIComponent(c.label)}`} className={`category-summary ${c.tone}`}><div className="category-count">{c.count}</div><div className="category-description"><strong>{c.label}</strong><span>{c.note}</span></div><ArrowRight className="category-arrow" size={17} /></Link>)}</div>
     </section>
-    <section className="next-steps-panel"><div className="next-step-icon"><Clock3 size={21} /></div><div className="next-step-copy"><div className="eyebrow">A GOOD PLACE TO BEGIN</div><h2>Make follow-through visible.</h2><p>Record a dated next step as you review. The tracker keeps planned follow-ups in one clear view.</p></div><Link href="/tracker" className="button secondary">Open follow-up tracker <ArrowRight size={15} /></Link></section>
+    <section className="next-steps-panel"><div className="next-step-icon"><Clock3 size={21} /></div><div className="next-step-copy"><div className="eyebrow">A GOOD PLACE TO BEGIN</div><h2>Make follow-through visible.</h2><p>Record a dated next step as you review. Review Tracker keeps planned follow-ups in one clear view.</p></div><Link href="/tracker" className="button secondary">Open Review Tracker <ArrowRight size={15} /></Link></section>
     <div className="plain-note"><Leaf size={17} /><span><strong>A note on these records.</strong> SEED contains synthetic data for demonstration. Categories are indicators to review alongside context—not diagnoses or decisions.</span><Link href="/reference">Read the guide</Link></div>
   </div>;
 }
@@ -170,7 +175,7 @@ function Records() {
     { value: AcademicCategory.No_Current_Concern, label: 'No current concern', count: query.data?.categoryCounts.noCurrentConcern, tone: 'clear' },
   ];
   return <div className="page-enter">
-    <PageIntro eyebrow="ACADEMIC RECORDS" title="Start with the evidence." desc="Search learner–paper records, then open a record to review its context and decide what happens next." />
+    <PageIntro eyebrow="ACADEMIC RECORDS" title="Academic Records" desc="Search learner–paper records, then open a record to review its context and decide what happens next." />
     <div className="counts-row"><div className="counts-label"><Filter size={15} /> CATEGORY COUNTS <span>{query.data?.countScope || 'Across all records'}</span></div>{categoryCounts.map(({ value, label, count, tone }) => <button key={value} className={`count-chip ${tone}`} onClick={() => update({ category: filters.category === value ? undefined : value, page: 1 })} aria-pressed={filters.category === value}>{label}<strong>{count ?? '—'}</strong></button>)}</div>
     <div className="filter-panel">
       <form className="search-form" onSubmit={setSearch}><Search size={17} /><input aria-label="Search records" data-testid="input-record-search" placeholder="Search learner ID, paper, department or reason" value={term} onChange={e => setTerm(e.target.value)} /><button type="submit" className="button primary">Search</button></form>
@@ -188,13 +193,17 @@ function Records() {
   </div>;
 }
 
-function RecordsTable({ records, loading, total, page, pageSize, totalPages, onPage, onPageSize }: { records: RecordSummary[]; loading: boolean; total: number; page: number; pageSize: ListRecordsParams['pageSize']; totalPages: number; onPage: (page: number) => void; onPageSize: (pageSize: ListRecordsParams['pageSize']) => void }) {
+function RecordsTable({ records, loading, total, page, pageSize = 10, totalPages, onPage, onPageSize }: { records: RecordSummary[]; loading: boolean; total: number; page: number; pageSize: ListRecordsParams['pageSize']; totalPages: number; onPage: (page: number) => void; onPageSize: (pageSize: ListRecordsParams['pageSize']) => void }) {
   const [location] = useLocation();
+  const sorting = new URLSearchParams(location.split('?')[1] || '');
+  const sortBy = sorting.get('sortBy') || 'category';
+  const sortState = (field: string): 'ascending' | 'descending' | 'none' =>
+    sortBy === field ? (sorting.get('sortDirection') === 'desc' ? 'descending' : 'ascending') : 'none';
   if (loading) return <div className="table-card"><LoadingRows /></div>;
   if (!records.length) return <div className="state-card empty-state"><span className="state-icon"><Search size={19} /></span><strong>No matching records</strong><p>Try broadening your search or clearing one of the filters.</p></div>;
   return <div className="table-card"><div className="table-meta"><span><strong>{total}</strong> learner–paper records</span><span>Page {page} of {totalPages}</span></div>
-    <div className="table-scroll"><table><thead><tr><th>Learner ID</th><th>Review category</th><th>Paper</th><th>Reason</th><th>Review status</th><th>View record</th></tr></thead><tbody>
-      {records.map(r => <tr key={`${r.learnerId}-${r.courseCode}`} data-testid={`row-record-${r.learnerId}-${r.courseCode}`}><td><strong className="learner-id">{r.learnerId}</strong></td><td><CategoryPill category={r.category} /></td><td><span className="paper-name">{r.courseCode} · {r.paperTitle}</span><small>{r.department}</small></td><td className="reason-cell" title={r.reason}>{r.reason}</td><td><StatusPill tone={reviewTone(r.reviewStatus)}>{r.reviewStatus}</StatusPill></td><td><Link href={`/records/${encodeURIComponent(r.learnerId)}/${encodeURIComponent(r.courseCode)}`} onClick={() => sessionStorage.setItem('seed-record-return', location)} className="open-record" aria-label={`Review ${r.learnerId}, ${r.courseCode}`}>Review <ArrowRight size={15} /></Link></td></tr>)}
+    <div className="table-scroll"><table><thead><tr><th aria-sort={sortState('learnerId')}>Learner ID</th><th aria-sort={sortState('category')}>Review category</th><th aria-sort={sortState('paper')}>Paper</th><th aria-sort={sortState('reason')}>Reason</th><th aria-sort={sortState('reviewStatus')}>Review status</th><th>View record</th></tr></thead><tbody>
+      {records.map(r => <tr key={`${r.learnerId}-${r.courseCode}`} data-testid={`row-record-${r.learnerId}-${r.courseCode}`}><td><strong className="learner-id">{r.learnerId}</strong></td><td><CategoryPill category={r.category} /></td><td><span className="paper-name">{r.courseCode} · {r.paperTitle}</span><small>{r.department}</small></td><td className="reason-cell" title={r.reason}>{r.reason}</td><td><StatusPill tone={reviewTone(r.reviewStatus)}>{r.reviewStatus}</StatusPill></td><td><Link href={`/records/${encodeURIComponent(r.learnerId)}/${encodeURIComponent(r.courseCode)}`} onClick={() => sessionStorage.setItem('seed-record-return', location)} className="open-record" aria-label={`View record for ${r.learnerId}, ${r.courseCode}`}>View record <ArrowRight size={15} /></Link></td></tr>)}
     </tbody></table></div>
     <div className="table-pagination"><span>Showing {(page - 1) * pageSize + 1}–{Math.min(page * pageSize, total)} of {total}</span><div className="pagination-controls"><label>Rows <select aria-label="Rows per page" value={pageSize} onChange={e => onPageSize(Number(e.target.value) as ListRecordsParams['pageSize'])}><option value={10}>10</option><option value={25}>25</option><option value={50}>50</option></select></label><button className="page-button" disabled={page <= 1} onClick={() => onPage(page - 1)} aria-label="Previous page"><ArrowLeft size={15} /></button><span className="page-number">{page}</span><button className="page-button" disabled={page >= totalPages} onClick={() => onPage(page + 1)} aria-label="Next page"><ArrowRight size={15} /></button></div></div>
   </div>;
@@ -215,7 +224,7 @@ function Tracker() {
     { label: 'All records' }, { label: 'Awaiting review', status: ReviewStatus.Awaiting_review }, { label: 'In review', status: ReviewStatus.In_review }, { label: 'Reviewed', status: ReviewStatus.Reviewed }, { label: 'Due or overdue', follow: 'open' },
   ];
   const activePreset = presets.find(p => p.status === filters.reviewStatus && (p.follow || 'all') === (filters.followUp || 'all'))?.label || (!filters.reviewStatus && !filters.followUp ? 'All records' : '');
-  return <div className="page-enter"><PageIntro eyebrow="FOLLOW-UP TRACKER" title="Keep the next step in view." desc="A working list of saved reviews, contact attempts and dated follow-ups. Contact entries here are synthetic logs only." />
+  return <div className="page-enter"><PageIntro eyebrow="REVIEW TRACKER" title="Review Tracker" desc="A working list of saved reviews, contact attempts and dated follow-ups. Contact entries here are synthetic logs only." />
     <div className="preset-row" role="group" aria-label="Preset tracker views">{presets.map(p => <button key={p.label} className={`preset-button ${activePreset === p.label ? 'selected' : ''}`} onClick={() => update({ reviewStatus: p.status, followUp: p.follow || 'all', page: 1 })}>{p.label}{activePreset === p.label && <Check size={13} />}</button>)}</div>
     <div className="filter-panel tracker-filters"><form className="search-form" onSubmit={e => { e.preventDefault(); update({ search: term || undefined, page: 1 }); }}><Search size={17} /><input aria-label="Search tracker" placeholder="Search learner, paper or next action" value={term} onChange={e => setTerm(e.target.value)} /><button className="button primary">Search</button></form>
       <div className="filters-row"><label>Review status<select value={filters.reviewStatus || ''} onChange={e => update({ reviewStatus: e.target.value as ReviewStatusType || undefined, page: 1 })}><option value="">All statuses</option>{reviewOptions.map(o => <option key={o}>{o}</option>)}</select></label><label>Contact status<select value={filters.contactStatus || ''} onChange={e => update({ contactStatus: e.target.value as ContactStatusType || undefined, page: 1 })}><option value="">All contact statuses</option>{contactOptions.map(o => <option key={o}>{o}</option>)}</select></label><label>Follow-up date<select value={filters.followUp || 'all'} onChange={e => update({ followUp: e.target.value as ListTrackerParams['followUp'], page: 1 })}><option value="all">Any date</option><option value="due">Due today</option><option value="overdue">Overdue only</option><option value="open">Due or overdue</option></select></label></div>
@@ -224,11 +233,30 @@ function Tracker() {
   </div>;
 }
 
-function TrackerTable({ records, loading, total, page, pageSize, totalPages, onPage, onPageSize }: { records: RecordSummary[]; loading: boolean; total: number; page: number; pageSize: ListTrackerParams['pageSize']; totalPages: number; onPage: (page: number) => void; onPageSize: (pageSize: ListTrackerParams['pageSize']) => void }) {
+function TrackerTable({ records, loading, total, page, pageSize = 10, totalPages, onPage, onPageSize }: { records: RecordSummary[]; loading: boolean; total: number; page: number; pageSize: ListTrackerParams['pageSize']; totalPages: number; onPage: (page: number) => void; onPageSize: (pageSize: ListTrackerParams['pageSize']) => void }) {
   const [location] = useLocation();
   if (loading) return <div className="table-card"><LoadingRows /></div>;
   if (!records.length) return <div className="state-card empty-state"><span className="state-icon"><CheckCircle2 size={19} /></span><strong>Nothing in this view</strong><p>There are no saved follow-ups matching these filters.</p></div>;
-  return <div className="table-card"><div className="table-meta"><span><strong>{total}</strong> records in this view</span><span>Page {page} of {totalPages}</span></div><div className="table-scroll"><table><thead><tr><th>Learner & paper</th><th>Academic category</th><th>Review</th><th>Contact</th><th>Next action</th><th>Follow-up date</th><th>Updated</th><th /></tr></thead><tbody>{records.map(r => <tr key={`${r.learnerId}-${r.courseCode}`}><td><strong className="learner-id">{r.learnerId}</strong><span className="paper-name">{r.courseCode} · {r.paperTitle}</span><small>{r.department}</small></td><td><CategoryPill category={r.category} /></td><td><StatusPill tone={reviewTone(r.reviewStatus)}>{r.reviewStatus}</StatusPill></td><td><span className="table-plain">{r.contactStatus}</span></td><td className="next-action-cell">{r.nextAction || empty}</td><td><span className={r.followUpDate ? 'follow-date' : 'table-muted'}>{dateLabel(r.followUpDate)}</span>{r.followUpCompleted && <small className="completed-label">Completed</small>}</td><td className="table-muted">{dateLabel(r.lastUpdatedAt)}</td><td><Link className="open-record" href={`/records/${encodeURIComponent(r.learnerId)}/${encodeURIComponent(r.courseCode)}`} onClick={() => sessionStorage.setItem('seed-record-return', location)} aria-label={`Open record for ${r.learnerId}`}><ArrowRight size={17} /></Link></td></tr>)}</tbody></table></div><div className="table-pagination"><span>Showing {(page - 1) * pageSize + 1}–{Math.min(page * pageSize, total)} of {total}</span><div className="pagination-controls"><label>Rows <select aria-label="Rows per page" value={pageSize} onChange={e => onPageSize(Number(e.target.value) as ListTrackerParams['pageSize'])}><option value={10}>10</option><option value={25}>25</option><option value={50}>50</option></select></label><button className="page-button" disabled={page <= 1} onClick={() => onPage(page - 1)} aria-label="Previous page"><ArrowLeft size={15} /></button><span className="page-number">{page}</span><button className="page-button" disabled={page >= totalPages} onClick={() => onPage(page + 1)} aria-label="Next page"><ArrowRight size={15} /></button></div></div></div>;
+  return <div className="table-card">
+    <div className="table-meta"><span><strong>{total}</strong> records in this view</span><span>Page {page} of {totalPages}</span></div>
+    <div className="table-scroll"><table><thead><tr><th>Learner ID</th><th>Paper</th><th>Academic category</th><th>Review status</th><th>Contact status</th><th>Next action</th><th>Follow-up date</th><th>Last updated</th><th>View record</th></tr></thead><tbody>
+      {records.map(r => <tr key={`${r.learnerId}-${r.courseCode}`}>
+        <td><strong className="learner-id">{r.learnerId}</strong></td>
+        <td><span className="paper-name">{r.courseCode} · {r.paperTitle}</span><small>{r.department}</small></td>
+        <td><CategoryPill category={r.category} /></td>
+        <td><StatusPill tone={reviewTone(r.reviewStatus)}>{r.reviewStatus}</StatusPill></td>
+        <td className="contact-status"><StatusPill tone={r.contactStatus === 'Response received' ? 'tone-green' : r.contactStatus === 'Awaiting response' ? 'tone-gold' : 'tone-neutral'}>{r.contactStatus}</StatusPill></td>
+        <td className="next-action-cell">{r.nextAction || empty}</td>
+        <td><span className={r.followUpDate ? 'follow-date' : 'table-muted'}>{dateLabel(r.followUpDate)}</span>{r.followUpCompleted && <small className="completed-label">Completed</small>}</td>
+        <td className="table-muted">{dateLabel(r.lastUpdatedAt)}</td>
+        <td><Link className="open-record" href={`/records/${encodeURIComponent(r.learnerId)}/${encodeURIComponent(r.courseCode)}`} onClick={() => sessionStorage.setItem('seed-record-return', location)} aria-label={`View record for ${r.learnerId}, ${r.courseCode}`}>View record <ArrowRight size={17} /></Link></td>
+      </tr>)}
+    </tbody></table></div>
+    <div className="table-pagination"><span>Showing {(page - 1) * pageSize + 1}–{Math.min(page * pageSize, total)} of {total}</span><div className="pagination-controls">
+      <label>Rows <select aria-label="Rows per page" value={pageSize} onChange={e => onPageSize(Number(e.target.value) as ListTrackerParams['pageSize'])}><option value={10}>10</option><option value={25}>25</option><option value={50}>50</option></select></label>
+      <button className="page-button" disabled={page <= 1} onClick={() => onPage(page - 1)} aria-label="Previous page"><ArrowLeft size={15} /></button><span className="page-number">{page}</span><button className="page-button" disabled={page >= totalPages} onClick={() => onPage(page + 1)} aria-label="Next page"><ArrowRight size={15} /></button>
+    </div></div>
+  </div>;
 }
 
 function Detail() {
@@ -237,6 +265,7 @@ function Detail() {
   const courseCode = decodeURIComponent(params.courseCode || '');
   const detail = useGetRecord(learnerId, courseCode, { query: { queryKey: getGetRecordQueryKey(learnerId, courseCode) } });
   const [backHref] = useState(() => sessionStorage.getItem('seed-record-return') || '/records');
+  const backLabel = backHref.startsWith('/tracker') ? 'Back to Review Tracker' : 'Back to Academic Records';
   const [review, setReview] = useState<ReviewInput | null>(null);
   const [initial, setInitial] = useState('');
   const [formMessage, setFormMessage] = useState('');
@@ -254,30 +283,20 @@ function Detail() {
   useEffect(() => {
     const d = detail.data;
     if (!d || dirty) return;
-    const actionDate = dayQuery.data?.date || d.review.lastEffectiveDate || '';
-    const input: ReviewInput = { reviewStatus: d.review.reviewStatus, advisorNotes: d.review.advisorNotes || '', outcome: d.review.outcome, nextAction: d.review.nextAction, followUpDate: d.review.followUpDate, followUpCompleted: d.review.followUpCompleted, contactStatus: d.review.contactStatus, effectiveDate: actionDate };
+    const actionDate = (dayQuery.data?.date || d.review.lastEffectiveDate || '').slice(0, 10);
+    const input: ReviewInput = { reviewStatus: d.review.reviewStatus, advisorNotes: d.review.advisorNotes || '', outcome: d.review.outcome, nextAction: d.review.nextAction, followUpDate: d.review.followUpDate?.slice(0, 10) || null, followUpCompleted: d.review.followUpCompleted, contactStatus: d.review.contactStatus, effectiveDate: actionDate };
     setReview(input); setInitial(JSON.stringify(input));
     setEffectiveDate(actionDate);
-  }, [detail.data]);
-  useEffect(() => {
-    const selectedDate = dayQuery.data?.date;
-    if (!selectedDate || !review || dirty) return;
-    const updatedReview = { ...review, effectiveDate: selectedDate };
-    if (JSON.stringify(updatedReview) !== initial) {
-      setReview(updatedReview);
-      setInitial(JSON.stringify(updatedReview));
-    }
-    setEffectiveDate(selectedDate);
-  }, [dayQuery.data?.date]);
+  }, [detail.data, dayQuery.data?.date]);
   const invalidate = () => {
     queryClient.invalidateQueries({ queryKey: getGetRecordQueryKey(learnerId, courseCode) });
     queryClient.invalidateQueries({ queryKey: getListRecordsQueryKey() });
     queryClient.invalidateQueries({ queryKey: getListTrackerQueryKey() });
     queryClient.invalidateQueries({ queryKey: getGetAdvisorSummaryQueryKey() });
   };
-  const effective = effectiveDate || dayQuery.data?.date || '';
+  const effective = effectiveDate || dayQuery.data?.date?.slice(0, 10) || '';
   const effectiveDateMin = '2026-08-17';
-  const effectiveDateMax = dayQuery.data?.date || effectiveDateMin;
+  const effectiveDateMax = dayQuery.data?.date?.slice(0, 10) || effectiveDateMin;
   useEffect(() => {
     if (!dirty) return;
     const confirmNavigation = (event: MouseEvent) => {
@@ -296,11 +315,20 @@ function Detail() {
       event.preventDefault();
       event.returnValue = '';
     };
+    const recordUrl = window.location.href;
+    const confirmHistoryNavigation = (event: PopStateEvent) => {
+      if (!window.confirm('You have unsaved review or log changes. Leave this record without saving them?')) {
+        event.stopImmediatePropagation();
+        window.history.pushState(null, '', recordUrl);
+      }
+    };
     document.addEventListener('click', confirmNavigation, true);
     window.addEventListener('beforeunload', beforeUnload);
+    window.addEventListener('popstate', confirmHistoryNavigation, true);
     return () => {
       document.removeEventListener('click', confirmNavigation, true);
       window.removeEventListener('beforeunload', beforeUnload);
+      window.removeEventListener('popstate', confirmHistoryNavigation, true);
     };
   }, [dirty]);
   const submitReview = (e: FormEvent) => {
@@ -309,30 +337,35 @@ function Detail() {
     setFormMessage(''); setFormHasError(false);
     save.mutate({ learnerId, courseCode, data: payload }, { onSuccess: () => { setReview(payload); setInitial(JSON.stringify(payload)); setFormMessage('Review saved.'); setFormHasError(false); invalidate(); }, onError: error => { setFormMessage(apiErrorMessage(error, 'Review could not be saved. Your changes are still here—try again.')); setFormHasError(true); } });
   };
+  const syncLoggedContactStatus = (status: ContactStatusType) => {
+    setReview(current => current ? { ...current, contactStatus: status } : current);
+    setInitial(current => current ? JSON.stringify({ ...JSON.parse(current), contactStatus: status }) : current);
+  };
   const submitContact = (e: FormEvent) => {
     e.preventDefault();
     setFormMessage(''); setFormHasError(false);
-    logContact.mutate({ learnerId, courseCode, data: { method: contactMethod, effectiveDate: effective, note: contactNote } }, { onSuccess: () => { setContactNote(''); setFormMessage('Synthetic contact attempt recorded.'); setFormHasError(false); invalidate(); }, onError: error => { setFormMessage(apiErrorMessage(error, 'Contact log could not be saved. Try again.')); setFormHasError(true); } });
+    logContact.mutate({ learnerId, courseCode, data: { method: contactMethod, effectiveDate: effective, note: contactNote } }, { onSuccess: result => { syncLoggedContactStatus(result.review.contactStatus); setContactNote(''); setFormMessage('Synthetic contact attempt recorded.'); setFormHasError(false); invalidate(); }, onError: error => { setFormMessage(apiErrorMessage(error, 'Contact log could not be saved. Try again.')); setFormHasError(true); } });
   };
   const submitResponse = (e: FormEvent) => {
     e.preventDefault();
     setFormMessage(''); setFormHasError(false);
-    logResponse.mutate({ learnerId, courseCode, data: { effectiveDate: effective, note: responseNote } }, { onSuccess: () => { setResponseNote(''); setFormMessage('Synthetic response recorded.'); setFormHasError(false); invalidate(); }, onError: error => { setFormMessage(apiErrorMessage(error, 'Response could not be saved. Try again.')); setFormHasError(true); } });
+    logResponse.mutate({ learnerId, courseCode, data: { effectiveDate: effective, note: responseNote } }, { onSuccess: result => { syncLoggedContactStatus(result.review.contactStatus); setResponseNote(''); setFormMessage('Synthetic response recorded.'); setFormHasError(false); invalidate(); }, onError: error => { setFormMessage(apiErrorMessage(error, 'Response could not be saved. Try again.')); setFormHasError(true); } });
   };
-  if (detail.isLoading) return <><Link href={backHref} className="back-link"><ArrowLeft size={15} /> Back to records</Link><LoadingRows /></>;
-  if (detail.isError || !detail.data) return <><Link href={backHref} className="back-link"><ArrowLeft size={15} /> Back to records</Link><ErrorState message="This learner–paper record could not be loaded." retry={() => detail.refetch()} /></>;
+  if (detail.isLoading) return <><Link href={backHref} className="back-link"><ArrowLeft size={15} /> {backLabel}</Link><LoadingRows /></>;
+  if (detail.isError || !detail.data) return <><Link href={backHref} className="back-link"><ArrowLeft size={15} /> {backLabel}</Link><ErrorState message="This learner–paper record could not be loaded." retry={() => detail.refetch()} /></>;
   const d = detail.data;
   const setReviewField = <K extends keyof ReviewInput>(key: K, value: ReviewInput[K]) => setReview(current => current ? { ...current, [key]: value } : current);
   return <div className="page-enter detail-page">
-    <Link href={backHref} className="back-link" data-testid="link-back-records"><ArrowLeft size={15} /> Back to records</Link>
+    <Link href={backHref} className="back-link" data-testid="link-back-records"><ArrowLeft size={15} /> {backLabel}</Link>
     <div className="detail-heading"><div><div className="eyebrow">LEARNER–PAPER RECORD <span className="detail-divider">/</span> {d.courseCode}</div><h1>{d.learnerId}</h1><p>{d.paperTitle}</p><div className="detail-badges"><CategoryPill category={d.category} /><StatusPill tone={reviewTone(d.review.reviewStatus)}>{d.review.reviewStatus}</StatusPill></div></div><div className="detail-context"><span>FACULTY / SCHOOL</span><strong>{d.facultySchool}</strong><span>DEPARTMENT</span><strong>{d.department}</strong><span>PAPER CONTEXT</span><strong>Level {d.courseLevel} · {d.paperStructureType} · {d.offeringPeriod}</strong><span>REGISTRATION</span><strong>Day {d.registrationDay} · {d.opportunityDays} days of opportunity</strong></div></div>
     <div className="evidence-banner"><span className="banner-icon"><BookOpen size={19} /></span><span><strong>Evidence available through Day 28</strong><small>Later activity is not included in the evidence summary. Academic category is read-only; use your review to record interpretation and action.</small></span><span className="evidence-asof">EVIDENCE CUTOFF<br /><b>DAY 28</b></span></div>
     <div className="detail-columns">
       <div className="evidence-column">
         <section className="panel reason-panel"><div className="eyebrow">SUPPLIED ADVISOR REASON</div><p>{d.reason || unavailable}</p><small>The academic category and reason are supplied indicators. Advisor review does not edit either field.</small></section>
-        <section className="panel"><div className="panel-heading"><div><div className="eyebrow">LEARNING ACTIVITY</div><h2>Engagement evidence</h2></div><span className={`signal-dot ${d.learning.concern ? 'warn' : ''}`} title={d.learning.concern ? 'Concern indicator present' : 'No concern indicator'} /></div><div className="metric-cards"><div><span>Engagement coverage</span><strong>{pct(d.learning.engagementCoverage)}</strong></div><div><span>Active learning days</span><strong>{d.learning.activeLearningDays ?? unavailable}</strong></div><div><span>Last activity</span><strong>{d.learning.latestActivityDay == null ? unavailable : `Day ${d.learning.latestActivityDay}`}</strong></div></div><div className="evidence-line"><span>Interacted resources</span><strong>{d.learning.interactedResources} of {d.learning.eligibleResources}</strong></div><div className="evidence-line"><span>Days since activity</span><strong>{d.learning.daysSinceLastActivity ?? unavailable}</strong></div>{d.learning.resources.length > 0 ? <div className="mini-list">{d.learning.resources.map((resource, i) => <div className="mini-list-row" key={`${resource.resourceTitle}-${i}`}><span><b>{resource.resourceTitle}</b><small>{resource.activityType} · available Day {resource.availableFromDay}</small></span><span className="resource-count">{resource.interactionCount} interactions<small>Last: Day {resource.latestInteractionDay}</small></span></div>)}</div> : <p className="evidence-empty">No learning-resource interaction is recorded by Day 28.</p>}</section>
-        <section className="panel"><div className="panel-heading"><div><div className="eyebrow">ASSESSMENT PARTICIPATION</div><h2>Checkpoint evidence</h2></div><span className={`signal-dot ${d.assessmentParticipation.concern ? 'warn' : ''}`} /></div>
+        <section className="panel"><div className="panel-heading"><div><div className="eyebrow">LEARNING ACTIVITY</div><h2>Engagement evidence</h2></div><StatusPill tone={d.learning.concern ? 'tone-gold' : 'tone-neutral'}>{d.learning.concern ? 'Concern flag present' : 'No concern flag'}</StatusPill></div><div className="metric-cards"><div><span>Engagement coverage</span><strong>{pct(d.learning.engagementCoverage)}</strong></div><div><span>Active learning days</span><strong>{d.learning.activeLearningDays ?? unavailable}</strong></div><div><span>Last activity</span><strong>{d.learning.latestActivityDay == null ? unavailable : `Day ${d.learning.latestActivityDay}`}</strong></div></div><div className="evidence-line"><span>Interacted resources</span><strong>{d.learning.interactedResources} of {d.learning.eligibleResources}</strong></div><div className="evidence-line"><span>Days since activity</span><strong>{d.learning.daysSinceLastActivity ?? unavailable}</strong></div><p className="evidence-empty">Recorded resource interactions do not prove reading, completion or understanding. The list below contains interacted resources only.</p>{d.learning.resources.length > 0 ? <div className="mini-list">{d.learning.resources.map((resource, i) => <div className="mini-list-row" key={`${resource.resourceTitle}-${i}`}><span><b>{resource.resourceTitle}</b><small>{resource.activityType} · available Day {resource.availableFromDay}</small></span><span className="resource-count">{resource.interactionCount} interactions<small>Last: Day {resource.latestInteractionDay}</small></span></div>)}</div> : <p className="evidence-empty">No learning-resource interaction is recorded by Day 28.</p>}</section>
+        <section className="panel"><div className="panel-heading"><div><div className="eyebrow">ASSESSMENT PARTICIPATION</div><h2>Checkpoint evidence</h2></div><StatusPill tone={d.assessmentParticipation.concern ? 'tone-gold' : 'tone-neutral'}>{d.assessmentParticipation.concern ? 'Concern flag present' : 'No concern flag'}</StatusPill></div>
           <div className="metric-cards"><div><span>Due by Day 28</span><strong>{d.assessmentParticipation.dueCount}</strong></div><div><span>Submitted by Day 28</span><strong>{d.assessmentParticipation.submittedCount}</strong></div><div><span>Missed by Day 28</span><strong>{d.assessmentParticipation.missedCount}</strong></div></div>
+          <p className="evidence-empty">These supplied counts use nominal due dates and include prior-credit submission records. Supplied released-score totals and averages also include prior-credit results. Prior credit is not a current-offering submission. Individual rows show learner-specific due dates and registered opportunity; source definitions should be confirmed before interpreting late-registration counts as current participation.</p>
           <div className="evidence-line"><span>Submission completion</span><strong>{pct(d.assessmentParticipation.submissionCompletionRate)}</strong></div>
           <div className="evidence-line"><span>Weighted submission coverage</span><strong>{pct(d.assessmentParticipation.weightedSubmissionCoverage)}</strong></div>
           <div className="evidence-line"><span>Missed assessment weight</span><strong>{d.assessmentParticipation.missedAssessmentWeight}%</strong></div>
@@ -340,15 +373,16 @@ function Detail() {
           <div className="evidence-line"><span>Weighted average of available scores</span><strong>{d.assessmentParticipation.weightedAverageAvailableScore == null ? unavailable : `${Number(d.assessmentParticipation.weightedAverageAvailableScore.toFixed(1))}%`}</strong></div>
           {d.assessmentParticipation.assessments.length > 0 ? <div className="assessment-list"><div className="assessment-head"><span>ASSESSMENT</span><span>DUE</span><span>SUBMISSION</span><span>WEIGHT</span><span>SCORE</span></div>
             {d.assessmentParticipation.assessments.map(a => <div className="assessment-row" key={a.assessmentId}>
-              <span><b>{a.assessmentName}</b><small>{a.category} · {a.availabilityStatus}{a.priorCredit ? ' · prior-credit flag' : ''}</small></span>
-              <span>{a.applicableDueDate ? dateLabel(a.applicableDueDate) : unavailable}<small>{a.dueDay == null ? a.dueState : `Day ${a.dueDay}`}</small></span>
-              <span><StatusPill tone={a.submissionStatus === 'Submitted' ? 'tone-green' : 'tone-neutral'}>{a.submissionStatus}</StatusPill><small>{a.submissionDate ? `Submitted ${dateLabel(a.submissionDate)}` : unavailable}</small></span>
+              <span><b>{a.assessmentName}</b><small>{a.category} · {a.availabilityStatus} · {a.learnerOpportunityDays} opportunity days{a.priorCredit ? ' · prior credit, not a current submission' : ''}</small></span>
+              <span>{a.applicableDueDate ? dateLabel(a.applicableDueDate) : unavailable}<small>{a.dueState}{a.dueDay == null ? '' : ` · Day ${a.dueDay}`}</small></span>
+              <span><StatusPill tone={a.submissionStatus === 'Submitted' ? 'tone-green' : 'tone-neutral'}>{a.submissionStatus}</StatusPill><small>{a.submissionDate ? `${a.priorCredit ? 'Prior-credit record' : 'Submitted'} ${dateLabel(a.submissionDate)}` : unavailable}</small></span>
               <span>{a.weightPercent}%</span>
-              <span>{a.resultAvailable && a.result != null ? `${a.result}%` : unavailable}</span>
+              <span>{a.resultAvailable && a.result != null ? `${a.result}%` : unavailable}{a.priorCredit && a.resultAvailable && <small>Prior-credit result</small>}</span>
             </div>)}
           </div> : <p className="evidence-empty">No assessment definitions are supplied for this paper offering.</p>}
         </section>
-        <section className="panel"><div className="panel-heading"><div><div className="eyebrow">LEARNER CONTEXT</div><h2>Background to consider</h2></div></div><div className="context-grid"><div><span>Prior education</span><strong>{d.learnerContext.priorEducationLevel || empty}</strong></div><div><span>Previous attempts</span><strong>{d.learnerContext.previousAttemptCount ?? empty}</strong></div><div><span>Credit load</span><strong>{d.learnerContext.creditLoad ?? empty}</strong></div><div><span>Early performance indicator</span><strong>{d.earlyPerformanceConcern ? 'Present' : 'Not present'}</strong></div></div>{d.concernDomains.length > 0 && <div className="domain-row"><span>Evidence domains</span>{d.concernDomains.map(domain => <span className="domain-tag" key={domain}>{domain}</span>)}</div>}</section>
+        <section className="panel"><div className="panel-heading"><div><div className="eyebrow">EARLY PERFORMANCE</div><h2>Available result evidence</h2></div><StatusPill tone={d.earlyPerformanceConcern ? 'tone-gold' : 'tone-neutral'}>{d.earlyPerformanceConcern ? 'Concern flag present' : 'No concern flag'}</StatusPill></div><div className="evidence-line"><span>Weighted average of available scores</span><strong>{pct(d.assessmentParticipation.weightedAverageAvailableScore)}</strong></div><div className="evidence-line"><span>Released results by Day 28</span><strong>{d.assessmentParticipation.releasedResultCount}</strong></div><p className="evidence-empty">The flag and average are supplied values, including available prior-credit results. Missing scores are unavailable, not zero. No new threshold or prediction is applied.</p></section>
+        <section className="panel"><div className="panel-heading"><div><div className="eyebrow">LEARNER CONTEXT</div><h2>Background to consider</h2></div></div><div className="context-grid"><div><span>Prior education</span><strong>{d.learnerContext.priorEducationLevel || unavailable}</strong></div><div><span>Previous attempts</span><strong>{d.learnerContext.previousAttemptCount ?? unavailable}</strong></div><div><span>Credit load</span><strong>{d.learnerContext.creditLoad ?? unavailable}</strong></div></div>{d.concernDomains.length > 0 && <div className="domain-row"><span>Evidence domains</span>{d.concernDomains.map(domain => <span className="domain-tag" key={domain}>{domain}</span>)}</div>}</section>
       </div>
       <div className="action-column">
         <form className="panel review-panel" onSubmit={submitReview}><div className="panel-heading"><div><div className="eyebrow">ADVISOR REVIEW</div><h2>Record your next step</h2></div><span className={`save-indicator ${dirty ? 'unsaved' : ''}`}>{save.isPending ? 'Saving…' : dirty ? 'Unsaved changes' : 'Saved'}</span></div>
@@ -358,7 +392,7 @@ function Detail() {
             <label className="field-label">Advisor notes<textarea value={review.advisorNotes} onChange={e => setReviewField('advisorNotes', e.target.value)} maxLength={4000} rows={4} placeholder="What does the evidence suggest? What context should be considered?" /></label>
             <label className="field-label">Next action<textarea value={review.nextAction || ''} onChange={e => setReviewField('nextAction', e.target.value || null)} maxLength={500} rows={2} placeholder="A clear, plain-language next step" /></label>
             <div className="field-pair"><label className="field-label">Follow-up date<input type="date" value={review.followUpDate || ''} onChange={e => setReviewField('followUpDate', e.target.value || null)} /></label><label className="field-label">Contact status<select value={review.contactStatus} onChange={e => setReviewField('contactStatus', e.target.value as ContactStatusType)}>{contactOptions.map(x => <option key={x}>{x}</option>)}</select></label></div>
-          <label className="field-label">Effective date<input type="date" min={effectiveDateMin} max={effectiveDateMax} value={review.effectiveDate || effective} onChange={e => setReviewField('effectiveDate', e.target.value)} /></label>
+          <label className="field-label">Effective date<input type="date" min={effectiveDateMin} max={effectiveDateMax} value={review.effectiveDate || effective} onChange={e => setReviewField('effectiveDate', e.target.value)} required /></label>
             <label className="check-label"><input type="checkbox" checked={review.followUpCompleted} onChange={e => setReviewField('followUpCompleted', e.target.checked)} /> <span>Follow-up completed</span></label>
             <button className="button primary wide" type="submit" disabled={!dirty || save.isPending}><Check size={16} /> {save.isPending ? 'Saving review…' : 'Save review'}</button>
           </>}

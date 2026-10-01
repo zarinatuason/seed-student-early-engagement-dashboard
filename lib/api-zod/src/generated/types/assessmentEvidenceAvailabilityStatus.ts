@@ -10,6 +10,7 @@ export type AssessmentEvidenceAvailabilityStatus = typeof AssessmentEvidenceAvai
 
 
 export const AssessmentEvidenceAvailabilityStatus = {
-  Available_by_Day_28: 'Available by Day 28',
+  Available_during_registered_opportunity: 'Available during registered opportunity',
   Not_yet_available_by_Day_28: 'Not yet available by Day 28',
+  Availability_ended_before_registration: 'Availability ended before registration',
 } as const;
