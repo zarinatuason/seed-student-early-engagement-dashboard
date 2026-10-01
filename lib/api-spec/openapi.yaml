@@ -3,20 +3,22 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: SEED advisor review application API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
-    description: Health operations
+  - name: advisor
+  - name: records
+  - name: tracker
+  - name: reference
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,13 +26,518 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /advisor/summary:
+    get:
+      operationId: getAdvisorSummary
+      tags: [advisor]
+      summary: Get cohort and review workflow totals
+      responses:
+        "200":
+          description: Cohort summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdvisorSummary"
+  /records:
+    get:
+      operationId: listRecords
+      tags: [records]
+      summary: Search and filter learner-paper records
+      parameters:
+        - name: search
+          in: query
+          schema: { type: string }
+        - name: paper
+          in: query
+          schema: { type: string }
+        - name: department
+          in: query
+          schema: { type: string }
+        - name: category
+          in: query
+          schema: { $ref: "#/components/schemas/AcademicCategory" }
+        - name: reviewStatus
+          in: query
+          schema: { $ref: "#/components/schemas/ReviewStatus" }
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            enum: [category, learnerId, paper, reason, reviewStatus]
+        - name: sortDirection
+          in: query
+          schema: { type: string, enum: [asc, desc] }
+        - name: page
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+        - name: pageSize
+          in: query
+          schema: { type: integer, enum: [10, 25, 50], default: 25 }
+      responses:
+        "200":
+          description: Page of matching records and counts calculated without the selected category filter
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecordsPage"
+  /records/{learnerId}/{courseCode}:
+    get:
+      operationId: getRecord
+      tags: [records]
+      summary: Get academic evidence and saved advisor review for one learner-paper record
+      parameters:
+        - name: learnerId
+          in: path
+          required: true
+          schema: { type: string }
+        - name: courseCode
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Record and evidence
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecordDetail"
+        "404":
+          description: Record not found
+  /records/{learnerId}/{courseCode}/review:
+    put:
+      operationId: saveReview
+      tags: [records]
+      summary: Save advisor review fields and append dated history
+      parameters:
+        - name: learnerId
+          in: path
+          required: true
+          schema: { type: string }
+        - name: courseCode
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewInput"
+      responses:
+        "200":
+          description: Saved review state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReviewState"
+        "400":
+          description: Invalid review values or action date
+        "404":
+          description: Record not found
+        "409":
+          description: Action date precedes an existing action or is later than the selected demo date
+  /records/{learnerId}/{courseCode}/contact:
+    post:
+      operationId: logContact
+      tags: [records]
+      summary: Record a synthetic contact attempt
+      parameters:
+        - name: learnerId
+          in: path
+          required: true
+          schema: { type: string }
+        - name: courseCode
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactInput"
+      responses:
+        "201":
+          description: Contact entry recorded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecordDetail"
+        "400":
+          description: Invalid contact entry
+        "404":
+          description: Record not found
+        "409":
+          description: Action date conflicts with the selected demo date or saved history
+  /records/{learnerId}/{courseCode}/response:
+    post:
+      operationId: logResponse
+      tags: [records]
+      summary: Record a synthetic response
+      parameters:
+        - name: learnerId
+          in: path
+          required: true
+          schema: { type: string }
+        - name: courseCode
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResponseInput"
+      responses:
+        "201":
+          description: Response entry recorded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecordDetail"
+        "400":
+          description: Invalid response entry
+        "404":
+          description: Record not found
+        "409":
+          description: Action date conflicts with the selected demo date or saved history
+  /tracker:
+    get:
+      operationId: listTracker
+      tags: [tracker]
+      summary: Search and filter saved review workflow
+      parameters:
+        - name: search
+          in: query
+          schema: { type: string }
+        - name: reviewStatus
+          in: query
+          schema: { $ref: "#/components/schemas/ReviewStatus" }
+        - name: contactStatus
+          in: query
+          schema: { $ref: "#/components/schemas/ContactStatus" }
+        - name: followUp
+          in: query
+          schema: { type: string, enum: [all, due, overdue, open] }
+        - name: page
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+        - name: pageSize
+          in: query
+          schema: { type: integer, enum: [10, 25, 50], default: 25 }
+      responses:
+        "200":
+          description: Page of matching tracked records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TrackerPage"
+  /demo-date:
+    get:
+      operationId: getDemoDate
+      tags: [advisor]
+      summary: Get selected demonstration date
+      responses:
+        "200":
+          description: Current demonstration calendar date
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DemoDate"
+    put:
+      operationId: setDemoDate
+      tags: [advisor]
+      summary: Change demonstration date within Day 29 to Day 35
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DemoDateInput"
+      responses:
+        "200":
+          description: Updated demonstration date
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DemoDate"
+        "400":
+          description: Date is outside the demonstration range
+        "409":
+          description: Date cannot move earlier than an already saved action
+  /reference:
+    get:
+      operationId: getReferenceGuide
+      tags: [reference]
+      summary: Get category, indicator, and dataset reference information
+      responses:
+        "200":
+          description: Reference guide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReferenceGuide"
 components:
   schemas:
     HealthStatus:
       type: object
       properties:
-        status:
-          type: string
-      required:
-        - status
+        status: { type: string }
+      required: [status]
+    AcademicCategory:
+      type: string
+      enum: [High Priority, Review Recommended, Insufficient Evidence, No Current Concern]
+    ReviewStatus:
+      type: string
+      enum: [Awaiting review, In review, Reviewed]
+    ContactStatus:
+      type: string
+      enum: [Not contacted, Awaiting response, Response received, No response]
+    ReviewOutcome:
+      type: ["string", "null"]
+      enum: [Further context needed, Follow-up planned, Support referral planned, No further action at present, null]
+    AcademicCategories:
+      type: object
+      properties:
+        highPriority: { type: integer }
+        reviewRecommended: { type: integer }
+        insufficientEvidence: { type: integer }
+        noCurrentConcern: { type: integer }
+      required: [highPriority, reviewRecommended, insufficientEvidence, noCurrentConcern]
+    ReviewStatusTotals:
+      type: object
+      properties:
+        awaitingReview: { type: integer }
+        inReview: { type: integer }
+        reviewed: { type: integer }
+      required: [awaitingReview, inReview, reviewed]
+    DemoDate:
+      type: object
+      properties:
+        day: { type: integer, minimum: 29, maximum: 35 }
+        week: { type: integer, const: 5 }
+        date: { type: string, format: date }
+        dateLabel: { type: string }
+        evidenceThrough: { type: string, format: date }
+        evidenceDay: { type: integer, const: 28 }
+      required: [day, week, date, dateLabel, evidenceThrough, evidenceDay]
+    DemoDateInput:
+      type: object
+      properties:
+        day: { type: integer, minimum: 29, maximum: 35 }
+      required: [day]
+    AdvisorSummary:
+      type: object
+      properties:
+        learners: { type: integer }
+        learnerPaperRecords: { type: integer }
+        academicCategories: { $ref: "#/components/schemas/AcademicCategories" }
+        reviewStatuses: { $ref: "#/components/schemas/ReviewStatusTotals" }
+        followUpsDueToday: { type: integer }
+        followUpsOverdue: { type: integer }
+        demoDate: { $ref: "#/components/schemas/DemoDate" }
+      required: [learners, learnerPaperRecords, academicCategories, reviewStatuses, followUpsDueToday, followUpsOverdue, demoDate]
+    ReviewState:
+      type: object
+      properties:
+        reviewStatus: { $ref: "#/components/schemas/ReviewStatus" }
+        advisorNotes: { type: string }
+        outcome: { $ref: "#/components/schemas/ReviewOutcome" }
+        nextAction: { type: ["string", "null"] }
+        followUpDate: { type: ["string", "null"], format: date }
+        followUpCompleted: { type: boolean }
+        contactStatus: { $ref: "#/components/schemas/ContactStatus" }
+        lastUpdatedAt: { type: ["string", "null"], format: date-time }
+        lastEffectiveDate: { type: ["string", "null"], format: date }
+      required: [reviewStatus, advisorNotes, outcome, nextAction, followUpDate, followUpCompleted, contactStatus, lastUpdatedAt, lastEffectiveDate]
+    RecordSummary:
+      type: object
+      properties:
+        learnerId: { type: string }
+        courseCode: { type: string }
+        paperTitle: { type: string }
+        facultySchool: { type: string }
+        department: { type: string }
+        category: { $ref: "#/components/schemas/AcademicCategory" }
+        reason: { type: string }
+        reviewStatus: { $ref: "#/components/schemas/ReviewStatus" }
+        contactStatus: { $ref: "#/components/schemas/ContactStatus" }
+        nextAction: { type: ["string", "null"] }
+        followUpDate: { type: ["string", "null"], format: date }
+        followUpCompleted: { type: boolean }
+        lastUpdatedAt: { type: ["string", "null"], format: date-time }
+      required: [learnerId, courseCode, paperTitle, facultySchool, department, category, reason, reviewStatus, contactStatus, nextAction, followUpDate, followUpCompleted, lastUpdatedAt]
+    RecordsPage:
+      type: object
+      properties:
+        records:
+          type: array
+          items: { $ref: "#/components/schemas/RecordSummary" }
+        total: { type: integer }
+        page: { type: integer }
+        pageSize: { type: integer }
+        totalPages: { type: integer }
+        categoryCounts: { $ref: "#/components/schemas/AcademicCategories" }
+        countScope: { type: string }
+      required: [records, total, page, pageSize, totalPages, categoryCounts, countScope]
+    ResourceActivity:
+      type: object
+      properties:
+        resourceTitle: { type: string }
+        activityType: { type: string }
+        availableFromDay: { type: integer }
+        latestInteractionDay: { type: integer }
+        interactionCount: { type: integer }
+      required: [resourceTitle, activityType, availableFromDay, latestInteractionDay, interactionCount]
+    LearningEvidence:
+      type: object
+      properties:
+        eligibleResources: { type: integer }
+        interactedResources: { type: integer }
+        engagementCoverage: { type: ["number", "null"] }
+        activeLearningDays: { type: integer }
+        latestActivityDay: { type: ["number", "null"] }
+        daysSinceLastActivity: { type: ["number", "null"] }
+        concern: { type: boolean }
+        resources:
+          type: array
+          items: { $ref: "#/components/schemas/ResourceActivity" }
+      required: [eligibleResources, interactedResources, engagementCoverage, activeLearningDays, latestActivityDay, daysSinceLastActivity, concern, resources]
+    AssessmentEvidence:
+      type: object
+      properties:
+        assessmentId: { type: string }
+        assessmentName: { type: string }
+        category: { type: string }
+        priorCredit: { type: boolean }
+        availableFromDay: { type: integer }
+        availabilityStatus: { type: string, enum: [Available by Day 28, Not yet available by Day 28] }
+        applicableDueDate: { type: ["string", "null"], format: date }
+        dueDay: { type: ["integer", "null"] }
+        dueState: { type: string, enum: [Due by Day 28, Not yet due, Prior credit, Not applicable] }
+        submissionStatus: { type: string, enum: [Submitted, Not submitted by Day 28, Not yet due, Prior credit, No submission record] }
+        submissionDate: { type: ["string", "null"], format: date }
+        weightPercent: { type: number }
+        result: { type: ["number", "null"] }
+        resultAvailable: { type: boolean }
+      required: [assessmentId, assessmentName, category, priorCredit, availableFromDay, availabilityStatus, applicableDueDate, dueDay, dueState, submissionStatus, submissionDate, weightPercent, result, resultAvailable]
+    AssessmentParticipation:
+      type: object
+      properties:
+        dueCount: { type: integer }
+        submittedCount: { type: integer }
+        missedCount: { type: integer }
+        submissionCompletionRate: { type: ["number", "null"] }
+        weightedSubmissionCoverage: { type: ["number", "null"] }
+        missedAssessmentWeight: { type: number }
+        releasedResultCount: { type: integer }
+        releasedAssessmentWeight: { type: number }
+        weightedAverageAvailableScore: { type: ["number", "null"] }
+        concern: { type: boolean }
+        assessments:
+          type: array
+          items: { $ref: "#/components/schemas/AssessmentEvidence" }
+      required: [dueCount, submittedCount, missedCount, submissionCompletionRate, weightedSubmissionCoverage, missedAssessmentWeight, releasedResultCount, releasedAssessmentWeight, weightedAverageAvailableScore, concern, assessments]
+    LearnerContext:
+      type: object
+      properties:
+        priorEducationLevel: { type: ["string", "null"] }
+        previousAttemptCount: { type: ["integer", "null"] }
+        creditLoad: { type: ["integer", "null"] }
+      required: [priorEducationLevel, previousAttemptCount, creditLoad]
+    HistoryEntry:
+      type: object
+      properties:
+        id: { type: string }
+        actionType: { type: string }
+        effectiveDate: { type: string, format: date }
+        savedAt: { type: string, format: date-time }
+        method: { type: ["string", "null"] }
+        note: { type: ["string", "null"] }
+        summary: { type: string }
+      required: [id, actionType, effectiveDate, savedAt, method, note, summary]
+    RecordDetail:
+      type: object
+      properties:
+        learnerId: { type: string }
+        courseCode: { type: string }
+        paperTitle: { type: string }
+        facultySchool: { type: string }
+        department: { type: string }
+        courseLevel: { type: string }
+        offeringPeriod: { type: string }
+        paperStructureType: { type: string }
+        category: { $ref: "#/components/schemas/AcademicCategory" }
+        reason: { type: string }
+        concernDomains: { type: array, items: { type: string } }
+        registrationDay: { type: integer }
+        opportunityDays: { type: integer }
+        learning: { $ref: "#/components/schemas/LearningEvidence" }
+        assessmentParticipation: { $ref: "#/components/schemas/AssessmentParticipation" }
+        earlyPerformanceConcern: { type: boolean }
+        learnerContext: { $ref: "#/components/schemas/LearnerContext" }
+        review: { $ref: "#/components/schemas/ReviewState" }
+        history:
+          type: array
+          items: { $ref: "#/components/schemas/HistoryEntry" }
+      required: [learnerId, courseCode, paperTitle, facultySchool, department, courseLevel, offeringPeriod, paperStructureType, category, reason, concernDomains, registrationDay, opportunityDays, learning, assessmentParticipation, earlyPerformanceConcern, learnerContext, review, history]
+    ReviewInput:
+      type: object
+      properties:
+        reviewStatus: { $ref: "#/components/schemas/ReviewStatus" }
+        advisorNotes: { type: string, maxLength: 4000 }
+        outcome: { $ref: "#/components/schemas/ReviewOutcome" }
+        nextAction: { type: ["string", "null"], maxLength: 500 }
+        followUpDate: { type: ["string", "null"], format: date }
+        followUpCompleted: { type: boolean }
+        contactStatus: { $ref: "#/components/schemas/ContactStatus" }
+        effectiveDate: { type: string, format: date }
+      required: [reviewStatus, advisorNotes, outcome, nextAction, followUpDate, followUpCompleted, contactStatus, effectiveDate]
+    ContactInput:
+      type: object
+      properties:
+        method: { type: string, minLength: 1, maxLength: 80 }
+        effectiveDate: { type: string, format: date }
+        note: { type: string, maxLength: 2000 }
+      required: [method, effectiveDate, note]
+    ResponseInput:
+      type: object
+      properties:
+        effectiveDate: { type: string, format: date }
+        note: { type: string, maxLength: 2000 }
+      required: [effectiveDate, note]
+    TrackerPage:
+      type: object
+      properties:
+        records:
+          type: array
+          items: { $ref: "#/components/schemas/RecordSummary" }
+        total: { type: integer }
+        page: { type: integer }
+        pageSize: { type: integer }
+        totalPages: { type: integer }
+      required: [records, total, page, pageSize, totalPages]
+    CategoryGuide:
+      type: object
+      properties:
+        category: { $ref: "#/components/schemas/AcademicCategory" }
+        explanation: { type: string }
+        count: { type: integer }
+      required: [category, explanation, count]
+    ReferenceGuide:
+      type: object
+      properties:
+        categories:
+          type: array
+          items: { $ref: "#/components/schemas/CategoryGuide" }
+        indicators:
+          type: object
+          additionalProperties: { type: string }
+        evidenceCutoff: { type: string }
+        syntheticData: { type: boolean }
+        datasetChecks:
+          type: array
+          items: { type: string }
+      required: [categories, indicators, evidenceCutoff, syntheticData, datasetChecks]
 

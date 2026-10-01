@@ -1,0 +1,259 @@
+assessment_id,course_code,course_offering_period,paper_structure_type,assessment_name,assessment_category,assessment_available_from_day,assessment_available_until_day,assessment_due_day,assessment_weight_percent,score_released_day
+ASM000001,COMLAW100,Semester 1,Continuous assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000002,COMLAW100,Semester 1,Continuous assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000003,COMLAW100,Semester 1,Continuous assessment,Assignment 1,Assignment,1,21,21,15,27
+ASM000004,COMLAW100,Semester 1,Continuous assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000005,COMLAW100,Semester 1,Continuous assessment,Participation Activities,Participation,1,28,28,10,28
+ASM000006,COMLAW100,Semester 1,Continuous assessment,Quiz 4,Quiz,22,28,28,5,29
+ASM000007,COMLAW100,Semester 1,Continuous assessment,Reflection,Reflection,15,28,28,10,30
+ASM000008,COMLAW100,Semester 1,Continuous assessment,Assignment 2,Assignment,22,42,42,20,49
+ASM000009,COMLAW100,Semester 1,Continuous assessment,Applied Project,Project,15,56,56,25,63
+ASM000010,ACCTG100,Semester 1,Balanced assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000011,ACCTG100,Semester 1,Balanced assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000012,ACCTG100,Semester 1,Balanced assessment,Assignment 1,Assignment,1,21,21,10,27
+ASM000013,ACCTG100,Semester 1,Balanced assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000014,ACCTG100,Semester 1,Balanced assessment,Assignment 2,Assignment,22,42,42,15,49
+ASM000015,ACCTG100,Semester 1,Balanced assessment,Mid-Semester Test,Test,29,42,42,20,45
+ASM000016,ACCTG100,Semester 1,Balanced assessment,Final Examination,Examination,85,98,98,40,105
+ASM000017,ECON100,Semester 1,Continuous assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000018,ECON100,Semester 1,Continuous assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000019,ECON100,Semester 1,Continuous assessment,Assignment 1,Assignment,1,21,21,15,27
+ASM000020,ECON100,Semester 1,Continuous assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000021,ECON100,Semester 1,Continuous assessment,Participation Activities,Participation,1,28,28,10,28
+ASM000022,ECON100,Semester 1,Continuous assessment,Quiz 4,Quiz,22,28,28,5,29
+ASM000023,ECON100,Semester 1,Continuous assessment,Reflection,Reflection,15,28,28,10,30
+ASM000024,ECON100,Semester 1,Continuous assessment,Assignment 2,Assignment,22,42,42,20,49
+ASM000025,ECON100,Semester 1,Continuous assessment,Applied Project,Project,15,56,56,25,63
+ASM000026,MKTG100,Semester 1,Exam-heavy,Quiz 1,Quiz,1,7,7,5,8
+ASM000027,MKTG100,Semester 1,Exam-heavy,Quiz 2,Quiz,8,14,14,5,15
+ASM000028,MKTG100,Semester 1,Exam-heavy,Individual Assignment,Assignment,1,21,21,15,27
+ASM000029,MKTG100,Semester 1,Exam-heavy,Mid-Semester Test,Test,29,42,42,15,45
+ASM000030,MKTG100,Semester 1,Exam-heavy,Final Examination,Examination,85,98,98,60,105
+ASM000031,INFOSYS100,Semester 1,Exam-heavy,Quiz 1,Quiz,1,7,7,5,8
+ASM000032,INFOSYS100,Semester 1,Exam-heavy,Quiz 2,Quiz,8,14,14,5,15
+ASM000033,INFOSYS100,Semester 1,Exam-heavy,Individual Assignment,Assignment,1,21,21,15,27
+ASM000034,INFOSYS100,Semester 1,Exam-heavy,Mid-Semester Test,Test,29,42,42,15,45
+ASM000035,INFOSYS100,Semester 1,Exam-heavy,Final Examination,Examination,85,98,98,60,105
+ASM000036,PROPERTY100,Semester 1,Project-based,In-Class Activity 1,Participation,1,7,7,3,7
+ASM000037,PROPERTY100,Semester 1,Project-based,In-Class Activity 2,Participation,8,14,14,3,14
+ASM000038,PROPERTY100,Semester 1,Project-based,In-Class Activity 3,Participation,15,21,21,3,21
+ASM000039,PROPERTY100,Semester 1,Project-based,Stage Report 1,Stage Report,1,21,21,15,28
+ASM000040,PROPERTY100,Semester 1,Project-based,In-Class Activity 4,Participation,22,28,28,3,28
+ASM000041,PROPERTY100,Semester 1,Project-based,In-Class Activity 5,Participation,29,35,35,3,35
+ASM000042,PROPERTY100,Semester 1,Project-based,Stage Report 2,Stage Report,22,49,49,15,56
+ASM000043,PROPERTY100,Semester 1,Project-based,Final Deliverable,Final Deliverable,29,84,84,40,91
+ASM000044,PROPERTY100,Semester 1,Project-based,Group-Member Evaluation,Peer Evaluation,78,84,84,15,85
+ASM000045,COMLAW201,Semester 1,Continuous assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000046,COMLAW201,Semester 1,Continuous assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000047,COMLAW201,Semester 1,Continuous assessment,Assignment 1,Assignment,1,21,21,15,27
+ASM000048,COMLAW201,Semester 1,Continuous assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000049,COMLAW201,Semester 1,Continuous assessment,Participation Activities,Participation,1,28,28,10,28
+ASM000050,COMLAW201,Semester 1,Continuous assessment,Quiz 4,Quiz,22,28,28,5,29
+ASM000051,COMLAW201,Semester 1,Continuous assessment,Reflection,Reflection,15,28,28,10,30
+ASM000052,COMLAW201,Semester 1,Continuous assessment,Assignment 2,Assignment,22,42,42,20,49
+ASM000053,COMLAW201,Semester 1,Continuous assessment,Applied Project,Project,15,56,56,25,63
+ASM000054,FINANCE100,Semester 1,Balanced assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000055,FINANCE100,Semester 1,Balanced assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000056,FINANCE100,Semester 1,Balanced assessment,Assignment 1,Assignment,1,21,21,10,27
+ASM000057,FINANCE100,Semester 1,Balanced assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000058,FINANCE100,Semester 1,Balanced assessment,Assignment 2,Assignment,22,42,42,15,49
+ASM000059,FINANCE100,Semester 1,Balanced assessment,Mid-Semester Test,Test,29,42,42,20,45
+ASM000060,FINANCE100,Semester 1,Balanced assessment,Final Examination,Examination,85,98,98,40,105
+ASM000061,ECON201,Semester 1,Exam-heavy,Quiz 1,Quiz,1,7,7,5,8
+ASM000062,ECON201,Semester 1,Exam-heavy,Quiz 2,Quiz,8,14,14,5,15
+ASM000063,ECON201,Semester 1,Exam-heavy,Individual Assignment,Assignment,1,21,21,15,27
+ASM000064,ECON201,Semester 1,Exam-heavy,Mid-Semester Test,Test,29,42,42,15,45
+ASM000065,ECON201,Semester 1,Exam-heavy,Final Examination,Examination,85,98,98,60,105
+ASM000066,COMPSCI100,Semester 1,Project-based,In-Class Activity 1,Participation,1,7,7,3,7
+ASM000067,COMPSCI100,Semester 1,Project-based,In-Class Activity 2,Participation,8,14,14,3,14
+ASM000068,COMPSCI100,Semester 1,Project-based,In-Class Activity 3,Participation,15,21,21,3,21
+ASM000069,COMPSCI100,Semester 1,Project-based,Stage Report 1,Stage Report,1,21,21,15,28
+ASM000070,COMPSCI100,Semester 1,Project-based,In-Class Activity 4,Participation,22,28,28,3,28
+ASM000071,COMPSCI100,Semester 1,Project-based,In-Class Activity 5,Participation,29,35,35,3,35
+ASM000072,COMPSCI100,Semester 1,Project-based,Stage Report 2,Stage Report,22,49,49,15,56
+ASM000073,COMPSCI100,Semester 1,Project-based,Final Deliverable,Final Deliverable,29,84,84,40,91
+ASM000074,COMPSCI100,Semester 1,Project-based,Group-Member Evaluation,Peer Evaluation,78,84,84,15,85
+ASM000075,BIOSCI100,Semester 1,Balanced assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000076,BIOSCI100,Semester 1,Balanced assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000077,BIOSCI100,Semester 1,Balanced assessment,Assignment 1,Assignment,1,21,21,10,27
+ASM000078,BIOSCI100,Semester 1,Balanced assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000079,BIOSCI100,Semester 1,Balanced assessment,Assignment 2,Assignment,22,42,42,15,49
+ASM000080,BIOSCI100,Semester 1,Balanced assessment,Mid-Semester Test,Test,29,42,42,20,45
+ASM000081,BIOSCI100,Semester 1,Balanced assessment,Final Examination,Examination,85,98,98,40,105
+ASM000082,CHEM100,Semester 1,Laboratory-based,Laboratory Activity 1,Laboratory,1,7,7,5,9
+ASM000083,CHEM100,Semester 1,Laboratory-based,Laboratory Activity 2,Laboratory,8,14,14,5,16
+ASM000084,CHEM100,Semester 1,Laboratory-based,Laboratory Activity 3,Laboratory,15,21,21,5,23
+ASM000085,CHEM100,Semester 1,Laboratory-based,Laboratory Activity 4,Laboratory,22,28,28,5,30
+ASM000086,CHEM100,Semester 1,Laboratory-based,Laboratory Activity 5,Laboratory,29,35,35,5,37
+ASM000087,CHEM100,Semester 1,Laboratory-based,Laboratory Activity 6,Laboratory,36,42,42,5,44
+ASM000088,CHEM100,Semester 1,Laboratory-based,Practical Test 1,Test,29,42,42,10,45
+ASM000089,CHEM100,Semester 1,Laboratory-based,Laboratory Project,Project,15,49,49,15,56
+ASM000090,CHEM100,Semester 1,Laboratory-based,Practical Test 2,Test,43,63,63,15,66
+ASM000091,CHEM100,Semester 1,Laboratory-based,Final Examination,Examination,85,98,98,30,105
+ASM000092,MATHS100,Semester 1,Technical testing,Technical Assignment 1,Assignment,1,14,14,10,20
+ASM000093,MATHS100,Semester 1,Technical testing,Technical Assignment 2,Assignment,15,28,28,10,35
+ASM000094,MATHS100,Semester 1,Technical testing,Technical Test 1,Test,29,42,42,20,45
+ASM000095,MATHS100,Semester 1,Technical testing,Technical Assignment 3,Assignment,29,56,56,15,63
+ASM000096,MATHS100,Semester 1,Technical testing,Technical Test 2,Test,43,63,63,25,66
+ASM000097,MATHS100,Semester 1,Technical testing,Technical Test 3,Test,64,77,77,20,80
+ASM000098,ENVSCI100,Semester 1,Technical testing,Technical Assignment 1,Assignment,1,14,14,10,20
+ASM000099,ENVSCI100,Semester 1,Technical testing,Technical Assignment 2,Assignment,15,28,28,10,35
+ASM000100,ENVSCI100,Semester 1,Technical testing,Technical Test 1,Test,29,42,42,20,45
+ASM000101,ENVSCI100,Semester 1,Technical testing,Technical Assignment 3,Assignment,29,56,56,15,63
+ASM000102,ENVSCI100,Semester 1,Technical testing,Technical Test 2,Test,43,63,63,25,66
+ASM000103,ENVSCI100,Semester 1,Technical testing,Technical Test 3,Test,64,77,77,20,80
+ASM000104,COMPSCI201,Semester 1,Laboratory-based,Laboratory Activity 1,Laboratory,1,7,7,5,9
+ASM000105,COMPSCI201,Semester 1,Laboratory-based,Laboratory Activity 2,Laboratory,8,14,14,5,16
+ASM000106,COMPSCI201,Semester 1,Laboratory-based,Laboratory Activity 3,Laboratory,15,21,21,5,23
+ASM000107,COMPSCI201,Semester 1,Laboratory-based,Laboratory Activity 4,Laboratory,22,28,28,5,30
+ASM000108,COMPSCI201,Semester 1,Laboratory-based,Laboratory Activity 5,Laboratory,29,35,35,5,37
+ASM000109,COMPSCI201,Semester 1,Laboratory-based,Laboratory Activity 6,Laboratory,36,42,42,5,44
+ASM000110,COMPSCI201,Semester 1,Laboratory-based,Practical Test 1,Test,29,42,42,10,45
+ASM000111,COMPSCI201,Semester 1,Laboratory-based,Laboratory Project,Project,15,49,49,15,56
+ASM000112,COMPSCI201,Semester 1,Laboratory-based,Practical Test 2,Test,43,63,63,15,66
+ASM000113,COMPSCI201,Semester 1,Laboratory-based,Final Examination,Examination,85,98,98,30,105
+ASM000114,BIOSCI201,Semester 1,Exam-heavy,Quiz 1,Quiz,1,7,7,5,8
+ASM000115,BIOSCI201,Semester 1,Exam-heavy,Quiz 2,Quiz,8,14,14,5,15
+ASM000116,BIOSCI201,Semester 1,Exam-heavy,Individual Assignment,Assignment,1,21,21,15,27
+ASM000117,BIOSCI201,Semester 1,Exam-heavy,Mid-Semester Test,Test,29,42,42,15,45
+ASM000118,BIOSCI201,Semester 1,Exam-heavy,Final Examination,Examination,85,98,98,60,105
+ASM000119,CHEM201,Semester 1,Project-based,In-Class Activity 1,Participation,1,7,7,3,7
+ASM000120,CHEM201,Semester 1,Project-based,In-Class Activity 2,Participation,8,14,14,3,14
+ASM000121,CHEM201,Semester 1,Project-based,In-Class Activity 3,Participation,15,21,21,3,21
+ASM000122,CHEM201,Semester 1,Project-based,Stage Report 1,Stage Report,1,21,21,15,28
+ASM000123,CHEM201,Semester 1,Project-based,In-Class Activity 4,Participation,22,28,28,3,28
+ASM000124,CHEM201,Semester 1,Project-based,In-Class Activity 5,Participation,29,35,35,3,35
+ASM000125,CHEM201,Semester 1,Project-based,Stage Report 2,Stage Report,22,49,49,15,56
+ASM000126,CHEM201,Semester 1,Project-based,Final Deliverable,Final Deliverable,29,84,84,40,91
+ASM000127,CHEM201,Semester 1,Project-based,Group-Member Evaluation,Peer Evaluation,78,84,84,15,85
+ASM000128,STATS100,Semester 1,Technical testing,Technical Assignment 1,Assignment,1,14,14,10,20
+ASM000129,STATS100,Semester 1,Technical testing,Technical Assignment 2,Assignment,15,28,28,10,35
+ASM000130,STATS100,Semester 1,Technical testing,Technical Test 1,Test,29,42,42,20,45
+ASM000131,STATS100,Semester 1,Technical testing,Technical Assignment 3,Assignment,29,56,56,15,63
+ASM000132,STATS100,Semester 1,Technical testing,Technical Test 2,Test,43,63,63,25,66
+ASM000133,STATS100,Semester 1,Technical testing,Technical Test 3,Test,64,77,77,20,80
+ASM000134,CIVIL100,Semester 1,Balanced assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000135,CIVIL100,Semester 1,Balanced assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000136,CIVIL100,Semester 1,Balanced assessment,Assignment 1,Assignment,1,21,21,10,27
+ASM000137,CIVIL100,Semester 1,Balanced assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000138,CIVIL100,Semester 1,Balanced assessment,Assignment 2,Assignment,22,42,42,15,49
+ASM000139,CIVIL100,Semester 1,Balanced assessment,Mid-Semester Test,Test,29,42,42,20,45
+ASM000140,CIVIL100,Semester 1,Balanced assessment,Final Examination,Examination,85,98,98,40,105
+ASM000141,ELECTENG100,Semester 1,Balanced assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000142,ELECTENG100,Semester 1,Balanced assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000143,ELECTENG100,Semester 1,Balanced assessment,Assignment 1,Assignment,1,21,21,10,27
+ASM000144,ELECTENG100,Semester 1,Balanced assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000145,ELECTENG100,Semester 1,Balanced assessment,Assignment 2,Assignment,22,42,42,15,49
+ASM000146,ELECTENG100,Semester 1,Balanced assessment,Mid-Semester Test,Test,29,42,42,20,45
+ASM000147,ELECTENG100,Semester 1,Balanced assessment,Final Examination,Examination,85,98,98,40,105
+ASM000148,MECHENG100,Semester 1,Technical testing,Technical Assignment 1,Assignment,1,14,14,10,20
+ASM000149,MECHENG100,Semester 1,Technical testing,Technical Assignment 2,Assignment,15,28,28,10,35
+ASM000150,MECHENG100,Semester 1,Technical testing,Technical Test 1,Test,29,42,42,20,45
+ASM000151,MECHENG100,Semester 1,Technical testing,Technical Assignment 3,Assignment,29,56,56,15,63
+ASM000152,MECHENG100,Semester 1,Technical testing,Technical Test 2,Test,43,63,63,25,66
+ASM000153,MECHENG100,Semester 1,Technical testing,Technical Test 3,Test,64,77,77,20,80
+ASM000154,SOFTENG100,Semester 1,Balanced assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000155,SOFTENG100,Semester 1,Balanced assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000156,SOFTENG100,Semester 1,Balanced assessment,Assignment 1,Assignment,1,21,21,10,27
+ASM000157,SOFTENG100,Semester 1,Balanced assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000158,SOFTENG100,Semester 1,Balanced assessment,Assignment 2,Assignment,22,42,42,15,49
+ASM000159,SOFTENG100,Semester 1,Balanced assessment,Mid-Semester Test,Test,29,42,42,20,45
+ASM000160,SOFTENG100,Semester 1,Balanced assessment,Final Examination,Examination,85,98,98,40,105
+ASM000161,CHEMMAT100,Semester 1,Continuous assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000162,CHEMMAT100,Semester 1,Continuous assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000163,CHEMMAT100,Semester 1,Continuous assessment,Assignment 1,Assignment,1,21,21,15,27
+ASM000164,CHEMMAT100,Semester 1,Continuous assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000165,CHEMMAT100,Semester 1,Continuous assessment,Participation Activities,Participation,1,28,28,10,28
+ASM000166,CHEMMAT100,Semester 1,Continuous assessment,Quiz 4,Quiz,22,28,28,5,29
+ASM000167,CHEMMAT100,Semester 1,Continuous assessment,Reflection,Reflection,15,28,28,10,30
+ASM000168,CHEMMAT100,Semester 1,Continuous assessment,Assignment 2,Assignment,22,42,42,20,49
+ASM000169,CHEMMAT100,Semester 1,Continuous assessment,Applied Project,Project,15,56,56,25,63
+ASM000170,ENVENG100,Semester 1,Laboratory-based,Laboratory Activity 1,Laboratory,1,7,7,5,9
+ASM000171,ENVENG100,Semester 1,Laboratory-based,Laboratory Activity 2,Laboratory,8,14,14,5,16
+ASM000172,ENVENG100,Semester 1,Laboratory-based,Laboratory Activity 3,Laboratory,15,21,21,5,23
+ASM000173,ENVENG100,Semester 1,Laboratory-based,Laboratory Activity 4,Laboratory,22,28,28,5,30
+ASM000174,ENVENG100,Semester 1,Laboratory-based,Laboratory Activity 5,Laboratory,29,35,35,5,37
+ASM000175,ENVENG100,Semester 1,Laboratory-based,Laboratory Activity 6,Laboratory,36,42,42,5,44
+ASM000176,ENVENG100,Semester 1,Laboratory-based,Practical Test 1,Test,29,42,42,10,45
+ASM000177,ENVENG100,Semester 1,Laboratory-based,Laboratory Project,Project,15,49,49,15,56
+ASM000178,ENVENG100,Semester 1,Laboratory-based,Practical Test 2,Test,43,63,63,15,66
+ASM000179,ENVENG100,Semester 1,Laboratory-based,Final Examination,Examination,85,98,98,30,105
+ASM000180,ELECTENG201,Semester 1,Balanced assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000181,ELECTENG201,Semester 1,Balanced assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000182,ELECTENG201,Semester 1,Balanced assessment,Assignment 1,Assignment,1,21,21,10,27
+ASM000183,ELECTENG201,Semester 1,Balanced assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000184,ELECTENG201,Semester 1,Balanced assessment,Assignment 2,Assignment,22,42,42,15,49
+ASM000185,ELECTENG201,Semester 1,Balanced assessment,Mid-Semester Test,Test,29,42,42,20,45
+ASM000186,ELECTENG201,Semester 1,Balanced assessment,Final Examination,Examination,85,98,98,40,105
+ASM000187,MECHENG201,Semester 1,Project-based,In-Class Activity 1,Participation,1,7,7,3,7
+ASM000188,MECHENG201,Semester 1,Project-based,In-Class Activity 2,Participation,8,14,14,3,14
+ASM000189,MECHENG201,Semester 1,Project-based,In-Class Activity 3,Participation,15,21,21,3,21
+ASM000190,MECHENG201,Semester 1,Project-based,Stage Report 1,Stage Report,1,21,21,15,28
+ASM000191,MECHENG201,Semester 1,Project-based,In-Class Activity 4,Participation,22,28,28,3,28
+ASM000192,MECHENG201,Semester 1,Project-based,In-Class Activity 5,Participation,29,35,35,3,35
+ASM000193,MECHENG201,Semester 1,Project-based,Stage Report 2,Stage Report,22,49,49,15,56
+ASM000194,MECHENG201,Semester 1,Project-based,Final Deliverable,Final Deliverable,29,84,84,40,91
+ASM000195,MECHENG201,Semester 1,Project-based,Group-Member Evaluation,Peer Evaluation,78,84,84,15,85
+ASM000196,COMMS100,Semester 1,Exam-heavy,Quiz 1,Quiz,1,7,7,5,8
+ASM000197,COMMS100,Semester 1,Exam-heavy,Quiz 2,Quiz,8,14,14,5,15
+ASM000198,COMMS100,Semester 1,Exam-heavy,Individual Assignment,Assignment,1,21,21,15,27
+ASM000199,COMMS100,Semester 1,Exam-heavy,Mid-Semester Test,Test,29,42,42,15,45
+ASM000200,COMMS100,Semester 1,Exam-heavy,Final Examination,Examination,85,98,98,60,105
+ASM000201,SOCIOL100,Semester 1,Laboratory-based,Laboratory Activity 1,Laboratory,1,7,7,5,9
+ASM000202,SOCIOL100,Semester 1,Laboratory-based,Laboratory Activity 2,Laboratory,8,14,14,5,16
+ASM000203,SOCIOL100,Semester 1,Laboratory-based,Laboratory Activity 3,Laboratory,15,21,21,5,23
+ASM000204,SOCIOL100,Semester 1,Laboratory-based,Laboratory Activity 4,Laboratory,22,28,28,5,30
+ASM000205,SOCIOL100,Semester 1,Laboratory-based,Laboratory Activity 5,Laboratory,29,35,35,5,37
+ASM000206,SOCIOL100,Semester 1,Laboratory-based,Laboratory Activity 6,Laboratory,36,42,42,5,44
+ASM000207,SOCIOL100,Semester 1,Laboratory-based,Practical Test 1,Test,29,42,42,10,45
+ASM000208,SOCIOL100,Semester 1,Laboratory-based,Laboratory Project,Project,15,49,49,15,56
+ASM000209,SOCIOL100,Semester 1,Laboratory-based,Practical Test 2,Test,43,63,63,15,66
+ASM000210,SOCIOL100,Semester 1,Laboratory-based,Final Examination,Examination,85,98,98,30,105
+ASM000211,POLITICS100,Semester 1,Laboratory-based,Laboratory Activity 1,Laboratory,1,7,7,5,9
+ASM000212,POLITICS100,Semester 1,Laboratory-based,Laboratory Activity 2,Laboratory,8,14,14,5,16
+ASM000213,POLITICS100,Semester 1,Laboratory-based,Laboratory Activity 3,Laboratory,15,21,21,5,23
+ASM000214,POLITICS100,Semester 1,Laboratory-based,Laboratory Activity 4,Laboratory,22,28,28,5,30
+ASM000215,POLITICS100,Semester 1,Laboratory-based,Laboratory Activity 5,Laboratory,29,35,35,5,37
+ASM000216,POLITICS100,Semester 1,Laboratory-based,Laboratory Activity 6,Laboratory,36,42,42,5,44
+ASM000217,POLITICS100,Semester 1,Laboratory-based,Practical Test 1,Test,29,42,42,10,45
+ASM000218,POLITICS100,Semester 1,Laboratory-based,Laboratory Project,Project,15,49,49,15,56
+ASM000219,POLITICS100,Semester 1,Laboratory-based,Practical Test 2,Test,43,63,63,15,66
+ASM000220,POLITICS100,Semester 1,Laboratory-based,Final Examination,Examination,85,98,98,30,105
+ASM000221,ENGLISH100,Semester 1,Continuous assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000222,ENGLISH100,Semester 1,Continuous assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000223,ENGLISH100,Semester 1,Continuous assessment,Assignment 1,Assignment,1,21,21,15,27
+ASM000224,ENGLISH100,Semester 1,Continuous assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000225,ENGLISH100,Semester 1,Continuous assessment,Participation Activities,Participation,1,28,28,10,28
+ASM000226,ENGLISH100,Semester 1,Continuous assessment,Quiz 4,Quiz,22,28,28,5,29
+ASM000227,ENGLISH100,Semester 1,Continuous assessment,Reflection,Reflection,15,28,28,10,30
+ASM000228,ENGLISH100,Semester 1,Continuous assessment,Assignment 2,Assignment,22,42,42,20,49
+ASM000229,ENGLISH100,Semester 1,Continuous assessment,Applied Project,Project,15,56,56,25,63
+ASM000230,COMMS201,Semester 1,Exam-heavy,Quiz 1,Quiz,1,7,7,5,8
+ASM000231,COMMS201,Semester 1,Exam-heavy,Quiz 2,Quiz,8,14,14,5,15
+ASM000232,COMMS201,Semester 1,Exam-heavy,Individual Assignment,Assignment,1,21,21,15,27
+ASM000233,COMMS201,Semester 1,Exam-heavy,Mid-Semester Test,Test,29,42,42,15,45
+ASM000234,COMMS201,Semester 1,Exam-heavy,Final Examination,Examination,85,98,98,60,105
+ASM000235,SOCIOL201,Semester 1,Technical testing,Technical Assignment 1,Assignment,1,14,14,10,20
+ASM000236,SOCIOL201,Semester 1,Technical testing,Technical Assignment 2,Assignment,15,28,28,10,35
+ASM000237,SOCIOL201,Semester 1,Technical testing,Technical Test 1,Test,29,42,42,20,45
+ASM000238,SOCIOL201,Semester 1,Technical testing,Technical Assignment 3,Assignment,29,56,56,15,63
+ASM000239,SOCIOL201,Semester 1,Technical testing,Technical Test 2,Test,43,63,63,25,66
+ASM000240,SOCIOL201,Semester 1,Technical testing,Technical Test 3,Test,64,77,77,20,80
+ASM000241,POLITICS201,Semester 1,Project-based,In-Class Activity 1,Participation,1,7,7,3,7
+ASM000242,POLITICS201,Semester 1,Project-based,In-Class Activity 2,Participation,8,14,14,3,14
+ASM000243,POLITICS201,Semester 1,Project-based,In-Class Activity 3,Participation,15,21,21,3,21
+ASM000244,POLITICS201,Semester 1,Project-based,Stage Report 1,Stage Report,1,21,21,15,28
+ASM000245,POLITICS201,Semester 1,Project-based,In-Class Activity 4,Participation,22,28,28,3,28
+ASM000246,POLITICS201,Semester 1,Project-based,In-Class Activity 5,Participation,29,35,35,3,35
+ASM000247,POLITICS201,Semester 1,Project-based,Stage Report 2,Stage Report,22,49,49,15,56
+ASM000248,POLITICS201,Semester 1,Project-based,Final Deliverable,Final Deliverable,29,84,84,40,91
+ASM000249,POLITICS201,Semester 1,Project-based,Group-Member Evaluation,Peer Evaluation,78,84,84,15,85
+ASM000250,ENGLISH201,Semester 1,Continuous assessment,Quiz 1,Quiz,1,7,7,5,8
+ASM000251,ENGLISH201,Semester 1,Continuous assessment,Quiz 2,Quiz,8,14,14,5,15
+ASM000252,ENGLISH201,Semester 1,Continuous assessment,Assignment 1,Assignment,1,21,21,15,27
+ASM000253,ENGLISH201,Semester 1,Continuous assessment,Quiz 3,Quiz,15,21,21,5,22
+ASM000254,ENGLISH201,Semester 1,Continuous assessment,Participation Activities,Participation,1,28,28,10,28
+ASM000255,ENGLISH201,Semester 1,Continuous assessment,Quiz 4,Quiz,22,28,28,5,29
+ASM000256,ENGLISH201,Semester 1,Continuous assessment,Reflection,Reflection,15,28,28,10,30
+ASM000257,ENGLISH201,Semester 1,Continuous assessment,Assignment 2,Assignment,22,42,42,20,49
+ASM000258,ENGLISH201,Semester 1,Continuous assessment,Applied Project,Project,15,56,56,25,63

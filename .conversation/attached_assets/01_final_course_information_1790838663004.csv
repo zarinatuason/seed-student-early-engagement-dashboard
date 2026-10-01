@@ -1,0 +1,35 @@
+course_code,paper_title,faculty_school_name,department_name,course_level,paper_structure_type,course_offering_period,course_duration_days
+COMLAW100,Introduction to Commercial Law,Business,Commercial Law,100,Continuous assessment,Semester 1,112
+ACCTG100,Introduction to Accounting,Business,Accounting and Finance,100,Balanced assessment,Semester 1,112
+ECON100,Introduction to Economics,Business,Economics,100,Continuous assessment,Semester 1,112
+MKTG100,Introduction to Marketing,Business,Marketing,100,Exam-heavy,Semester 1,112
+INFOSYS100,Introduction to Information Systems,Business,Information Systems and Operations Management,100,Exam-heavy,Semester 1,112
+PROPERTY100,Introduction to Property,Business,Property,100,Project-based,Semester 1,112
+COMLAW201,Applied Commercial Law,Business,Commercial Law,200,Continuous assessment,Semester 1,112
+FINANCE100,Introduction to Finance,Business,Accounting and Finance,100,Balanced assessment,Semester 1,112
+ECON201,Applied Economics,Business,Economics,200,Exam-heavy,Semester 1,112
+COMPSCI100,Introduction to Computer Science,Science,Computer Science,100,Project-based,Semester 1,112
+BIOSCI100,Introduction to Biological Sciences,Science,Biological Sciences,100,Balanced assessment,Semester 1,112
+CHEM100,Introduction to Chemistry,Science,Chemistry,100,Laboratory-based,Semester 1,112
+MATHS100,Introduction to Mathematics,Science,Mathematics and Statistics,100,Technical testing,Semester 1,112
+ENVSCI100,Introduction to Environmental Science,Science,Environmental Science,100,Technical testing,Semester 1,112
+COMPSCI201,Applied Computer Science,Science,Computer Science,200,Laboratory-based,Semester 1,112
+BIOSCI201,Applied Biological Sciences,Science,Biological Sciences,200,Exam-heavy,Semester 1,112
+CHEM201,Applied Chemistry,Science,Chemistry,200,Project-based,Semester 1,112
+STATS100,Introduction to Statistics,Science,Mathematics and Statistics,100,Technical testing,Semester 1,112
+CIVIL100,Introduction to Civil Engineering,Engineering and Design,Civil and Environmental Engineering,100,Balanced assessment,Semester 1,112
+ELECTENG100,Introduction to Electrical Engineering,Engineering and Design,Electrical and Electronic Engineering,100,Balanced assessment,Semester 1,112
+MECHENG100,Introduction to Mechanical Engineering,Engineering and Design,Mechanical and Mechatronics Engineering,100,Technical testing,Semester 1,112
+SOFTENG100,Introduction to Software Engineering,Engineering and Design,Software Engineering,100,Balanced assessment,Semester 1,112
+CHEMMAT100,Introduction to Chemical and Materials Engineering,Engineering and Design,Chemical and Materials Engineering,100,Continuous assessment,Semester 1,112
+ENVENG100,Introduction to Environmental Engineering,Engineering and Design,Civil and Environmental Engineering,100,Laboratory-based,Semester 1,112
+ELECTENG201,Applied Electrical Engineering,Engineering and Design,Electrical and Electronic Engineering,200,Balanced assessment,Semester 1,112
+MECHENG201,Applied Mechanical Engineering,Engineering and Design,Mechanical and Mechatronics Engineering,200,Project-based,Semester 1,112
+COMMS100,Introduction to Communication,Arts and Social Sciences,Communication,100,Exam-heavy,Semester 1,112
+SOCIOL100,Introduction to Sociology,Arts and Social Sciences,Sociology,100,Laboratory-based,Semester 1,112
+POLITICS100,Introduction to Politics,Arts and Social Sciences,Politics and International Relations,100,Laboratory-based,Semester 1,112
+ENGLISH100,Introduction to English and Writing Studies,Arts and Social Sciences,English and Writing Studies,100,Continuous assessment,Semester 1,112
+COMMS201,Applied Communication,Arts and Social Sciences,Communication,200,Exam-heavy,Semester 1,112
+SOCIOL201,Applied Sociology,Arts and Social Sciences,Sociology,200,Technical testing,Semester 1,112
+POLITICS201,Applied Politics,Arts and Social Sciences,Politics and International Relations,200,Project-based,Semester 1,112
+ENGLISH201,Applied English and Writing Studies,Arts and Social Sciences,English and Writing Studies,200,Continuous assessment,Semester 1,112

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "SEED — Student Advisor Review"
+description = "A Student Advisor workspace for reviewing synthetic learner–paper records, inspecting Day 28 evidence, and saving dated review decisions and follow-up actions."
+version = "1.0.0"
+id = "artifacts/seed-advisor"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21150
+
+[services.development]
+run = "pnpm --filter @workspace/seed-advisor run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/seed-advisor", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/seed-advisor/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21150"
+BASE_PATH = "/"

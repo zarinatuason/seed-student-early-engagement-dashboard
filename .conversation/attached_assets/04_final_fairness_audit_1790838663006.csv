@@ -1,0 +1,1401 @@
+learner_id,gender_group,learner_region,area_deprivation_band,age_group,accessibility_support_flag
+STU000001,Man,International,Quintile 4,25–34,False
+STU000002,Man,Auckland,Quintile 5,Under 20,False
+STU000003,Woman,International,Quintile 4,Under 20,False
+STU000004,Woman,International,Quintile 4,20–24,False
+STU000005,Man,Auckland,Quintile 4,20–24,False
+STU000006,Man,Auckland,Quintile 3,Under 20,False
+STU000007,Woman,Auckland,Quintile 2,Under 20,True
+STU000008,Man,Auckland,Quintile 2,20–24,False
+STU000009,Woman,Auckland,Quintile 4,Under 20,False
+STU000010,Woman,Auckland,Quintile 5,20–24,False
+STU000011,Woman,International,Quintile 1,20–24,False
+STU000012,Man,International,Quintile 5,25–34,False
+STU000013,Woman,Auckland,Quintile 3,25–34,True
+STU000014,Prefer not to say,Auckland,Quintile 1,20–24,False
+STU000015,Man,Auckland,Quintile 1,Under 20,False
+STU000016,Man,Auckland,Quintile 1,Under 20,False
+STU000017,Man,Auckland,Quintile 4,20–24,False
+STU000018,Woman,Auckland,Quintile 1,35 and over,False
+STU000019,Man,Auckland,Quintile 2,25–34,False
+STU000020,Woman,Auckland,Quintile 4,20–24,False
+STU000021,Prefer not to say,Other New Zealand,Quintile 5,20–24,False
+STU000022,Woman,Other New Zealand,Quintile 2,25–34,False
+STU000023,Man,Other New Zealand,Quintile 5,20–24,False
+STU000024,Woman,Auckland,Quintile 1,20–24,False
+STU000025,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000026,Woman,Auckland,Quintile 2,20–24,False
+STU000027,Man,Auckland,Quintile 3,20–24,True
+STU000028,Woman,Auckland,Quintile 5,20–24,False
+STU000029,Woman,International,Quintile 4,Under 20,False
+STU000030,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000031,Man,Auckland,Quintile 3,Under 20,True
+STU000032,Man,Other New Zealand,Quintile 5,20–24,False
+STU000033,Gender diverse,International,Quintile 5,Under 20,False
+STU000034,Man,Auckland,Quintile 1,20–24,True
+STU000035,Man,Auckland,Quintile 1,35 and over,False
+STU000036,Woman,Other New Zealand,Quintile 1,Under 20,False
+STU000037,Gender diverse,Auckland,Quintile 5,Under 20,True
+STU000038,Woman,Other New Zealand,Quintile 4,20–24,True
+STU000039,Woman,International,Quintile 1,20–24,False
+STU000040,Man,Auckland,Quintile 4,20–24,False
+STU000041,Man,Auckland,Quintile 5,20–24,False
+STU000042,Woman,Other New Zealand,Quintile 5,20–24,False
+STU000043,Man,Auckland,Quintile 4,Under 20,False
+STU000044,Woman,Auckland,Quintile 3,20–24,False
+STU000045,Man,Other New Zealand,Quintile 3,25–34,True
+STU000046,Woman,Auckland,Quintile 4,35 and over,False
+STU000047,Woman,Auckland,Quintile 2,20–24,False
+STU000048,Woman,Auckland,Quintile 2,25–34,False
+STU000049,Man,Auckland,Quintile 1,20–24,True
+STU000050,Man,Auckland,Quintile 3,20–24,False
+STU000051,Man,Auckland,Quintile 4,20–24,False
+STU000052,Man,Auckland,Quintile 3,Under 20,False
+STU000053,Man,International,Quintile 4,25–34,False
+STU000054,Woman,Auckland,Quintile 5,20–24,False
+STU000055,Woman,Other New Zealand,Quintile 2,20–24,False
+STU000056,Woman,Auckland,Quintile 2,Under 20,False
+STU000057,Man,Other New Zealand,Quintile 5,20–24,False
+STU000058,Woman,Auckland,Quintile 5,Under 20,False
+STU000059,Man,International,Quintile 5,Under 20,False
+STU000060,Man,Other New Zealand,Quintile 5,Under 20,True
+STU000061,Man,Auckland,Quintile 4,25–34,False
+STU000062,Man,Other New Zealand,Quintile 5,20–24,False
+STU000063,Woman,Auckland,Quintile 3,35 and over,True
+STU000064,Man,International,Quintile 2,20–24,True
+STU000065,Woman,Auckland,Quintile 3,Under 20,False
+STU000066,Woman,International,Quintile 2,25–34,False
+STU000067,Woman,Auckland,Quintile 2,Under 20,False
+STU000068,Prefer not to say,Auckland,Quintile 4,20–24,False
+STU000069,Woman,Auckland,Quintile 1,35 and over,False
+STU000070,Man,Auckland,Quintile 5,20–24,False
+STU000071,Man,Other New Zealand,Quintile 4,20–24,False
+STU000072,Woman,Other New Zealand,Quintile 3,Under 20,False
+STU000073,Woman,Auckland,Quintile 5,20–24,True
+STU000074,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000075,Woman,Auckland,Quintile 2,20–24,False
+STU000076,Man,Auckland,Quintile 4,Under 20,False
+STU000077,Woman,Auckland,Quintile 4,20–24,False
+STU000078,Woman,Auckland,Quintile 3,25–34,False
+STU000079,Man,Auckland,Quintile 4,20–24,False
+STU000080,Man,International,Quintile 3,35 and over,False
+STU000081,Man,Other New Zealand,Quintile 1,25–34,False
+STU000082,Man,Auckland,Quintile 1,20–24,False
+STU000083,Man,Auckland,Quintile 4,Under 20,False
+STU000084,Woman,Auckland,Quintile 4,35 and over,False
+STU000085,Man,Auckland,Quintile 4,20–24,False
+STU000086,Prefer not to say,Auckland,Quintile 2,Under 20,False
+STU000087,Man,Auckland,Quintile 4,Under 20,True
+STU000088,Woman,Auckland,Quintile 2,Under 20,False
+STU000089,Man,Auckland,Quintile 3,20–24,False
+STU000090,Man,Other New Zealand,Quintile 1,20–24,False
+STU000091,Man,International,Quintile 1,Under 20,False
+STU000092,Man,Auckland,Quintile 3,25–34,False
+STU000093,Woman,International,Quintile 1,25–34,False
+STU000094,Man,Other New Zealand,Quintile 5,20–24,False
+STU000095,Woman,Auckland,Quintile 2,Under 20,False
+STU000096,Woman,International,Quintile 3,Under 20,False
+STU000097,Man,International,Quintile 1,25–34,True
+STU000098,Man,Auckland,Quintile 3,20–24,True
+STU000099,Man,Auckland,Quintile 1,Under 20,False
+STU000100,Woman,International,Quintile 2,20–24,False
+STU000101,Woman,Other New Zealand,Quintile 2,35 and over,False
+STU000102,Woman,Auckland,Quintile 3,Under 20,False
+STU000103,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000104,Man,International,Quintile 4,Under 20,False
+STU000105,Man,Auckland,Quintile 5,35 and over,False
+STU000106,Woman,Auckland,Quintile 1,Under 20,False
+STU000107,Woman,International,Quintile 5,Under 20,False
+STU000108,Woman,Auckland,Quintile 3,25–34,True
+STU000109,Man,Other New Zealand,Quintile 1,35 and over,True
+STU000110,Woman,Auckland,Quintile 1,20–24,True
+STU000111,Man,Auckland,Quintile 2,25–34,False
+STU000112,Woman,International,Quintile 3,20–24,False
+STU000113,Woman,Auckland,Quintile 3,25–34,False
+STU000114,Woman,Auckland,Quintile 2,20–24,False
+STU000115,Woman,Auckland,Quintile 2,25–34,False
+STU000116,Man,Auckland,Quintile 5,25–34,True
+STU000117,Woman,Auckland,Quintile 5,20–24,False
+STU000118,Woman,International,Quintile 2,25–34,False
+STU000119,Man,Auckland,Quintile 1,20–24,False
+STU000120,Woman,Other New Zealand,Quintile 3,20–24,True
+STU000121,Woman,Other New Zealand,Quintile 2,35 and over,False
+STU000122,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU000123,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000124,Woman,Auckland,Quintile 4,25–34,False
+STU000125,Man,International,Quintile 1,20–24,False
+STU000126,Woman,Auckland,Quintile 1,20–24,False
+STU000127,Woman,Auckland,Quintile 3,25–34,False
+STU000128,Man,Auckland,Quintile 5,20–24,False
+STU000129,Woman,Other New Zealand,Quintile 5,20–24,False
+STU000130,Woman,Auckland,Quintile 2,Under 20,False
+STU000131,Woman,Auckland,Quintile 1,20–24,False
+STU000132,Man,Other New Zealand,Quintile 4,Under 20,True
+STU000133,Man,Auckland,Quintile 5,20–24,False
+STU000134,Man,Other New Zealand,Quintile 2,20–24,False
+STU000135,Woman,Auckland,Quintile 5,Under 20,False
+STU000136,Woman,International,Quintile 3,20–24,False
+STU000137,Woman,Auckland,Quintile 1,20–24,False
+STU000138,Woman,Auckland,Quintile 4,20–24,False
+STU000139,Man,Other New Zealand,Quintile 4,20–24,False
+STU000140,Man,Other New Zealand,Quintile 1,20–24,False
+STU000141,Woman,International,Quintile 3,20–24,False
+STU000142,Man,Auckland,Quintile 5,20–24,False
+STU000143,Man,Auckland,Quintile 2,20–24,False
+STU000144,Woman,Auckland,Quintile 1,Under 20,False
+STU000145,Woman,Auckland,Quintile 2,20–24,False
+STU000146,Man,International,Quintile 5,Under 20,False
+STU000147,Woman,Auckland,Quintile 1,20–24,False
+STU000148,Man,International,Quintile 4,35 and over,False
+STU000149,Man,Auckland,Quintile 5,Under 20,False
+STU000150,Man,Other New Zealand,Quintile 5,20–24,False
+STU000151,Man,Auckland,Quintile 1,20–24,False
+STU000152,Woman,Auckland,Quintile 4,Under 20,False
+STU000153,Woman,International,Quintile 2,25–34,False
+STU000154,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000155,Man,Auckland,Quintile 4,20–24,False
+STU000156,Woman,Other New Zealand,Quintile 5,Under 20,False
+STU000157,Man,International,Quintile 1,20–24,False
+STU000158,Woman,Other New Zealand,Quintile 5,20–24,False
+STU000159,Woman,Auckland,Quintile 1,20–24,True
+STU000160,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000161,Man,Other New Zealand,Quintile 1,20–24,False
+STU000162,Prefer not to say,Other New Zealand,Quintile 3,Under 20,False
+STU000163,Man,International,Quintile 1,Under 20,False
+STU000164,Man,Auckland,Quintile 4,20–24,True
+STU000165,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000166,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000167,Prefer not to say,International,Quintile 2,25–34,False
+STU000168,Prefer not to say,Auckland,Quintile 4,20–24,False
+STU000169,Woman,Other New Zealand,Quintile 4,25–34,False
+STU000170,Man,Auckland,Quintile 1,20–24,False
+STU000171,Woman,Other New Zealand,Quintile 5,Under 20,False
+STU000172,Woman,Auckland,Quintile 2,20–24,False
+STU000173,Prefer not to say,Auckland,Quintile 5,Under 20,False
+STU000174,Woman,Auckland,Quintile 3,20–24,False
+STU000175,Woman,International,Quintile 5,Under 20,False
+STU000176,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000177,Man,International,Quintile 3,20–24,True
+STU000178,Man,Auckland,Quintile 3,Under 20,False
+STU000179,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU000180,Man,Other New Zealand,Quintile 3,20–24,False
+STU000181,Woman,Auckland,Quintile 4,20–24,False
+STU000182,Man,Auckland,Quintile 5,Under 20,False
+STU000183,Woman,International,Quintile 5,20–24,False
+STU000184,Man,Other New Zealand,Quintile 5,Under 20,False
+STU000185,Man,Other New Zealand,Quintile 2,20–24,False
+STU000186,Man,Auckland,Quintile 1,20–24,False
+STU000187,Woman,Other New Zealand,Quintile 5,20–24,False
+STU000188,Man,International,Quintile 3,25–34,False
+STU000189,Woman,Other New Zealand,Quintile 2,Under 20,False
+STU000190,Woman,Auckland,Quintile 1,20–24,False
+STU000191,Woman,International,Quintile 1,Under 20,False
+STU000192,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000193,Gender diverse,Auckland,Quintile 3,25–34,False
+STU000194,Woman,Other New Zealand,Quintile 2,20–24,False
+STU000195,Woman,Auckland,Quintile 3,20–24,True
+STU000196,Woman,Auckland,Quintile 3,20–24,False
+STU000197,Gender diverse,Auckland,Quintile 2,20–24,False
+STU000198,Woman,International,Quintile 3,20–24,False
+STU000199,Woman,International,Quintile 5,Under 20,False
+STU000200,Man,International,Quintile 3,20–24,False
+STU000201,Man,Auckland,Quintile 3,20–24,False
+STU000202,Man,International,Quintile 3,20–24,False
+STU000203,Man,Other New Zealand,Quintile 5,Under 20,False
+STU000204,Man,Other New Zealand,Quintile 2,Under 20,False
+STU000205,Man,Auckland,Quintile 3,Under 20,False
+STU000206,Prefer not to say,Auckland,Quintile 4,Under 20,False
+STU000207,Woman,Auckland,Quintile 4,20–24,False
+STU000208,Prefer not to say,Auckland,Quintile 5,20–24,False
+STU000209,Woman,Auckland,Quintile 1,Under 20,True
+STU000210,Woman,Auckland,Quintile 5,25–34,False
+STU000211,Man,Auckland,Quintile 1,25–34,False
+STU000212,Woman,Other New Zealand,Quintile 5,20–24,False
+STU000213,Man,Other New Zealand,Quintile 2,25–34,False
+STU000214,Gender diverse,International,Quintile 5,35 and over,False
+STU000215,Man,Auckland,Quintile 1,Under 20,False
+STU000216,Man,Auckland,Quintile 4,Under 20,False
+STU000217,Man,Other New Zealand,Quintile 4,20–24,False
+STU000218,Woman,Auckland,Quintile 4,20–24,True
+STU000219,Woman,Auckland,Quintile 3,25–34,False
+STU000220,Man,Auckland,Quintile 5,Under 20,True
+STU000221,Woman,Other New Zealand,Quintile 4,25–34,False
+STU000222,Man,Auckland,Quintile 2,20–24,True
+STU000223,Woman,Auckland,Quintile 1,Under 20,False
+STU000224,Gender diverse,Other New Zealand,Quintile 5,Under 20,False
+STU000225,Man,Auckland,Quintile 3,Under 20,False
+STU000226,Woman,Auckland,Quintile 4,Under 20,False
+STU000227,Man,Auckland,Quintile 2,20–24,False
+STU000228,Woman,Auckland,Quintile 3,Under 20,False
+STU000229,Man,Auckland,Quintile 1,25–34,True
+STU000230,Man,Auckland,Quintile 4,20–24,False
+STU000231,Woman,Auckland,Quintile 3,Under 20,False
+STU000232,Man,Auckland,Quintile 2,Under 20,False
+STU000233,Man,Auckland,Quintile 4,20–24,False
+STU000234,Prefer not to say,Auckland,Quintile 3,20–24,False
+STU000235,Man,Auckland,Quintile 3,Under 20,False
+STU000236,Man,Other New Zealand,Quintile 5,Under 20,True
+STU000237,Man,Auckland,Quintile 2,Under 20,False
+STU000238,Woman,International,Quintile 4,25–34,False
+STU000239,Man,Other New Zealand,Quintile 3,20–24,False
+STU000240,Man,Auckland,Quintile 1,20–24,False
+STU000241,Woman,Other New Zealand,Quintile 5,20–24,True
+STU000242,Man,Other New Zealand,Quintile 1,20–24,False
+STU000243,Woman,Other New Zealand,Quintile 3,20–24,True
+STU000244,Woman,International,Quintile 5,20–24,False
+STU000245,Woman,Auckland,Quintile 3,35 and over,False
+STU000246,Woman,Auckland,Quintile 3,25–34,False
+STU000247,Woman,Auckland,Quintile 1,25–34,False
+STU000248,Woman,Auckland,Quintile 1,20–24,False
+STU000249,Prefer not to say,Auckland,Quintile 5,Under 20,False
+STU000250,Woman,Auckland,Quintile 3,25–34,False
+STU000251,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000252,Woman,Auckland,Quintile 2,Under 20,False
+STU000253,Man,Other New Zealand,Quintile 1,25–34,False
+STU000254,Woman,Auckland,Quintile 4,20–24,False
+STU000255,Woman,Auckland,Quintile 4,20–24,False
+STU000256,Woman,Other New Zealand,Quintile 2,20–24,False
+STU000257,Woman,Other New Zealand,Quintile 2,Under 20,False
+STU000258,Man,Auckland,Quintile 5,Under 20,True
+STU000259,Woman,Auckland,Quintile 2,20–24,False
+STU000260,Man,Other New Zealand,Quintile 2,Under 20,False
+STU000261,Woman,Other New Zealand,Quintile 2,25–34,False
+STU000262,Woman,International,Quintile 3,20–24,True
+STU000263,Woman,International,Quintile 4,25–34,False
+STU000264,Woman,International,Quintile 3,Under 20,False
+STU000265,Woman,Other New Zealand,Quintile 2,Under 20,False
+STU000266,Woman,International,Quintile 4,Under 20,True
+STU000267,Man,Auckland,Quintile 4,20–24,True
+STU000268,Man,Auckland,Quintile 5,Under 20,False
+STU000269,Man,Auckland,Quintile 1,35 and over,False
+STU000270,Woman,Auckland,Quintile 5,25–34,False
+STU000271,Man,Other New Zealand,Quintile 1,20–24,False
+STU000272,Man,Auckland,Quintile 4,20–24,False
+STU000273,Woman,Auckland,Quintile 4,20–24,False
+STU000274,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000275,Man,Auckland,Quintile 5,20–24,True
+STU000276,Man,Other New Zealand,Quintile 5,25–34,False
+STU000277,Woman,Auckland,Quintile 2,25–34,False
+STU000278,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000279,Woman,Other New Zealand,Quintile 4,25–34,False
+STU000280,Woman,Auckland,Quintile 4,Under 20,False
+STU000281,Woman,International,Quintile 1,20–24,False
+STU000282,Man,International,Quintile 1,20–24,False
+STU000283,Woman,Auckland,Quintile 2,Under 20,False
+STU000284,Man,Other New Zealand,Quintile 1,35 and over,False
+STU000285,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000286,Woman,Auckland,Quintile 5,20–24,False
+STU000287,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000288,Prefer not to say,Auckland,Quintile 3,Under 20,True
+STU000289,Man,Auckland,Quintile 2,Under 20,False
+STU000290,Woman,Auckland,Quintile 5,20–24,False
+STU000291,Man,International,Quintile 4,25–34,False
+STU000292,Woman,International,Quintile 3,20–24,False
+STU000293,Prefer not to say,Other New Zealand,Quintile 4,20–24,False
+STU000294,Woman,Auckland,Quintile 5,20–24,False
+STU000295,Woman,Auckland,Quintile 1,20–24,False
+STU000296,Man,Auckland,Quintile 4,20–24,False
+STU000297,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000298,Woman,Auckland,Quintile 5,20–24,False
+STU000299,Man,Other New Zealand,Quintile 5,20–24,False
+STU000300,Woman,Auckland,Quintile 5,25–34,False
+STU000301,Woman,International,Quintile 3,Under 20,False
+STU000302,Woman,Other New Zealand,Quintile 3,25–34,True
+STU000303,Woman,Auckland,Quintile 5,25–34,False
+STU000304,Man,International,Quintile 2,Under 20,False
+STU000305,Woman,Auckland,Quintile 3,Under 20,False
+STU000306,Gender diverse,Other New Zealand,Quintile 3,20–24,False
+STU000307,Man,Auckland,Quintile 5,20–24,False
+STU000308,Man,Other New Zealand,Quintile 2,35 and over,False
+STU000309,Woman,Auckland,Quintile 5,20–24,False
+STU000310,Woman,International,Quintile 3,Under 20,True
+STU000311,Woman,Auckland,Quintile 2,20–24,False
+STU000312,Man,International,Quintile 3,20–24,False
+STU000313,Man,Auckland,Quintile 5,20–24,False
+STU000314,Woman,Auckland,Quintile 4,20–24,False
+STU000315,Man,Auckland,Quintile 3,25–34,False
+STU000316,Woman,Auckland,Quintile 4,20–24,False
+STU000317,Woman,Auckland,Quintile 4,35 and over,False
+STU000318,Man,Auckland,Quintile 5,20–24,False
+STU000319,Woman,International,Quintile 5,Under 20,False
+STU000320,Prefer not to say,International,Quintile 1,Under 20,False
+STU000321,Man,Other New Zealand,Quintile 3,20–24,False
+STU000322,Woman,International,Quintile 5,20–24,False
+STU000323,Woman,Auckland,Quintile 4,25–34,False
+STU000324,Man,Auckland,Quintile 5,35 and over,False
+STU000325,Man,Other New Zealand,Quintile 5,20–24,False
+STU000326,Man,Auckland,Quintile 1,20–24,False
+STU000327,Man,Auckland,Quintile 2,Under 20,False
+STU000328,Man,Auckland,Quintile 4,20–24,True
+STU000329,Man,Auckland,Quintile 4,20–24,False
+STU000330,Man,Auckland,Quintile 3,20–24,True
+STU000331,Woman,Auckland,Quintile 2,20–24,False
+STU000332,Man,Other New Zealand,Quintile 2,Under 20,False
+STU000333,Man,International,Quintile 4,20–24,False
+STU000334,Man,International,Quintile 4,Under 20,False
+STU000335,Man,Other New Zealand,Quintile 3,20–24,False
+STU000336,Woman,International,Quintile 1,35 and over,False
+STU000337,Man,Auckland,Quintile 2,25–34,False
+STU000338,Man,International,Quintile 3,20–24,False
+STU000339,Woman,Auckland,Quintile 1,20–24,False
+STU000340,Man,Auckland,Quintile 2,20–24,True
+STU000341,Man,International,Quintile 5,20–24,False
+STU000342,Woman,Auckland,Quintile 4,Under 20,False
+STU000343,Woman,Other New Zealand,Quintile 4,25–34,False
+STU000344,Woman,International,Quintile 4,20–24,False
+STU000345,Woman,Auckland,Quintile 5,20–24,True
+STU000346,Woman,Auckland,Quintile 1,Under 20,False
+STU000347,Woman,International,Quintile 5,Under 20,False
+STU000348,Man,Other New Zealand,Quintile 4,35 and over,False
+STU000349,Man,Auckland,Quintile 4,Under 20,False
+STU000350,Gender diverse,Auckland,Quintile 4,Under 20,False
+STU000351,Man,Auckland,Quintile 2,20–24,False
+STU000352,Man,Auckland,Quintile 3,35 and over,False
+STU000353,Man,Auckland,Quintile 5,20–24,False
+STU000354,Man,Other New Zealand,Quintile 1,20–24,False
+STU000355,Woman,Auckland,Quintile 4,20–24,False
+STU000356,Man,Auckland,Quintile 1,20–24,False
+STU000357,Woman,Auckland,Quintile 2,Under 20,False
+STU000358,Man,Other New Zealand,Quintile 4,25–34,True
+STU000359,Woman,Auckland,Quintile 5,20–24,False
+STU000360,Woman,International,Quintile 3,Under 20,True
+STU000361,Man,Auckland,Quintile 1,25–34,False
+STU000362,Woman,Auckland,Quintile 1,20–24,False
+STU000363,Man,Auckland,Quintile 5,Under 20,False
+STU000364,Woman,Auckland,Quintile 2,Under 20,False
+STU000365,Man,Other New Zealand,Quintile 4,20–24,False
+STU000366,Woman,Auckland,Quintile 5,20–24,False
+STU000367,Man,Other New Zealand,Quintile 2,Under 20,False
+STU000368,Woman,Other New Zealand,Quintile 1,Under 20,False
+STU000369,Man,Auckland,Quintile 2,20–24,False
+STU000370,Man,Auckland,Quintile 3,20–24,False
+STU000371,Woman,Other New Zealand,Quintile 1,Under 20,False
+STU000372,Woman,Auckland,Quintile 3,Under 20,True
+STU000373,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000374,Woman,International,Quintile 2,20–24,False
+STU000375,Woman,Auckland,Quintile 5,20–24,False
+STU000376,Woman,International,Quintile 1,20–24,False
+STU000377,Woman,Auckland,Quintile 4,20–24,False
+STU000378,Woman,Auckland,Quintile 4,20–24,False
+STU000379,Man,Auckland,Quintile 1,35 and over,False
+STU000380,Man,Auckland,Quintile 3,Under 20,False
+STU000381,Woman,Other New Zealand,Quintile 4,25–34,False
+STU000382,Woman,Auckland,Quintile 1,20–24,False
+STU000383,Prefer not to say,Auckland,Quintile 2,20–24,True
+STU000384,Woman,Auckland,Quintile 3,20–24,False
+STU000385,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000386,Man,Other New Zealand,Quintile 4,Under 20,False
+STU000387,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000388,Man,Other New Zealand,Quintile 3,Under 20,False
+STU000389,Man,Other New Zealand,Quintile 1,20–24,True
+STU000390,Man,Auckland,Quintile 1,Under 20,False
+STU000391,Man,International,Quintile 1,Under 20,True
+STU000392,Woman,Auckland,Quintile 4,25–34,False
+STU000393,Man,Auckland,Quintile 4,20–24,False
+STU000394,Man,Other New Zealand,Quintile 2,20–24,False
+STU000395,Woman,Other New Zealand,Quintile 5,20–24,False
+STU000396,Woman,Auckland,Quintile 5,35 and over,False
+STU000397,Prefer not to say,International,Quintile 1,20–24,False
+STU000398,Woman,Auckland,Quintile 2,Under 20,True
+STU000399,Man,Other New Zealand,Quintile 3,25–34,False
+STU000400,Man,Auckland,Quintile 5,20–24,True
+STU000401,Man,International,Quintile 2,Under 20,False
+STU000402,Man,Auckland,Quintile 5,Under 20,False
+STU000403,Man,Other New Zealand,Quintile 4,20–24,False
+STU000404,Man,Other New Zealand,Quintile 3,20–24,False
+STU000405,Woman,Auckland,Quintile 4,25–34,False
+STU000406,Woman,Auckland,Quintile 3,20–24,False
+STU000407,Man,Auckland,Quintile 4,20–24,False
+STU000408,Prefer not to say,Auckland,Quintile 3,20–24,True
+STU000409,Woman,International,Quintile 5,25–34,False
+STU000410,Man,Auckland,Quintile 5,Under 20,False
+STU000411,Man,Auckland,Quintile 5,20–24,False
+STU000412,Man,International,Quintile 5,20–24,False
+STU000413,Woman,Auckland,Quintile 1,25–34,False
+STU000414,Man,Other New Zealand,Quintile 4,20–24,False
+STU000415,Prefer not to say,Auckland,Quintile 3,25–34,False
+STU000416,Man,Auckland,Quintile 5,20–24,False
+STU000417,Woman,Other New Zealand,Quintile 5,35 and over,False
+STU000418,Woman,Auckland,Quintile 3,20–24,False
+STU000419,Woman,Auckland,Quintile 4,20–24,False
+STU000420,Woman,Auckland,Quintile 3,20–24,False
+STU000421,Man,Other New Zealand,Quintile 3,Under 20,False
+STU000422,Woman,Auckland,Quintile 5,Under 20,False
+STU000423,Woman,Auckland,Quintile 3,25–34,False
+STU000424,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000425,Woman,Auckland,Quintile 3,20–24,False
+STU000426,Woman,International,Quintile 5,20–24,False
+STU000427,Woman,Auckland,Quintile 1,Under 20,False
+STU000428,Woman,Auckland,Quintile 4,25–34,False
+STU000429,Woman,Auckland,Quintile 4,20–24,False
+STU000430,Woman,Other New Zealand,Quintile 5,20–24,False
+STU000431,Woman,Auckland,Quintile 4,20–24,False
+STU000432,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000433,Man,Other New Zealand,Quintile 2,20–24,False
+STU000434,Man,Auckland,Quintile 4,20–24,False
+STU000435,Man,Other New Zealand,Quintile 1,35 and over,False
+STU000436,Woman,Auckland,Quintile 3,25–34,False
+STU000437,Man,Other New Zealand,Quintile 2,20–24,False
+STU000438,Gender diverse,Auckland,Quintile 1,20–24,False
+STU000439,Man,International,Quintile 4,25–34,True
+STU000440,Woman,Other New Zealand,Quintile 1,25–34,False
+STU000441,Man,Auckland,Quintile 3,Under 20,False
+STU000442,Man,Other New Zealand,Quintile 4,20–24,False
+STU000443,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000444,Man,Auckland,Quintile 2,20–24,True
+STU000445,Man,Auckland,Quintile 3,20–24,False
+STU000446,Man,International,Quintile 2,35 and over,False
+STU000447,Man,Auckland,Quintile 2,25–34,False
+STU000448,Woman,International,Quintile 3,Under 20,False
+STU000449,Woman,Other New Zealand,Quintile 3,25–34,False
+STU000450,Man,Auckland,Quintile 1,20–24,False
+STU000451,Woman,Auckland,Quintile 1,20–24,False
+STU000452,Woman,Auckland,Quintile 3,20–24,False
+STU000453,Man,Auckland,Quintile 1,20–24,True
+STU000454,Woman,Auckland,Quintile 2,20–24,False
+STU000455,Prefer not to say,Other New Zealand,Quintile 2,20–24,False
+STU000456,Woman,Other New Zealand,Quintile 5,20–24,False
+STU000457,Man,Auckland,Quintile 3,20–24,False
+STU000458,Man,International,Quintile 4,20–24,False
+STU000459,Man,International,Quintile 4,20–24,False
+STU000460,Woman,International,Quintile 2,20–24,False
+STU000461,Woman,Other New Zealand,Quintile 2,25–34,False
+STU000462,Man,Other New Zealand,Quintile 1,Under 20,False
+STU000463,Woman,Other New Zealand,Quintile 2,20–24,False
+STU000464,Woman,International,Quintile 3,20–24,False
+STU000465,Prefer not to say,Auckland,Quintile 5,20–24,False
+STU000466,Man,Other New Zealand,Quintile 3,25–34,False
+STU000467,Woman,Auckland,Quintile 4,20–24,False
+STU000468,Woman,Auckland,Quintile 2,25–34,True
+STU000469,Man,Auckland,Quintile 3,25–34,True
+STU000470,Gender diverse,International,Quintile 5,Under 20,True
+STU000471,Woman,Other New Zealand,Quintile 2,Under 20,False
+STU000472,Man,International,Quintile 4,20–24,True
+STU000473,Woman,Auckland,Quintile 1,Under 20,False
+STU000474,Woman,International,Quintile 4,Under 20,False
+STU000475,Prefer not to say,Auckland,Quintile 1,20–24,False
+STU000476,Man,Other New Zealand,Quintile 5,20–24,False
+STU000477,Woman,Other New Zealand,Quintile 5,35 and over,False
+STU000478,Woman,Other New Zealand,Quintile 2,Under 20,False
+STU000479,Woman,Auckland,Quintile 1,35 and over,False
+STU000480,Prefer not to say,Auckland,Quintile 1,20–24,False
+STU000481,Man,International,Quintile 2,25–34,False
+STU000482,Man,International,Quintile 4,25–34,False
+STU000483,Woman,International,Quintile 5,Under 20,False
+STU000484,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000485,Man,Other New Zealand,Quintile 1,20–24,False
+STU000486,Man,Auckland,Quintile 2,20–24,True
+STU000487,Woman,Other New Zealand,Quintile 5,20–24,False
+STU000488,Woman,International,Quintile 5,25–34,False
+STU000489,Woman,International,Quintile 5,Under 20,False
+STU000490,Man,International,Quintile 3,20–24,False
+STU000491,Woman,Auckland,Quintile 4,20–24,False
+STU000492,Man,International,Quintile 4,20–24,False
+STU000493,Man,Other New Zealand,Quintile 2,Under 20,False
+STU000494,Man,International,Quintile 3,20–24,False
+STU000495,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000496,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000497,Woman,Other New Zealand,Quintile 1,20–24,True
+STU000498,Woman,Other New Zealand,Quintile 1,Under 20,False
+STU000499,Woman,Auckland,Quintile 3,Under 20,False
+STU000500,Gender diverse,Other New Zealand,Quintile 3,20–24,False
+STU000501,Woman,Auckland,Quintile 3,20–24,False
+STU000502,Woman,Other New Zealand,Quintile 1,Under 20,False
+STU000503,Woman,Auckland,Quintile 1,20–24,False
+STU000504,Woman,International,Quintile 3,Under 20,False
+STU000505,Man,Auckland,Quintile 3,20–24,False
+STU000506,Man,Auckland,Quintile 2,25–34,False
+STU000507,Woman,Other New Zealand,Quintile 5,20–24,True
+STU000508,Woman,Auckland,Quintile 4,25–34,False
+STU000509,Man,Other New Zealand,Quintile 4,20–24,False
+STU000510,Woman,Auckland,Quintile 1,20–24,False
+STU000511,Woman,Auckland,Quintile 5,35 and over,False
+STU000512,Man,Auckland,Quintile 5,Under 20,False
+STU000513,Woman,International,Quintile 1,20–24,False
+STU000514,Man,Auckland,Quintile 2,20–24,True
+STU000515,Woman,Auckland,Quintile 4,20–24,True
+STU000516,Woman,Other New Zealand,Quintile 5,35 and over,False
+STU000517,Man,Auckland,Quintile 1,20–24,False
+STU000518,Woman,Auckland,Quintile 2,Under 20,False
+STU000519,Prefer not to say,Other New Zealand,Quintile 5,20–24,False
+STU000520,Man,Auckland,Quintile 4,Under 20,False
+STU000521,Man,Auckland,Quintile 3,Under 20,False
+STU000522,Man,International,Quintile 4,20–24,False
+STU000523,Man,International,Quintile 5,25–34,True
+STU000524,Woman,International,Quintile 2,25–34,True
+STU000525,Man,Auckland,Quintile 3,Under 20,False
+STU000526,Woman,Auckland,Quintile 1,20–24,True
+STU000527,Woman,International,Quintile 3,20–24,False
+STU000528,Man,Auckland,Quintile 1,20–24,False
+STU000529,Man,Auckland,Quintile 4,Under 20,False
+STU000530,Woman,Auckland,Quintile 5,Under 20,False
+STU000531,Man,Other New Zealand,Quintile 3,20–24,False
+STU000532,Prefer not to say,Auckland,Quintile 3,20–24,False
+STU000533,Man,International,Quintile 5,Under 20,False
+STU000534,Woman,International,Quintile 1,Under 20,False
+STU000535,Woman,International,Quintile 3,20–24,True
+STU000536,Woman,Other New Zealand,Quintile 5,20–24,False
+STU000537,Woman,Auckland,Quintile 1,Under 20,False
+STU000538,Woman,International,Quintile 1,Under 20,False
+STU000539,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000540,Man,Other New Zealand,Quintile 1,Under 20,False
+STU000541,Woman,Auckland,Quintile 1,Under 20,False
+STU000542,Man,Auckland,Quintile 1,Under 20,False
+STU000543,Woman,Auckland,Quintile 1,Under 20,False
+STU000544,Man,Auckland,Quintile 1,20–24,True
+STU000545,Woman,Auckland,Quintile 4,25–34,False
+STU000546,Woman,International,Quintile 1,Under 20,False
+STU000547,Man,Auckland,Quintile 1,Under 20,False
+STU000548,Woman,International,Quintile 4,20–24,False
+STU000549,Woman,Other New Zealand,Quintile 3,Under 20,True
+STU000550,Woman,Auckland,Quintile 5,20–24,False
+STU000551,Man,Other New Zealand,Quintile 1,20–24,False
+STU000552,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000553,Gender diverse,International,Quintile 5,25–34,True
+STU000554,Man,Auckland,Quintile 2,20–24,False
+STU000555,Gender diverse,International,Quintile 3,25–34,True
+STU000556,Man,International,Quintile 5,20–24,True
+STU000557,Man,Auckland,Quintile 5,20–24,False
+STU000558,Woman,Auckland,Quintile 5,20–24,False
+STU000559,Man,Auckland,Quintile 3,Under 20,False
+STU000560,Woman,International,Quintile 1,35 and over,False
+STU000561,Woman,Auckland,Quintile 1,20–24,False
+STU000562,Woman,International,Quintile 2,20–24,False
+STU000563,Man,International,Quintile 5,25–34,False
+STU000564,Gender diverse,Other New Zealand,Quintile 2,20–24,False
+STU000565,Woman,Other New Zealand,Quintile 5,Under 20,False
+STU000566,Man,Auckland,Quintile 4,20–24,False
+STU000567,Man,Auckland,Quintile 4,20–24,False
+STU000568,Man,International,Quintile 3,20–24,False
+STU000569,Woman,Auckland,Quintile 4,20–24,False
+STU000570,Man,Auckland,Quintile 2,Under 20,False
+STU000571,Woman,Auckland,Quintile 2,20–24,False
+STU000572,Man,Other New Zealand,Quintile 3,20–24,False
+STU000573,Man,Auckland,Quintile 5,20–24,True
+STU000574,Man,Auckland,Quintile 5,20–24,False
+STU000575,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000576,Man,Auckland,Quintile 5,Under 20,False
+STU000577,Man,Auckland,Quintile 1,Under 20,False
+STU000578,Woman,Other New Zealand,Quintile 4,Under 20,True
+STU000579,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000580,Man,Other New Zealand,Quintile 4,20–24,False
+STU000581,Woman,International,Quintile 1,20–24,False
+STU000582,Woman,Auckland,Quintile 4,20–24,False
+STU000583,Prefer not to say,International,Quintile 4,20–24,False
+STU000584,Man,Auckland,Quintile 1,20–24,True
+STU000585,Man,Auckland,Quintile 5,20–24,False
+STU000586,Woman,Auckland,Quintile 1,20–24,False
+STU000587,Man,Auckland,Quintile 1,25–34,False
+STU000588,Man,Other New Zealand,Quintile 3,20–24,False
+STU000589,Woman,Auckland,Quintile 4,20–24,False
+STU000590,Gender diverse,Auckland,Quintile 2,Under 20,False
+STU000591,Woman,Other New Zealand,Quintile 1,Under 20,False
+STU000592,Woman,International,Quintile 1,Under 20,False
+STU000593,Woman,International,Quintile 5,20–24,False
+STU000594,Man,International,Quintile 2,20–24,True
+STU000595,Woman,International,Quintile 3,20–24,False
+STU000596,Man,Other New Zealand,Quintile 3,25–34,False
+STU000597,Woman,Auckland,Quintile 3,Under 20,False
+STU000598,Man,International,Quintile 4,25–34,False
+STU000599,Gender diverse,Other New Zealand,Quintile 2,20–24,True
+STU000600,Man,Auckland,Quintile 2,20–24,False
+STU000601,Man,Other New Zealand,Quintile 2,20–24,False
+STU000602,Man,International,Quintile 5,20–24,True
+STU000603,Man,International,Quintile 4,Under 20,False
+STU000604,Prefer not to say,Auckland,Quintile 5,Under 20,False
+STU000605,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000606,Man,Auckland,Quintile 4,20–24,False
+STU000607,Man,Auckland,Quintile 1,20–24,False
+STU000608,Man,Other New Zealand,Quintile 2,20–24,False
+STU000609,Gender diverse,International,Quintile 2,20–24,True
+STU000610,Man,Auckland,Quintile 4,Under 20,False
+STU000611,Woman,Auckland,Quintile 1,20–24,False
+STU000612,Man,Auckland,Quintile 4,20–24,False
+STU000613,Man,Other New Zealand,Quintile 4,25–34,True
+STU000614,Man,International,Quintile 1,20–24,True
+STU000615,Woman,Auckland,Quintile 3,25–34,False
+STU000616,Man,Auckland,Quintile 4,20–24,False
+STU000617,Gender diverse,Other New Zealand,Quintile 5,20–24,False
+STU000618,Woman,Auckland,Quintile 4,25–34,True
+STU000619,Man,International,Quintile 3,Under 20,False
+STU000620,Man,Other New Zealand,Quintile 3,25–34,True
+STU000621,Man,Auckland,Quintile 1,25–34,False
+STU000622,Man,Other New Zealand,Quintile 5,20–24,False
+STU000623,Man,Auckland,Quintile 2,20–24,False
+STU000624,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000625,Woman,Auckland,Quintile 2,20–24,False
+STU000626,Man,Auckland,Quintile 3,20–24,False
+STU000627,Man,Auckland,Quintile 3,35 and over,False
+STU000628,Prefer not to say,Auckland,Quintile 5,20–24,False
+STU000629,Man,Auckland,Quintile 2,20–24,False
+STU000630,Man,Auckland,Quintile 3,20–24,False
+STU000631,Woman,Other New Zealand,Quintile 3,25–34,False
+STU000632,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000633,Man,Auckland,Quintile 1,35 and over,False
+STU000634,Man,International,Quintile 2,20–24,False
+STU000635,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000636,Gender diverse,Other New Zealand,Quintile 5,25–34,True
+STU000637,Woman,Auckland,Quintile 4,20–24,False
+STU000638,Man,Auckland,Quintile 3,20–24,False
+STU000639,Man,Auckland,Quintile 5,20–24,True
+STU000640,Gender diverse,Other New Zealand,Quintile 5,25–34,False
+STU000641,Man,Auckland,Quintile 5,Under 20,False
+STU000642,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000643,Woman,Auckland,Quintile 3,25–34,False
+STU000644,Man,Other New Zealand,Quintile 1,20–24,False
+STU000645,Man,Other New Zealand,Quintile 5,Under 20,True
+STU000646,Man,Auckland,Quintile 1,20–24,True
+STU000647,Woman,Auckland,Quintile 5,20–24,False
+STU000648,Woman,Other New Zealand,Quintile 2,Under 20,False
+STU000649,Man,Auckland,Quintile 4,Under 20,False
+STU000650,Man,Auckland,Quintile 1,20–24,False
+STU000651,Woman,Auckland,Quintile 5,20–24,False
+STU000652,Gender diverse,Auckland,Quintile 3,20–24,False
+STU000653,Man,Auckland,Quintile 5,20–24,True
+STU000654,Woman,Auckland,Quintile 5,20–24,False
+STU000655,Man,International,Quintile 3,Under 20,True
+STU000656,Woman,Auckland,Quintile 3,Under 20,True
+STU000657,Woman,Auckland,Quintile 5,20–24,True
+STU000658,Man,Other New Zealand,Quintile 5,20–24,False
+STU000659,Prefer not to say,Auckland,Quintile 3,20–24,False
+STU000660,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000661,Woman,Auckland,Quintile 4,20–24,False
+STU000662,Gender diverse,Auckland,Quintile 5,25–34,False
+STU000663,Woman,International,Quintile 5,20–24,False
+STU000664,Gender diverse,Auckland,Quintile 5,Under 20,False
+STU000665,Woman,Auckland,Quintile 5,20–24,False
+STU000666,Woman,Auckland,Quintile 4,20–24,False
+STU000667,Woman,Auckland,Quintile 5,25–34,False
+STU000668,Woman,Auckland,Quintile 3,20–24,False
+STU000669,Woman,Auckland,Quintile 2,20–24,False
+STU000670,Man,Auckland,Quintile 3,20–24,False
+STU000671,Woman,Other New Zealand,Quintile 1,Under 20,False
+STU000672,Man,International,Quintile 5,Under 20,False
+STU000673,Prefer not to say,International,Quintile 5,20–24,False
+STU000674,Man,Auckland,Quintile 2,25–34,False
+STU000675,Woman,Other New Zealand,Quintile 4,20–24,True
+STU000676,Man,Auckland,Quintile 3,Under 20,False
+STU000677,Woman,Auckland,Quintile 1,20–24,True
+STU000678,Man,Other New Zealand,Quintile 3,25–34,False
+STU000679,Woman,Auckland,Quintile 5,20–24,False
+STU000680,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU000681,Woman,Auckland,Quintile 2,20–24,True
+STU000682,Man,Other New Zealand,Quintile 5,20–24,False
+STU000683,Woman,International,Quintile 4,25–34,True
+STU000684,Prefer not to say,Other New Zealand,Quintile 1,20–24,False
+STU000685,Man,Other New Zealand,Quintile 4,35 and over,False
+STU000686,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000687,Man,Auckland,Quintile 4,20–24,False
+STU000688,Prefer not to say,Auckland,Quintile 5,Under 20,False
+STU000689,Woman,Auckland,Quintile 3,20–24,True
+STU000690,Man,Other New Zealand,Quintile 3,20–24,False
+STU000691,Woman,Auckland,Quintile 3,20–24,False
+STU000692,Gender diverse,Other New Zealand,Quintile 4,Under 20,False
+STU000693,Woman,Auckland,Quintile 1,20–24,False
+STU000694,Woman,Auckland,Quintile 2,20–24,False
+STU000695,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU000696,Man,Other New Zealand,Quintile 5,Under 20,False
+STU000697,Woman,Auckland,Quintile 1,Under 20,False
+STU000698,Gender diverse,Auckland,Quintile 3,35 and over,False
+STU000699,Man,Other New Zealand,Quintile 4,20–24,False
+STU000700,Man,Auckland,Quintile 2,20–24,False
+STU000701,Woman,Other New Zealand,Quintile 4,Under 20,True
+STU000702,Man,Auckland,Quintile 1,20–24,False
+STU000703,Woman,Auckland,Quintile 4,20–24,False
+STU000704,Woman,Auckland,Quintile 5,20–24,False
+STU000705,Woman,Auckland,Quintile 5,20–24,True
+STU000706,Woman,Other New Zealand,Quintile 2,20–24,True
+STU000707,Man,International,Quintile 5,20–24,True
+STU000708,Man,Auckland,Quintile 1,20–24,False
+STU000709,Prefer not to say,Auckland,Quintile 4,25–34,False
+STU000710,Woman,International,Quintile 5,20–24,False
+STU000711,Woman,Auckland,Quintile 5,Under 20,False
+STU000712,Man,Auckland,Quintile 5,20–24,False
+STU000713,Man,International,Quintile 3,20–24,False
+STU000714,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000715,Man,Other New Zealand,Quintile 4,20–24,True
+STU000716,Woman,Auckland,Quintile 4,20–24,False
+STU000717,Woman,Auckland,Quintile 2,20–24,False
+STU000718,Man,International,Quintile 4,20–24,False
+STU000719,Man,Other New Zealand,Quintile 2,35 and over,False
+STU000720,Woman,Auckland,Quintile 5,35 and over,False
+STU000721,Man,Auckland,Quintile 3,20–24,False
+STU000722,Woman,Auckland,Quintile 1,25–34,False
+STU000723,Man,Other New Zealand,Quintile 1,20–24,False
+STU000724,Man,Auckland,Quintile 5,Under 20,False
+STU000725,Man,Auckland,Quintile 5,35 and over,False
+STU000726,Man,Auckland,Quintile 4,20–24,False
+STU000727,Woman,International,Quintile 3,20–24,False
+STU000728,Man,Auckland,Quintile 1,20–24,False
+STU000729,Man,Auckland,Quintile 1,25–34,False
+STU000730,Woman,Auckland,Quintile 3,20–24,False
+STU000731,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000732,Man,Auckland,Quintile 4,Under 20,False
+STU000733,Prefer not to say,Auckland,Quintile 3,20–24,False
+STU000734,Man,Other New Zealand,Quintile 3,Under 20,False
+STU000735,Woman,Auckland,Quintile 5,20–24,False
+STU000736,Man,Auckland,Quintile 4,20–24,False
+STU000737,Woman,Auckland,Quintile 5,20–24,True
+STU000738,Gender diverse,International,Quintile 3,20–24,True
+STU000739,Man,Auckland,Quintile 4,20–24,False
+STU000740,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU000741,Man,Auckland,Quintile 1,Under 20,False
+STU000742,Woman,Other New Zealand,Quintile 3,Under 20,False
+STU000743,Man,Auckland,Quintile 3,20–24,False
+STU000744,Man,Auckland,Quintile 5,Under 20,False
+STU000745,Man,Auckland,Quintile 5,20–24,False
+STU000746,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU000747,Man,Auckland,Quintile 2,20–24,False
+STU000748,Woman,Auckland,Quintile 5,20–24,False
+STU000749,Man,Auckland,Quintile 2,Under 20,False
+STU000750,Woman,Other New Zealand,Quintile 5,35 and over,False
+STU000751,Man,Auckland,Quintile 4,20–24,False
+STU000752,Man,Other New Zealand,Quintile 5,20–24,False
+STU000753,Man,Auckland,Quintile 3,20–24,False
+STU000754,Woman,Other New Zealand,Quintile 3,Under 20,False
+STU000755,Gender diverse,Auckland,Quintile 4,20–24,False
+STU000756,Woman,International,Quintile 2,20–24,False
+STU000757,Man,Auckland,Quintile 3,Under 20,False
+STU000758,Man,Auckland,Quintile 5,Under 20,True
+STU000759,Man,Auckland,Quintile 2,35 and over,False
+STU000760,Woman,Auckland,Quintile 4,20–24,False
+STU000761,Prefer not to say,Auckland,Quintile 1,20–24,False
+STU000762,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000763,Man,Auckland,Quintile 4,25–34,True
+STU000764,Woman,Auckland,Quintile 5,20–24,False
+STU000765,Woman,International,Quintile 1,20–24,True
+STU000766,Man,International,Quintile 2,20–24,False
+STU000767,Man,Auckland,Quintile 2,35 and over,False
+STU000768,Man,Auckland,Quintile 2,Under 20,False
+STU000769,Man,Other New Zealand,Quintile 1,20–24,False
+STU000770,Gender diverse,Auckland,Quintile 5,25–34,False
+STU000771,Man,Auckland,Quintile 5,20–24,False
+STU000772,Man,Auckland,Quintile 3,Under 20,True
+STU000773,Man,International,Quintile 5,20–24,False
+STU000774,Woman,Auckland,Quintile 1,20–24,False
+STU000775,Woman,International,Quintile 3,35 and over,False
+STU000776,Woman,Auckland,Quintile 1,20–24,False
+STU000777,Woman,Auckland,Quintile 4,20–24,False
+STU000778,Man,Other New Zealand,Quintile 2,Under 20,False
+STU000779,Man,Auckland,Quintile 3,20–24,True
+STU000780,Man,Auckland,Quintile 5,Under 20,False
+STU000781,Prefer not to say,Auckland,Quintile 5,20–24,True
+STU000782,Woman,Auckland,Quintile 1,25–34,False
+STU000783,Man,Other New Zealand,Quintile 3,25–34,False
+STU000784,Man,International,Quintile 2,25–34,False
+STU000785,Woman,Auckland,Quintile 4,Under 20,False
+STU000786,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000787,Woman,International,Quintile 5,Under 20,False
+STU000788,Man,Auckland,Quintile 3,Under 20,False
+STU000789,Woman,Auckland,Quintile 2,Under 20,True
+STU000790,Man,Auckland,Quintile 4,20–24,False
+STU000791,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000792,Man,Auckland,Quintile 2,20–24,True
+STU000793,Woman,Auckland,Quintile 1,20–24,True
+STU000794,Woman,Other New Zealand,Quintile 2,20–24,False
+STU000795,Man,Other New Zealand,Quintile 3,20–24,False
+STU000796,Man,Auckland,Quintile 2,20–24,False
+STU000797,Man,Auckland,Quintile 4,20–24,False
+STU000798,Man,Auckland,Quintile 5,20–24,False
+STU000799,Woman,Auckland,Quintile 3,20–24,False
+STU000800,Prefer not to say,Other New Zealand,Quintile 3,Under 20,True
+STU000801,Gender diverse,Auckland,Quintile 3,20–24,True
+STU000802,Woman,Auckland,Quintile 4,Under 20,False
+STU000803,Prefer not to say,Auckland,Quintile 3,20–24,False
+STU000804,Man,International,Quintile 2,20–24,False
+STU000805,Woman,Auckland,Quintile 5,20–24,False
+STU000806,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000807,Woman,Other New Zealand,Quintile 2,35 and over,False
+STU000808,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU000809,Woman,International,Quintile 5,25–34,False
+STU000810,Man,Auckland,Quintile 1,20–24,False
+STU000811,Woman,Other New Zealand,Quintile 2,Under 20,False
+STU000812,Woman,International,Quintile 4,20–24,False
+STU000813,Woman,Auckland,Quintile 2,Under 20,False
+STU000814,Woman,Other New Zealand,Quintile 2,25–34,False
+STU000815,Prefer not to say,Auckland,Quintile 2,20–24,False
+STU000816,Man,Auckland,Quintile 1,25–34,False
+STU000817,Man,International,Quintile 3,20–24,False
+STU000818,Woman,Auckland,Quintile 4,20–24,False
+STU000819,Woman,International,Quintile 1,20–24,True
+STU000820,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000821,Woman,Auckland,Quintile 3,20–24,False
+STU000822,Man,Other New Zealand,Quintile 5,20–24,False
+STU000823,Man,International,Quintile 4,Under 20,False
+STU000824,Man,Other New Zealand,Quintile 3,Under 20,False
+STU000825,Man,Auckland,Quintile 1,20–24,False
+STU000826,Man,Other New Zealand,Quintile 1,25–34,False
+STU000827,Woman,Auckland,Quintile 4,20–24,False
+STU000828,Woman,Auckland,Quintile 2,Under 20,False
+STU000829,Gender diverse,Other New Zealand,Quintile 1,Under 20,False
+STU000830,Prefer not to say,International,Quintile 2,20–24,False
+STU000831,Woman,Auckland,Quintile 4,Under 20,False
+STU000832,Man,Other New Zealand,Quintile 4,Under 20,False
+STU000833,Man,Other New Zealand,Quintile 3,Under 20,False
+STU000834,Woman,International,Quintile 1,Under 20,False
+STU000835,Man,Auckland,Quintile 3,Under 20,False
+STU000836,Woman,Auckland,Quintile 5,20–24,False
+STU000837,Gender diverse,Auckland,Quintile 5,25–34,False
+STU000838,Prefer not to say,Auckland,Quintile 4,35 and over,False
+STU000839,Woman,Auckland,Quintile 4,20–24,False
+STU000840,Woman,Auckland,Quintile 5,35 and over,False
+STU000841,Man,Auckland,Quintile 5,20–24,False
+STU000842,Woman,Auckland,Quintile 1,Under 20,True
+STU000843,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000844,Man,Other New Zealand,Quintile 2,20–24,False
+STU000845,Man,Auckland,Quintile 3,25–34,False
+STU000846,Man,International,Quintile 2,20–24,False
+STU000847,Man,Auckland,Quintile 5,Under 20,False
+STU000848,Prefer not to say,International,Quintile 3,20–24,False
+STU000849,Gender diverse,International,Quintile 2,20–24,False
+STU000850,Man,Other New Zealand,Quintile 5,Under 20,False
+STU000851,Woman,Other New Zealand,Quintile 4,20–24,False
+STU000852,Woman,Auckland,Quintile 5,20–24,False
+STU000853,Gender diverse,Auckland,Quintile 4,25–34,False
+STU000854,Prefer not to say,Auckland,Quintile 1,20–24,False
+STU000855,Woman,Auckland,Quintile 4,Under 20,False
+STU000856,Man,International,Quintile 3,20–24,False
+STU000857,Gender diverse,Other New Zealand,Quintile 2,Under 20,False
+STU000858,Man,International,Quintile 2,20–24,False
+STU000859,Man,Auckland,Quintile 5,20–24,False
+STU000860,Man,International,Quintile 1,35 and over,False
+STU000861,Man,Auckland,Quintile 5,25–34,False
+STU000862,Woman,Auckland,Quintile 5,20–24,False
+STU000863,Man,Auckland,Quintile 2,20–24,True
+STU000864,Woman,International,Quintile 3,20–24,False
+STU000865,Woman,International,Quintile 2,25–34,True
+STU000866,Gender diverse,Auckland,Quintile 4,Under 20,False
+STU000867,Man,Auckland,Quintile 5,20–24,False
+STU000868,Gender diverse,Auckland,Quintile 5,Under 20,False
+STU000869,Woman,Auckland,Quintile 5,20–24,False
+STU000870,Woman,Other New Zealand,Quintile 2,20–24,True
+STU000871,Woman,Auckland,Quintile 2,Under 20,False
+STU000872,Woman,Auckland,Quintile 3,20–24,False
+STU000873,Man,Other New Zealand,Quintile 4,20–24,False
+STU000874,Woman,Auckland,Quintile 3,Under 20,False
+STU000875,Man,Other New Zealand,Quintile 3,Under 20,False
+STU000876,Woman,International,Quintile 1,20–24,False
+STU000877,Man,Auckland,Quintile 3,20–24,False
+STU000878,Man,Other New Zealand,Quintile 3,20–24,False
+STU000879,Man,Auckland,Quintile 4,25–34,False
+STU000880,Man,Other New Zealand,Quintile 4,20–24,False
+STU000881,Woman,Auckland,Quintile 4,25–34,False
+STU000882,Man,Other New Zealand,Quintile 1,25–34,False
+STU000883,Man,Auckland,Quintile 2,20–24,False
+STU000884,Man,Other New Zealand,Quintile 3,25–34,False
+STU000885,Woman,Auckland,Quintile 4,25–34,False
+STU000886,Man,Auckland,Quintile 2,20–24,False
+STU000887,Man,Auckland,Quintile 4,20–24,False
+STU000888,Man,Other New Zealand,Quintile 3,Under 20,False
+STU000889,Man,Other New Zealand,Quintile 4,Under 20,False
+STU000890,Woman,Auckland,Quintile 2,20–24,False
+STU000891,Prefer not to say,Auckland,Quintile 3,20–24,True
+STU000892,Woman,Auckland,Quintile 5,Under 20,False
+STU000893,Prefer not to say,Auckland,Quintile 4,20–24,False
+STU000894,Woman,Other New Zealand,Quintile 2,20–24,False
+STU000895,Woman,Auckland,Quintile 1,Under 20,False
+STU000896,Man,Other New Zealand,Quintile 3,20–24,False
+STU000897,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000898,Man,Auckland,Quintile 5,20–24,False
+STU000899,Woman,International,Quintile 4,20–24,False
+STU000900,Man,Other New Zealand,Quintile 3,20–24,False
+STU000901,Man,Auckland,Quintile 5,20–24,False
+STU000902,Man,Auckland,Quintile 2,20–24,False
+STU000903,Woman,International,Quintile 1,20–24,False
+STU000904,Gender diverse,Auckland,Quintile 3,Under 20,False
+STU000905,Man,International,Quintile 2,25–34,False
+STU000906,Gender diverse,Auckland,Quintile 1,20–24,False
+STU000907,Man,Auckland,Quintile 5,25–34,False
+STU000908,Man,Other New Zealand,Quintile 4,20–24,False
+STU000909,Man,Auckland,Quintile 1,20–24,False
+STU000910,Prefer not to say,International,Quintile 3,20–24,True
+STU000911,Prefer not to say,Auckland,Quintile 5,20–24,False
+STU000912,Man,Auckland,Quintile 2,20–24,False
+STU000913,Woman,International,Quintile 2,20–24,True
+STU000914,Woman,International,Quintile 2,Under 20,False
+STU000915,Woman,Auckland,Quintile 5,Under 20,False
+STU000916,Man,Other New Zealand,Quintile 4,Under 20,True
+STU000917,Man,Auckland,Quintile 2,25–34,False
+STU000918,Woman,Auckland,Quintile 4,Under 20,False
+STU000919,Woman,International,Quintile 4,Under 20,False
+STU000920,Man,Other New Zealand,Quintile 4,20–24,False
+STU000921,Man,International,Quintile 4,20–24,False
+STU000922,Woman,Other New Zealand,Quintile 3,20–24,False
+STU000923,Man,Other New Zealand,Quintile 2,20–24,False
+STU000924,Man,International,Quintile 5,Under 20,False
+STU000925,Man,Auckland,Quintile 1,20–24,False
+STU000926,Man,Auckland,Quintile 1,20–24,False
+STU000927,Man,Auckland,Quintile 2,20–24,False
+STU000928,Man,Auckland,Quintile 4,20–24,False
+STU000929,Woman,Auckland,Quintile 3,Under 20,False
+STU000930,Man,Auckland,Quintile 3,Under 20,True
+STU000931,Woman,International,Quintile 4,20–24,False
+STU000932,Man,Auckland,Quintile 3,Under 20,False
+STU000933,Man,Auckland,Quintile 4,20–24,False
+STU000934,Man,Auckland,Quintile 4,25–34,False
+STU000935,Man,Other New Zealand,Quintile 3,20–24,False
+STU000936,Gender diverse,Other New Zealand,Quintile 3,20–24,False
+STU000937,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000938,Prefer not to say,Auckland,Quintile 4,Under 20,False
+STU000939,Man,Auckland,Quintile 3,20–24,False
+STU000940,Man,International,Quintile 5,35 and over,False
+STU000941,Gender diverse,Other New Zealand,Quintile 1,Under 20,False
+STU000942,Woman,Auckland,Quintile 5,20–24,True
+STU000943,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU000944,Man,Auckland,Quintile 5,20–24,False
+STU000945,Man,International,Quintile 4,20–24,False
+STU000946,Woman,Auckland,Quintile 3,20–24,False
+STU000947,Prefer not to say,Auckland,Quintile 4,20–24,False
+STU000948,Woman,Auckland,Quintile 3,Under 20,False
+STU000949,Woman,Auckland,Quintile 3,25–34,False
+STU000950,Man,Auckland,Quintile 2,Under 20,False
+STU000951,Woman,Auckland,Quintile 3,20–24,True
+STU000952,Woman,Other New Zealand,Quintile 2,Under 20,False
+STU000953,Man,Auckland,Quintile 5,35 and over,False
+STU000954,Man,International,Quintile 5,Under 20,False
+STU000955,Man,Auckland,Quintile 4,20–24,False
+STU000956,Woman,International,Quintile 1,20–24,False
+STU000957,Woman,Auckland,Quintile 3,25–34,False
+STU000958,Man,Auckland,Quintile 2,20–24,False
+STU000959,Man,Other New Zealand,Quintile 2,20–24,False
+STU000960,Woman,International,Quintile 3,35 and over,False
+STU000961,Man,Other New Zealand,Quintile 2,20–24,False
+STU000962,Woman,Other New Zealand,Quintile 1,25–34,False
+STU000963,Woman,Other New Zealand,Quintile 5,Under 20,False
+STU000964,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000965,Woman,Auckland,Quintile 1,20–24,False
+STU000966,Woman,Auckland,Quintile 3,20–24,False
+STU000967,Man,Other New Zealand,Quintile 4,20–24,False
+STU000968,Woman,International,Quintile 5,20–24,True
+STU000969,Prefer not to say,Auckland,Quintile 4,Under 20,False
+STU000970,Man,Auckland,Quintile 2,20–24,True
+STU000971,Woman,Auckland,Quintile 2,25–34,False
+STU000972,Woman,Other New Zealand,Quintile 1,20–24,False
+STU000973,Woman,Other New Zealand,Quintile 3,Under 20,False
+STU000974,Woman,International,Quintile 5,20–24,False
+STU000975,Man,Auckland,Quintile 1,Under 20,False
+STU000976,Prefer not to say,Other New Zealand,Quintile 1,25–34,False
+STU000977,Woman,Other New Zealand,Quintile 3,35 and over,False
+STU000978,Gender diverse,Auckland,Quintile 3,Under 20,False
+STU000979,Woman,Other New Zealand,Quintile 2,Under 20,False
+STU000980,Woman,Auckland,Quintile 3,20–24,False
+STU000981,Woman,International,Quintile 3,20–24,False
+STU000982,Woman,Auckland,Quintile 1,20–24,True
+STU000983,Woman,Auckland,Quintile 1,20–24,False
+STU000984,Woman,Auckland,Quintile 1,20–24,False
+STU000985,Woman,Auckland,Quintile 2,20–24,False
+STU000986,Man,International,Quintile 4,Under 20,False
+STU000987,Man,Auckland,Quintile 1,25–34,True
+STU000988,Man,International,Quintile 4,35 and over,False
+STU000989,Woman,Auckland,Quintile 4,20–24,False
+STU000990,Woman,Auckland,Quintile 4,25–34,True
+STU000991,Woman,Auckland,Quintile 1,20–24,False
+STU000992,Woman,Other New Zealand,Quintile 2,20–24,False
+STU000993,Woman,Auckland,Quintile 5,20–24,False
+STU000994,Man,International,Quintile 2,20–24,False
+STU000995,Woman,Auckland,Quintile 4,25–34,False
+STU000996,Man,International,Quintile 3,Under 20,False
+STU000997,Woman,International,Quintile 1,20–24,False
+STU000998,Man,Auckland,Quintile 2,25–34,False
+STU000999,Man,Other New Zealand,Quintile 3,25–34,True
+STU001000,Man,Auckland,Quintile 3,25–34,False
+STU001001,Gender diverse,International,Quintile 3,20–24,False
+STU001002,Man,Auckland,Quintile 1,20–24,False
+STU001003,Man,Auckland,Quintile 1,Under 20,False
+STU001004,Man,Other New Zealand,Quintile 1,20–24,False
+STU001005,Man,Auckland,Quintile 4,20–24,False
+STU001006,Gender diverse,Auckland,Quintile 1,20–24,False
+STU001007,Woman,Auckland,Quintile 4,20–24,True
+STU001008,Man,International,Quintile 3,35 and over,False
+STU001009,Woman,Auckland,Quintile 5,20–24,False
+STU001010,Prefer not to say,International,Quintile 3,20–24,False
+STU001011,Woman,International,Quintile 5,20–24,False
+STU001012,Woman,Auckland,Quintile 4,20–24,False
+STU001013,Woman,International,Quintile 2,20–24,False
+STU001014,Woman,Other New Zealand,Quintile 5,20–24,False
+STU001015,Woman,International,Quintile 5,20–24,False
+STU001016,Man,Auckland,Quintile 2,20–24,False
+STU001017,Man,International,Quintile 2,Under 20,False
+STU001018,Gender diverse,Auckland,Quintile 5,25–34,False
+STU001019,Man,Other New Zealand,Quintile 4,Under 20,False
+STU001020,Man,Other New Zealand,Quintile 5,20–24,False
+STU001021,Prefer not to say,Auckland,Quintile 2,20–24,False
+STU001022,Gender diverse,Other New Zealand,Quintile 5,Under 20,False
+STU001023,Prefer not to say,Auckland,Quintile 2,25–34,False
+STU001024,Man,International,Quintile 5,20–24,False
+STU001025,Man,Auckland,Quintile 3,20–24,False
+STU001026,Man,Auckland,Quintile 4,20–24,False
+STU001027,Man,Auckland,Quintile 1,20–24,False
+STU001028,Man,Auckland,Quintile 4,20–24,False
+STU001029,Man,Other New Zealand,Quintile 5,25–34,False
+STU001030,Man,Auckland,Quintile 2,20–24,False
+STU001031,Woman,Auckland,Quintile 2,Under 20,False
+STU001032,Woman,Auckland,Quintile 3,25–34,False
+STU001033,Man,Other New Zealand,Quintile 3,20–24,False
+STU001034,Man,International,Quintile 5,25–34,False
+STU001035,Woman,Other New Zealand,Quintile 3,20–24,False
+STU001036,Gender diverse,Auckland,Quintile 4,Under 20,False
+STU001037,Man,Auckland,Quintile 1,20–24,False
+STU001038,Man,International,Quintile 4,Under 20,False
+STU001039,Man,Auckland,Quintile 1,20–24,True
+STU001040,Woman,Auckland,Quintile 1,20–24,True
+STU001041,Man,Auckland,Quintile 1,Under 20,False
+STU001042,Woman,Auckland,Quintile 3,Under 20,True
+STU001043,Man,Auckland,Quintile 5,Under 20,False
+STU001044,Man,Auckland,Quintile 1,20–24,False
+STU001045,Man,Auckland,Quintile 1,20–24,False
+STU001046,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU001047,Man,Auckland,Quintile 1,25–34,False
+STU001048,Woman,Other New Zealand,Quintile 3,20–24,False
+STU001049,Woman,Auckland,Quintile 1,Under 20,False
+STU001050,Man,Auckland,Quintile 4,Under 20,False
+STU001051,Man,Auckland,Quintile 3,20–24,False
+STU001052,Gender diverse,Auckland,Quintile 5,20–24,False
+STU001053,Woman,Auckland,Quintile 1,20–24,False
+STU001054,Woman,Auckland,Quintile 5,20–24,False
+STU001055,Prefer not to say,Other New Zealand,Quintile 1,Under 20,False
+STU001056,Man,Auckland,Quintile 4,20–24,False
+STU001057,Woman,International,Quintile 4,25–34,False
+STU001058,Man,Other New Zealand,Quintile 3,20–24,True
+STU001059,Man,Auckland,Quintile 2,Under 20,False
+STU001060,Woman,Auckland,Quintile 2,20–24,True
+STU001061,Man,Auckland,Quintile 2,20–24,False
+STU001062,Man,Auckland,Quintile 5,20–24,False
+STU001063,Woman,Other New Zealand,Quintile 4,Under 20,True
+STU001064,Man,Auckland,Quintile 4,20–24,False
+STU001065,Man,Auckland,Quintile 4,20–24,True
+STU001066,Man,Auckland,Quintile 2,20–24,False
+STU001067,Prefer not to say,Auckland,Quintile 5,20–24,False
+STU001068,Man,International,Quintile 4,20–24,False
+STU001069,Man,Auckland,Quintile 1,20–24,False
+STU001070,Man,Auckland,Quintile 4,25–34,False
+STU001071,Man,Auckland,Quintile 1,20–24,True
+STU001072,Man,Other New Zealand,Quintile 1,20–24,True
+STU001073,Woman,Auckland,Quintile 1,Under 20,True
+STU001074,Woman,Auckland,Quintile 5,20–24,False
+STU001075,Prefer not to say,Auckland,Quintile 4,20–24,False
+STU001076,Man,Auckland,Quintile 4,20–24,False
+STU001077,Woman,Auckland,Quintile 5,Under 20,False
+STU001078,Gender diverse,Auckland,Quintile 1,20–24,False
+STU001079,Man,Other New Zealand,Quintile 2,25–34,False
+STU001080,Woman,Other New Zealand,Quintile 2,20–24,False
+STU001081,Woman,Auckland,Quintile 3,20–24,False
+STU001082,Woman,Auckland,Quintile 2,Under 20,True
+STU001083,Woman,Auckland,Quintile 2,Under 20,False
+STU001084,Prefer not to say,Other New Zealand,Quintile 2,20–24,False
+STU001085,Man,Auckland,Quintile 3,20–24,False
+STU001086,Woman,Other New Zealand,Quintile 2,20–24,False
+STU001087,Woman,International,Quintile 3,25–34,False
+STU001088,Man,International,Quintile 1,20–24,False
+STU001089,Woman,Auckland,Quintile 2,Under 20,False
+STU001090,Man,Auckland,Quintile 3,20–24,False
+STU001091,Man,Other New Zealand,Quintile 4,20–24,False
+STU001092,Man,Other New Zealand,Quintile 2,Under 20,False
+STU001093,Man,Auckland,Quintile 1,25–34,False
+STU001094,Man,Auckland,Quintile 1,20–24,True
+STU001095,Man,Auckland,Quintile 2,20–24,False
+STU001096,Man,Other New Zealand,Quintile 1,25–34,False
+STU001097,Man,Auckland,Quintile 5,25–34,False
+STU001098,Man,International,Quintile 4,Under 20,True
+STU001099,Man,Other New Zealand,Quintile 3,20–24,False
+STU001100,Woman,Other New Zealand,Quintile 1,20–24,False
+STU001101,Prefer not to say,International,Quintile 3,25–34,False
+STU001102,Man,Auckland,Quintile 1,Under 20,False
+STU001103,Man,Auckland,Quintile 5,20–24,False
+STU001104,Gender diverse,International,Quintile 4,20–24,False
+STU001105,Gender diverse,Auckland,Quintile 4,20–24,False
+STU001106,Woman,Other New Zealand,Quintile 1,Under 20,False
+STU001107,Woman,Other New Zealand,Quintile 5,Under 20,False
+STU001108,Woman,Other New Zealand,Quintile 4,25–34,False
+STU001109,Prefer not to say,Other New Zealand,Quintile 2,20–24,False
+STU001110,Man,Other New Zealand,Quintile 3,20–24,False
+STU001111,Man,Auckland,Quintile 4,20–24,True
+STU001112,Woman,Auckland,Quintile 3,25–34,False
+STU001113,Woman,Auckland,Quintile 1,20–24,False
+STU001114,Man,Auckland,Quintile 2,25–34,True
+STU001115,Woman,Auckland,Quintile 2,20–24,False
+STU001116,Woman,Auckland,Quintile 4,20–24,False
+STU001117,Man,Other New Zealand,Quintile 2,35 and over,False
+STU001118,Man,Other New Zealand,Quintile 2,20–24,False
+STU001119,Man,Other New Zealand,Quintile 2,20–24,False
+STU001120,Man,International,Quintile 4,20–24,False
+STU001121,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU001122,Man,International,Quintile 1,20–24,False
+STU001123,Woman,Other New Zealand,Quintile 1,20–24,True
+STU001124,Woman,Auckland,Quintile 5,25–34,False
+STU001125,Man,Other New Zealand,Quintile 3,25–34,False
+STU001126,Prefer not to say,International,Quintile 1,20–24,False
+STU001127,Man,International,Quintile 1,20–24,False
+STU001128,Man,Other New Zealand,Quintile 2,Under 20,True
+STU001129,Man,Other New Zealand,Quintile 3,20–24,False
+STU001130,Woman,Auckland,Quintile 5,20–24,False
+STU001131,Woman,Auckland,Quintile 2,20–24,False
+STU001132,Woman,Auckland,Quintile 1,20–24,False
+STU001133,Man,Other New Zealand,Quintile 2,Under 20,False
+STU001134,Man,Other New Zealand,Quintile 5,25–34,False
+STU001135,Woman,Auckland,Quintile 1,20–24,False
+STU001136,Woman,Other New Zealand,Quintile 2,35 and over,True
+STU001137,Woman,Auckland,Quintile 4,Under 20,False
+STU001138,Prefer not to say,International,Quintile 4,20–24,False
+STU001139,Man,International,Quintile 3,Under 20,False
+STU001140,Man,International,Quintile 2,35 and over,False
+STU001141,Man,Other New Zealand,Quintile 4,25–34,False
+STU001142,Man,Auckland,Quintile 5,Under 20,True
+STU001143,Man,Other New Zealand,Quintile 1,Under 20,False
+STU001144,Woman,Other New Zealand,Quintile 1,20–24,False
+STU001145,Man,Auckland,Quintile 2,25–34,False
+STU001146,Woman,Auckland,Quintile 1,Under 20,False
+STU001147,Woman,Auckland,Quintile 1,20–24,False
+STU001148,Woman,Auckland,Quintile 3,20–24,False
+STU001149,Man,Auckland,Quintile 3,20–24,False
+STU001150,Woman,Other New Zealand,Quintile 1,Under 20,False
+STU001151,Gender diverse,Auckland,Quintile 4,20–24,False
+STU001152,Man,Auckland,Quintile 4,20–24,False
+STU001153,Prefer not to say,International,Quintile 2,25–34,True
+STU001154,Woman,Auckland,Quintile 1,Under 20,False
+STU001155,Woman,Auckland,Quintile 1,35 and over,True
+STU001156,Woman,Auckland,Quintile 5,20–24,False
+STU001157,Woman,International,Quintile 1,Under 20,False
+STU001158,Man,Other New Zealand,Quintile 5,20–24,False
+STU001159,Woman,Auckland,Quintile 4,25–34,False
+STU001160,Man,International,Quintile 1,20–24,False
+STU001161,Man,Auckland,Quintile 3,Under 20,False
+STU001162,Prefer not to say,Auckland,Quintile 4,20–24,False
+STU001163,Woman,Auckland,Quintile 1,20–24,False
+STU001164,Woman,Auckland,Quintile 3,Under 20,True
+STU001165,Woman,Auckland,Quintile 3,20–24,False
+STU001166,Man,International,Quintile 3,20–24,True
+STU001167,Man,Auckland,Quintile 1,35 and over,False
+STU001168,Woman,International,Quintile 3,20–24,False
+STU001169,Woman,Auckland,Quintile 5,20–24,False
+STU001170,Woman,Auckland,Quintile 4,25–34,False
+STU001171,Man,Auckland,Quintile 5,20–24,True
+STU001172,Woman,International,Quintile 1,20–24,False
+STU001173,Man,Other New Zealand,Quintile 3,20–24,False
+STU001174,Woman,Other New Zealand,Quintile 5,25–34,True
+STU001175,Woman,Auckland,Quintile 3,20–24,False
+STU001176,Woman,Auckland,Quintile 5,20–24,False
+STU001177,Woman,Auckland,Quintile 4,20–24,False
+STU001178,Woman,Auckland,Quintile 1,20–24,False
+STU001179,Prefer not to say,Auckland,Quintile 4,25–34,False
+STU001180,Woman,Auckland,Quintile 3,20–24,False
+STU001181,Woman,Auckland,Quintile 4,25–34,False
+STU001182,Woman,International,Quintile 4,20–24,False
+STU001183,Man,International,Quintile 4,20–24,False
+STU001184,Woman,International,Quintile 2,Under 20,False
+STU001185,Woman,Auckland,Quintile 4,Under 20,False
+STU001186,Woman,Other New Zealand,Quintile 4,25–34,False
+STU001187,Gender diverse,Auckland,Quintile 2,Under 20,False
+STU001188,Man,Auckland,Quintile 5,25–34,False
+STU001189,Woman,Auckland,Quintile 3,20–24,False
+STU001190,Gender diverse,International,Quintile 5,Under 20,False
+STU001191,Woman,Other New Zealand,Quintile 3,25–34,False
+STU001192,Man,Auckland,Quintile 5,20–24,False
+STU001193,Man,Other New Zealand,Quintile 2,20–24,False
+STU001194,Woman,International,Quintile 1,20–24,False
+STU001195,Woman,Auckland,Quintile 3,20–24,False
+STU001196,Man,International,Quintile 2,20–24,False
+STU001197,Woman,Auckland,Quintile 1,20–24,True
+STU001198,Woman,Other New Zealand,Quintile 2,20–24,False
+STU001199,Woman,Other New Zealand,Quintile 5,20–24,False
+STU001200,Man,Other New Zealand,Quintile 2,20–24,False
+STU001201,Woman,Other New Zealand,Quintile 4,20–24,False
+STU001202,Gender diverse,Other New Zealand,Quintile 2,20–24,False
+STU001203,Man,Auckland,Quintile 1,25–34,False
+STU001204,Man,Auckland,Quintile 5,Under 20,False
+STU001205,Woman,Other New Zealand,Quintile 4,20–24,False
+STU001206,Woman,Auckland,Quintile 3,35 and over,True
+STU001207,Woman,Auckland,Quintile 4,20–24,False
+STU001208,Woman,Other New Zealand,Quintile 4,25–34,False
+STU001209,Prefer not to say,International,Quintile 1,25–34,False
+STU001210,Woman,Auckland,Quintile 3,20–24,False
+STU001211,Woman,Auckland,Quintile 2,20–24,True
+STU001212,Man,Auckland,Quintile 3,Under 20,False
+STU001213,Woman,Auckland,Quintile 2,Under 20,False
+STU001214,Woman,Auckland,Quintile 5,20–24,False
+STU001215,Woman,Auckland,Quintile 4,20–24,False
+STU001216,Woman,Auckland,Quintile 1,Under 20,False
+STU001217,Man,Auckland,Quintile 5,20–24,False
+STU001218,Woman,Auckland,Quintile 4,Under 20,False
+STU001219,Woman,Other New Zealand,Quintile 3,20–24,False
+STU001220,Woman,Auckland,Quintile 1,20–24,False
+STU001221,Woman,Auckland,Quintile 5,Under 20,False
+STU001222,Woman,Other New Zealand,Quintile 4,20–24,False
+STU001223,Woman,Auckland,Quintile 1,20–24,False
+STU001224,Man,Auckland,Quintile 5,35 and over,False
+STU001225,Man,Auckland,Quintile 3,25–34,False
+STU001226,Woman,International,Quintile 2,20–24,False
+STU001227,Woman,Auckland,Quintile 5,Under 20,False
+STU001228,Woman,Auckland,Quintile 2,20–24,False
+STU001229,Prefer not to say,Auckland,Quintile 5,20–24,False
+STU001230,Woman,International,Quintile 4,Under 20,False
+STU001231,Man,Other New Zealand,Quintile 5,Under 20,False
+STU001232,Woman,Auckland,Quintile 4,20–24,False
+STU001233,Man,Auckland,Quintile 1,Under 20,False
+STU001234,Man,International,Quintile 2,Under 20,False
+STU001235,Prefer not to say,Auckland,Quintile 2,20–24,False
+STU001236,Man,Other New Zealand,Quintile 3,Under 20,False
+STU001237,Woman,Auckland,Quintile 2,20–24,False
+STU001238,Man,Other New Zealand,Quintile 1,25–34,True
+STU001239,Man,Auckland,Quintile 5,20–24,True
+STU001240,Man,Auckland,Quintile 1,20–24,False
+STU001241,Man,Auckland,Quintile 5,20–24,False
+STU001242,Gender diverse,International,Quintile 4,35 and over,False
+STU001243,Man,Other New Zealand,Quintile 4,35 and over,False
+STU001244,Woman,Other New Zealand,Quintile 5,20–24,False
+STU001245,Man,Auckland,Quintile 2,25–34,False
+STU001246,Woman,Other New Zealand,Quintile 1,Under 20,False
+STU001247,Man,Auckland,Quintile 3,20–24,False
+STU001248,Man,Auckland,Quintile 3,20–24,False
+STU001249,Woman,Auckland,Quintile 1,Under 20,False
+STU001250,Man,Auckland,Quintile 1,25–34,False
+STU001251,Man,Other New Zealand,Quintile 3,20–24,False
+STU001252,Man,International,Quintile 3,20–24,False
+STU001253,Man,Auckland,Quintile 2,20–24,False
+STU001254,Woman,Auckland,Quintile 5,Under 20,False
+STU001255,Woman,Auckland,Quintile 5,Under 20,False
+STU001256,Gender diverse,Other New Zealand,Quintile 2,20–24,False
+STU001257,Woman,Auckland,Quintile 1,25–34,False
+STU001258,Man,International,Quintile 4,35 and over,False
+STU001259,Man,Auckland,Quintile 5,25–34,True
+STU001260,Gender diverse,Other New Zealand,Quintile 4,25–34,False
+STU001261,Prefer not to say,Other New Zealand,Quintile 3,20–24,True
+STU001262,Man,Auckland,Quintile 3,20–24,True
+STU001263,Prefer not to say,Other New Zealand,Quintile 2,20–24,False
+STU001264,Man,Other New Zealand,Quintile 1,20–24,False
+STU001265,Man,Auckland,Quintile 3,Under 20,False
+STU001266,Man,Other New Zealand,Quintile 4,35 and over,False
+STU001267,Gender diverse,International,Quintile 5,Under 20,False
+STU001268,Woman,International,Quintile 1,20–24,True
+STU001269,Man,Auckland,Quintile 2,25–34,False
+STU001270,Prefer not to say,International,Quintile 2,35 and over,True
+STU001271,Man,Auckland,Quintile 1,20–24,False
+STU001272,Woman,International,Quintile 5,20–24,False
+STU001273,Woman,Auckland,Quintile 4,20–24,False
+STU001274,Man,International,Quintile 3,20–24,True
+STU001275,Woman,Other New Zealand,Quintile 1,20–24,False
+STU001276,Woman,Auckland,Quintile 1,20–24,False
+STU001277,Man,International,Quintile 4,Under 20,False
+STU001278,Woman,International,Quintile 1,Under 20,False
+STU001279,Woman,Auckland,Quintile 1,20–24,False
+STU001280,Woman,Auckland,Quintile 3,20–24,False
+STU001281,Woman,Auckland,Quintile 4,20–24,False
+STU001282,Woman,Other New Zealand,Quintile 2,Under 20,False
+STU001283,Man,Other New Zealand,Quintile 5,20–24,False
+STU001284,Woman,International,Quintile 2,35 and over,False
+STU001285,Woman,Other New Zealand,Quintile 3,20–24,False
+STU001286,Woman,Auckland,Quintile 4,20–24,False
+STU001287,Man,Auckland,Quintile 5,20–24,False
+STU001288,Man,International,Quintile 1,Under 20,False
+STU001289,Woman,Auckland,Quintile 1,Under 20,False
+STU001290,Prefer not to say,Auckland,Quintile 5,20–24,False
+STU001291,Man,Other New Zealand,Quintile 5,20–24,True
+STU001292,Woman,Auckland,Quintile 5,Under 20,False
+STU001293,Prefer not to say,International,Quintile 2,25–34,False
+STU001294,Woman,Other New Zealand,Quintile 3,20–24,False
+STU001295,Man,Auckland,Quintile 3,25–34,False
+STU001296,Woman,Other New Zealand,Quintile 5,25–34,False
+STU001297,Man,Auckland,Quintile 2,20–24,False
+STU001298,Woman,Auckland,Quintile 3,20–24,False
+STU001299,Woman,Auckland,Quintile 5,20–24,False
+STU001300,Man,Other New Zealand,Quintile 5,Under 20,True
+STU001301,Woman,Auckland,Quintile 4,20–24,False
+STU001302,Woman,Other New Zealand,Quintile 5,Under 20,False
+STU001303,Woman,International,Quintile 1,20–24,False
+STU001304,Prefer not to say,Auckland,Quintile 2,20–24,False
+STU001305,Man,Auckland,Quintile 2,20–24,False
+STU001306,Man,Auckland,Quintile 1,Under 20,False
+STU001307,Woman,International,Quintile 3,Under 20,False
+STU001308,Man,Auckland,Quintile 1,20–24,False
+STU001309,Man,Auckland,Quintile 5,Under 20,False
+STU001310,Man,Auckland,Quintile 1,25–34,False
+STU001311,Woman,Other New Zealand,Quintile 3,20–24,False
+STU001312,Woman,Auckland,Quintile 4,20–24,False
+STU001313,Woman,Other New Zealand,Quintile 1,20–24,False
+STU001314,Prefer not to say,International,Quintile 5,35 and over,False
+STU001315,Woman,Auckland,Quintile 1,25–34,True
+STU001316,Woman,Auckland,Quintile 2,Under 20,True
+STU001317,Man,Auckland,Quintile 1,20–24,False
+STU001318,Man,Auckland,Quintile 2,35 and over,False
+STU001319,Man,Auckland,Quintile 1,20–24,True
+STU001320,Man,International,Quintile 4,20–24,True
+STU001321,Man,Auckland,Quintile 2,20–24,False
+STU001322,Man,Auckland,Quintile 2,20–24,False
+STU001323,Woman,Other New Zealand,Quintile 5,35 and over,False
+STU001324,Man,Auckland,Quintile 1,20–24,False
+STU001325,Man,Other New Zealand,Quintile 3,20–24,False
+STU001326,Woman,Other New Zealand,Quintile 1,20–24,False
+STU001327,Man,Auckland,Quintile 4,20–24,False
+STU001328,Woman,Auckland,Quintile 5,25–34,False
+STU001329,Man,Auckland,Quintile 3,25–34,False
+STU001330,Man,Auckland,Quintile 2,20–24,True
+STU001331,Woman,International,Quintile 3,20–24,False
+STU001332,Woman,Other New Zealand,Quintile 4,Under 20,False
+STU001333,Woman,Auckland,Quintile 4,25–34,False
+STU001334,Woman,International,Quintile 5,20–24,False
+STU001335,Woman,Auckland,Quintile 1,25–34,False
+STU001336,Gender diverse,Auckland,Quintile 1,20–24,False
+STU001337,Man,Auckland,Quintile 1,20–24,True
+STU001338,Woman,Auckland,Quintile 2,20–24,True
+STU001339,Woman,Auckland,Quintile 2,20–24,False
+STU001340,Man,Auckland,Quintile 2,25–34,False
+STU001341,Woman,Auckland,Quintile 1,20–24,True
+STU001342,Gender diverse,Auckland,Quintile 5,20–24,False
+STU001343,Man,Other New Zealand,Quintile 1,20–24,True
+STU001344,Woman,Auckland,Quintile 3,20–24,False
+STU001345,Woman,International,Quintile 3,25–34,False
+STU001346,Man,Auckland,Quintile 2,20–24,False
+STU001347,Man,Other New Zealand,Quintile 5,20–24,False
+STU001348,Woman,Auckland,Quintile 5,Under 20,False
+STU001349,Man,International,Quintile 3,20–24,False
+STU001350,Man,Auckland,Quintile 2,Under 20,False
+STU001351,Man,Auckland,Quintile 1,20–24,False
+STU001352,Man,Auckland,Quintile 3,20–24,False
+STU001353,Woman,Auckland,Quintile 4,25–34,False
+STU001354,Woman,Other New Zealand,Quintile 2,20–24,False
+STU001355,Man,International,Quintile 5,20–24,False
+STU001356,Woman,Auckland,Quintile 5,25–34,False
+STU001357,Man,Auckland,Quintile 2,20–24,False
+STU001358,Man,Other New Zealand,Quintile 3,20–24,True
+STU001359,Woman,International,Quintile 5,Under 20,False
+STU001360,Woman,Auckland,Quintile 5,20–24,False
+STU001361,Man,Other New Zealand,Quintile 2,20–24,False
+STU001362,Woman,Auckland,Quintile 5,20–24,False
+STU001363,Man,Auckland,Quintile 1,20–24,False
+STU001364,Man,International,Quintile 1,25–34,True
+STU001365,Man,International,Quintile 3,20–24,False
+STU001366,Woman,Auckland,Quintile 2,20–24,False
+STU001367,Man,Other New Zealand,Quintile 2,20–24,True
+STU001368,Woman,International,Quintile 1,Under 20,False
+STU001369,Man,Other New Zealand,Quintile 4,Under 20,False
+STU001370,Woman,Other New Zealand,Quintile 2,20–24,False
+STU001371,Woman,Auckland,Quintile 1,20–24,False
+STU001372,Woman,Other New Zealand,Quintile 2,20–24,False
+STU001373,Woman,Auckland,Quintile 1,20–24,False
+STU001374,Man,International,Quintile 1,20–24,False
+STU001375,Woman,International,Quintile 1,20–24,False
+STU001376,Man,Other New Zealand,Quintile 4,20–24,False
+STU001377,Woman,Auckland,Quintile 4,20–24,False
+STU001378,Man,Auckland,Quintile 5,20–24,True
+STU001379,Woman,Auckland,Quintile 2,20–24,False
+STU001380,Woman,Auckland,Quintile 1,20–24,False
+STU001381,Man,Auckland,Quintile 5,20–24,False
+STU001382,Woman,International,Quintile 2,20–24,True
+STU001383,Woman,Auckland,Quintile 2,Under 20,False
+STU001384,Man,International,Quintile 5,20–24,False
+STU001385,Woman,International,Quintile 3,Under 20,True
+STU001386,Woman,Auckland,Quintile 5,25–34,False
+STU001387,Woman,Auckland,Quintile 3,Under 20,False
+STU001388,Man,Auckland,Quintile 4,20–24,True
+STU001389,Woman,Other New Zealand,Quintile 4,20–24,False
+STU001390,Man,Auckland,Quintile 3,25–34,False
+STU001391,Woman,Auckland,Quintile 4,20–24,False
+STU001392,Woman,Auckland,Quintile 3,20–24,False
+STU001393,Prefer not to say,International,Quintile 1,20–24,False
+STU001394,Woman,Auckland,Quintile 4,25–34,False
+STU001395,Man,Auckland,Quintile 5,20–24,False
+STU001396,Woman,International,Quintile 5,20–24,False
+STU001397,Man,Auckland,Quintile 3,20–24,False
+STU001398,Woman,Auckland,Quintile 3,Under 20,False
+STU001399,Man,Other New Zealand,Quintile 2,25–34,False
+STU001400,Man,Auckland,Quintile 2,25–34,False
