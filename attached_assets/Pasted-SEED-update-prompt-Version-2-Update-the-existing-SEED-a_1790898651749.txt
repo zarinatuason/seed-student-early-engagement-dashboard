@@ -1,0 +1,404 @@
+SEED update prompt — Version 2
+
+Update the existing SEED application using the requirements below. Inspect the current code, database, uploaded CSVs and tests before editing. Preserve working functionality and the current teal, white and soft green visual style.
+
+PURPOSE
+
+SEED helps a Student Advisor:
+- Identify learner–paper records requiring attention.
+- Understand the reasons and supporting academic evidence.
+- Examine the learner’s situation across enrolled papers.
+- Contact the learner and read their response.
+- Decide and record appropriate support.
+- Track outstanding actions and follow-ups.
+
+The Student Advisor makes support decisions. Everyone testing SEED acts only as a Student Advisor.
+
+1. DATA AND SCOPE
+
+Use the existing 12 final dataset CSVs. If test and final datasets are both present, use the Final Dataset files for the application.
+
+Verified dataset findings:
+- 1,400 distinct learners.
+- 3,874 learner–paper records.
+- 34 papers.
+- High Priority: 581 records involving 505 distinct learners.
+- Review Recommended: 968 records.
+- No Current Concern: 2,131 records.
+- Insufficient Evidence: 194 records.
+- 1,072 learners have different academic categories across papers.
+
+Verify the findings against the project’s uploaded files.
+
+CSV09 and CSV10 contain calculated Day 28 indicators and categories. Resource activity and submission events cover Days 1–28. Later assessment schedules and validation outcomes do not provide later daily engagement evidence.
+
+For this update:
+- Use the supplied Day 28 academic evidence.
+- Make advisor reviews, conversations, support actions and follow-ups update dynamically.
+- Preserve academic categories when advisor actions change.
+- Keep original academic CSVs unchanged.
+- Keep fairness-audit fields and later validation outcomes outside operational views and API responses.
+- Preserve actual zeros and unavailable values separately.
+- Use verified learner, paper and offering relationships.
+- Do not fabricate daily academic updates or recalculate categories without the original verified rules.
+
+2. NAVIGATION AND PAGE WORDING
+
+Provide:
+- Overview
+- Academic Records
+- Review Tracker
+- SEED Inbox
+- Reference Guide
+
+Provide an individual record page accessible from the relevant pages.
+
+Use the page names as the main headings. Keep the Reference Guide heading:
+“A shared way to read the evidence.”
+
+Use “SEED / [page name]” for breadcrumbs.
+
+Remove inspirational wording from the operational pages, including:
+- “Where a closer look may help.”
+- “Make follow-through visible.”
+- “A clear view of the evidence, and a thoughtful next step for every learner.”
+
+Use “Records by review category” above the academic category cards.
+
+Remove “Live workspace”.
+
+Provide:
+- Back to Overview when Academic Records is opened from an overview item.
+- Back to Academic Records or Back to Review Tracker according to the record’s entry route.
+- Working browser Back navigation.
+- Preserved filters, sorting, pagination and scroll position where practical.
+- Unsaved-change warnings when leaving an edited form.
+
+3. OVERVIEW AND ACADEMIC RECORDS
+
+Overview:
+- Show cohort learner and learner–paper totals with explicit labels.
+- Each category card shows its record total and distinct learner total.
+- Calculate distinct learners separately within each category.
+- Explain that a learner can appear in more than one category across papers.
+- Show review progress with explicitly labelled counting units.
+- Show unread learner replies, follow-ups due today and overdue.
+- When no follow-ups exist, display “No follow-ups scheduled”.
+- Make summary items open appropriately filtered pages.
+- Keep headings and spacing compact.
+
+Academic Records column order:
+Learner ID | Review category | Paper | Reason | Review status | Contact status | View record
+
+Show paper title and code together.
+
+Retain:
+- Search and paper, department, category and review-status filters.
+- Add contact-status filtering.
+- Sorting and pagination.
+- Default category order:
+  High Priority → Review Recommended → Insufficient Evidence → No Current Concern.
+- Stable secondary sorting by learner ID and course code.
+- Correct category counts that exclude the selected category filter while respecting other active filters.
+- Pagination reset when filters or sorting change.
+
+Contact status must relate to the selected paper or clearly identify a learner-wide conversation. Avoid displaying an unrelated paper’s contact as contact about the selected concern.
+
+4. SIMPLIFY THE INDIVIDUAL RECORD
+
+Organise the record into:
+
+A. Learner and paper
+- Learner ID, paper title, course code and registration context.
+- Academic category, review status and contact status.
+
+B. Reason for review
+- Plain-language explanation.
+- Main supporting figures alongside the relevant concerns.
+
+C. Other enrolled papers
+- Show all verified enrolled papers for the same learner.
+- Show each paper’s category and concise reason.
+- Allow navigation to another paper while preserving learner context.
+- Retain each paper’s calculated category.
+
+D. Academic evidence
+- Readable learning activity, assessment participation and early performance.
+- Give evidence enough width.
+- Use a proper assessment table with aligned headers and values.
+- Keep essential explanations visible.
+- Put detailed resource interactions and lengthy technical definitions in expandable sections.
+- Preserve Day 28 availability, submission and score-release boundaries.
+- Preserve learner-specific due dates and prior-credit handling.
+- Report any mismatch between detailed evidence and supplied aggregate indicators.
+
+E. Advisor review and support
+- Review status.
+- Advisor notes.
+- Review outcome.
+- Agreed support or next action.
+- Relevant service or support destination.
+- Support-action progress.
+- Follow-up date and completion.
+
+F. Conversation and history
+- Sent messages and received learner replies.
+- Dated review and support actions.
+- Clear chronological order.
+
+Replace “Record your next step” with “Review and support plan”.
+
+Remove the manual “Record contact attempt” and “Record a response” forms from the Student Advisor interface.
+
+5. REVIEW, CONTACT AND SUPPORT STATUSES
+
+Review statuses:
+- Awaiting review
+- In review
+- Reviewed
+
+Opening a record leaves review status unchanged. Allow reopening a reviewed record.
+
+Contact statuses:
+- Not contacted
+- Awaiting response
+- Response received
+- No response recorded
+
+Update Awaiting response after a successfully saved simulated send.
+Update Response received after an incoming reply is successfully saved and linked.
+
+Passing a date must not automatically assert that the learner has failed to respond. The application may show “No reply received as of [date]” and a due follow-up.
+
+Keep any explicit No response recorded status tied to a dated advisor decision. A later reply updates the contact status while retaining history.
+
+Support-action progress:
+- Planned
+- In progress
+- Completed
+- Cancelled
+
+Allow actions such as:
+- Seek further context.
+- Arrange a meeting.
+- Provide academic guidance.
+- Refer to a support service.
+- Check in later.
+- No further action at present.
+
+Provide an editable service/destination field. Use generic support types unless verified university service information is available. Do not invent official service names or contact details.
+
+A completed referral does not automatically change the academic category or complete every follow-up.
+
+Allow:
+High Priority · Reviewed · Response received · Referral completed · Follow-up due.
+
+Keep review, contact and support progress as separate fields.
+
+6. STATUS COLOURS AND ACCESSIBILITY
+
+Use coloured badges with visible text:
+
+Review:
+- Awaiting review: grey.
+- In review: blue.
+- Reviewed: teal.
+
+Contact:
+- Not contacted: grey.
+- Awaiting response: purple.
+- Response received: teal.
+- No response recorded: amber.
+
+Choose readable background/text combinations. Do not rely on colour alone. Make badge wording and placement distinguish academic category, review, contact and support progress.
+
+Use approximately 14–16 px main text and at least 13 px essential supporting text.
+
+Verify:
+- Contrast.
+- Keyboard access and focus.
+- Labelled controls.
+- Responsive layout and browser zoom.
+- Table readability.
+- Loading, empty, error and save states.
+
+7. SEED INBOX AND MESSAGING
+
+Provide an advisor-facing SEED Inbox.
+
+Within a learner record:
+- Provide “Contact learner”.
+- Automatically associate the recipient with the learner’s verified identifier.
+- Show learner ID as the recipient.
+- Keep email addresses hidden.
+- Provide subject and message fields.
+- Allow the tester to enter their own text.
+- Save the exact subject and message in the database.
+- Show the saved message in the conversation immediately.
+- Provide clear success or error feedback.
+- Preserve drafts if saving fails.
+
+The prototype uses a simulated email transport. Do not send real external email.
+
+Display a concise simulation notice:
+“Email delivery is simulated for this prototype.”
+
+SEED Inbox:
+- Show incoming replies and conversations.
+- Show learner ID, subject, received date and unread/read state.
+- Link to the associated learner and relevant papers.
+- Allow replies from the Student Advisor.
+- Display the same saved conversation as the individual record.
+- Keep unread state separate from contact and review status.
+- Reading a reply must not automatically mark the academic review complete.
+
+Database requirements:
+- Conversations belong to the learner.
+- Conversations can link to one or more relevant learner–paper offerings.
+- Messages belong to a conversation and retain direction, subject/body and dates.
+- Prevent duplicate messages and incorrect learner links.
+- Preserve original message content.
+
+Keep synthetic recipient routing details in the backend. Omit addresses from advisor API responses, browser URLs and routine logs. Document the implemented access controls.
+
+8. EXAMPLE CONVERSATIONS
+
+Prepare two distinct High Priority learners with labelled synthetic example conversations.
+
+Example 1:
+- Earlier advisor message.
+- Learner reply received by the initial scenario date.
+- Contact status: Response received.
+- Reply awaiting advisor consideration.
+- No fabricated completed support decision.
+
+Example 2:
+- Earlier advisor message.
+- Contact status: Awaiting response.
+- A future follow-up date.
+
+Use plausible, respectful examples consistent with the selected record’s evidence. A reply may describe difficulty understanding assessment requirements or fitting study around responsibilities. Avoid attributing sensitive conditions to the learner.
+
+Label prepared conversations “Synthetic example”.
+Use generic example advisor identities.
+Keep the original academic categories unchanged.
+
+The remaining records should be available for proxy users to create their own reviews and messages, subject to genuine existing saved work.
+
+Create example data through an idempotent setup script. Re-running setup must not duplicate examples or overwrite tester messages.
+
+New tester messages remain Awaiting response until an incoming event is supplied. Do not generate an automatic reply to every message.
+
+Provide a facilitator-only testing utility for inserting a synthetic incoming reply into an existing conversation. The facilitator can supply the reply text. The reply must pass through the incoming-message backend flow and appear automatically in SEED Inbox.
+
+Proxy users remain Student Advisors. Do not add a learner interface to the main navigation.
+
+9. PRESENT DATE AND CHECKPOINT
+
+Use the agreed Semester Two 2026 calendar mapping:
+- Day 1: 20 July 2026.
+- Day 28: 16 August 2026, end of Week 4.
+- Day 29: 17 August 2026, Week 5.
+- Day 31: 19 August 2026, Week 5.
+
+Start the scenario on Day 29.
+
+The main interface shows the scenario’s present:
+“Monday 17 August 2026 · Week 5 · Day 29”
+
+Show one concise academic-data label:
+“Week 4 academic checkpoint · 16 August 2026”
+
+Explain in Reference Guide that supplied academic evidence covers the end of Day 28. The intended operational system would refresh academic information as new data becomes available.
+
+Avoid two prominent selectors named Academic evidence date and Demo date.
+
+Place date progression in a compact “Test controls” panel:
+- Advance the current scenario date.
+- Support at least two weeks of follow-up testing.
+- Preserve saved actions across date changes.
+- Default new action dates to the scenario’s present date.
+- Retain actual system timestamps separately for auditing.
+- Keep October system timestamps outside the primary scenario timeline.
+- Use consistent Pacific/Auckland date handling.
+
+Advancing the date updates due and overdue follow-ups. Completed and cancelled actions leave outstanding lists.
+
+The Student Advisor can examine Week 4 evidence on any later scenario date and take action. Save the action with the current scenario date and its academic checkpoint reference.
+
+Prevent moving the scenario date before already saved events. Provide a separate reset of the current test session with confirmation.
+
+A date change must not claim a new academic refresh or alter academic counts.
+
+10. PERSISTENCE AND TEST SESSIONS
+
+Use the existing persistent database.
+
+Persist:
+- Review notes and outcomes.
+- Support actions and progress.
+- Follow-up dates and completion.
+- Conversations, messages and incoming replies.
+- Read/unread state.
+- Scenario date.
+- Dated history.
+
+All saved information must survive refresh and backend restart.
+
+Keep each proxy-user session’s workflow data separate. Give each session the same academic dataset and prepared examples. Allow resuming a session.
+
+Reset only the current session’s workflow data and restore its prepared examples. Explain what reset will clear.
+
+Identify existing automated test fixtures such as “seed-ui-test…” entries. Remove fixtures only when positively identified as automated test data. Preserve genuine user-entered work.
+
+Use isolated sessions or a separate test database for automated verification.
+
+11. FUNCTIONAL VERIFICATION
+
+Run meaningful backend and interface checks covering:
+
+- Original record/category totals.
+- 505 distinct High Priority learners.
+- Correct distinct learner counts under filters.
+- Cross-paper categories and offering joins.
+- Navigation and preserved table state.
+- Exact tester message text saved and displayed.
+- Conversation consistency between record and SEED Inbox.
+- Incoming replies correctly linked and saved once.
+- Contact statuses update after sends and incoming replies.
+- Read/unread state remains separate from review status.
+- Reviews, messages and support actions survive refresh and backend restart.
+- Follow-ups become due/overdue correctly.
+- Completed/cancelled follow-ups leave outstanding lists.
+- Day 29 actions remain visible on Day 30 and later.
+- Academic categories remain unchanged by reviews, contact and referral completion.
+- Example setup is repeatable without duplication.
+- Session isolation and safe reset.
+- Hidden addresses and excluded academic fields are absent from operational API responses.
+- Invalid inputs and unknown record/conversation keys receive appropriate errors.
+- Keyboard use, readable layout and save feedback.
+
+Report checks actually executed with observed results. Identify untested or incomplete functionality clearly.
+
+12. COMPLETION REPORT
+
+Update technical README documentation for:
+- Database changes and persistence.
+- Conversation and support-action relationships.
+- Example setup.
+- Test-session handling and reset.
+- Scenario calendar.
+- Simulated email transport.
+- Future university email/data integration requirements.
+- Test commands and results.
+
+Do not create coursework report prose or claim stakeholder validation.
+
+Complete the implementation and verification, then report:
+- Implemented changes.
+- Files changed.
+- Tests executed and results.
+- Prepared example learner IDs.
+- How to start/resume/reset a test session.
+- How the facilitator supplies an incoming reply.
+- Remaining limitations and incomplete features.

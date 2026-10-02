@@ -17,14 +17,194 @@ export const HealthCheckResponse = zod.object({
 
 
 /**
- * @summary Get cohort and review workflow totals
+ * @summary Get category, indicator, and dataset reference information
  */
-export const getAdvisorSummaryResponseDemoDateDayMin = 29;
-export const getAdvisorSummaryResponseDemoDateDayMax = 35;
+export const GetReferenceGuideResponse = zod.object({
+  "categories": zod.array(zod.object({
+  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
+  "explanation": zod.string(),
+  "count": zod.number().int()
+})),
+  "indicators": zod.record(zod.string(), zod.string()),
+  "evidenceCutoff": zod.string(),
+  "syntheticData": zod.boolean(),
+  "datasetChecks": zod.array(zod.string())
+})
+
+
+export const getSessionResponseScenarioDateDayMin = 29;
+export const getSessionResponseScenarioDateDayMax = 63;
+
+export const getSessionResponseScenarioDateWeekMin = 5;
+export const getSessionResponseScenarioDateWeekMax = 9;
 
 
 
-export const GetAdvisorSummaryResponse = zod.object({
+export const GetSessionResponse = zod.object({
+  "id": zod.string(),
+  "label": zod.string(),
+  "resumeCode": zod.string(),
+  "scenarioDate": zod.object({
+  "day": zod.number().int().min(getSessionResponseScenarioDateDayMin).max(getSessionResponseScenarioDateDayMax),
+  "week": zod.number().int().min(getSessionResponseScenarioDateWeekMin).max(getSessionResponseScenarioDateWeekMax),
+  "date": zod.coerce.date(),
+  "dateLabel": zod.string(),
+  "evidenceThrough": zod.coerce.date(),
+  "evidenceDay": zod.literal(28)
+}),
+  "examples": zod.array(zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "conversationId": zod.string(),
+  "label": zod.string()
+}))
+})
+
+
+export const startSessionBodyLabelMax = 100;
+
+
+
+export const StartSessionBody = zod.object({
+  "label": zod.string().min(1).max(startSessionBodyLabelMax)
+})
+
+export const startSessionResponseScenarioDateDayMin = 29;
+export const startSessionResponseScenarioDateDayMax = 63;
+
+export const startSessionResponseScenarioDateWeekMin = 5;
+export const startSessionResponseScenarioDateWeekMax = 9;
+
+
+
+export const StartSessionResponse = zod.object({
+  "id": zod.string(),
+  "label": zod.string(),
+  "resumeCode": zod.string(),
+  "scenarioDate": zod.object({
+  "day": zod.number().int().min(startSessionResponseScenarioDateDayMin).max(startSessionResponseScenarioDateDayMax),
+  "week": zod.number().int().min(startSessionResponseScenarioDateWeekMin).max(startSessionResponseScenarioDateWeekMax),
+  "date": zod.coerce.date(),
+  "dateLabel": zod.string(),
+  "evidenceThrough": zod.coerce.date(),
+  "evidenceDay": zod.literal(28)
+}),
+  "examples": zod.array(zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "conversationId": zod.string(),
+  "label": zod.string()
+}))
+})
+
+
+export const resumeSessionBodyResumeCodeMin = 20;
+export const resumeSessionBodyResumeCodeMax = 200;
+
+
+
+export const ResumeSessionBody = zod.object({
+  "resumeCode": zod.string().min(resumeSessionBodyResumeCodeMin).max(resumeSessionBodyResumeCodeMax)
+})
+
+export const resumeSessionResponseScenarioDateDayMin = 29;
+export const resumeSessionResponseScenarioDateDayMax = 63;
+
+export const resumeSessionResponseScenarioDateWeekMin = 5;
+export const resumeSessionResponseScenarioDateWeekMax = 9;
+
+
+
+export const ResumeSessionResponse = zod.object({
+  "id": zod.string(),
+  "label": zod.string(),
+  "resumeCode": zod.string(),
+  "scenarioDate": zod.object({
+  "day": zod.number().int().min(resumeSessionResponseScenarioDateDayMin).max(resumeSessionResponseScenarioDateDayMax),
+  "week": zod.number().int().min(resumeSessionResponseScenarioDateWeekMin).max(resumeSessionResponseScenarioDateWeekMax),
+  "date": zod.coerce.date(),
+  "dateLabel": zod.string(),
+  "evidenceThrough": zod.coerce.date(),
+  "evidenceDay": zod.literal(28)
+}),
+  "examples": zod.array(zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "conversationId": zod.string(),
+  "label": zod.string()
+}))
+})
+
+
+export const ResetSessionBody = zod.object({
+  "confirm": zod.literal("RESET CURRENT SESSION")
+})
+
+export const resetSessionResponseScenarioDateDayMin = 29;
+export const resetSessionResponseScenarioDateDayMax = 63;
+
+export const resetSessionResponseScenarioDateWeekMin = 5;
+export const resetSessionResponseScenarioDateWeekMax = 9;
+
+
+
+export const ResetSessionResponse = zod.object({
+  "id": zod.string(),
+  "label": zod.string(),
+  "resumeCode": zod.string(),
+  "scenarioDate": zod.object({
+  "day": zod.number().int().min(resetSessionResponseScenarioDateDayMin).max(resetSessionResponseScenarioDateDayMax),
+  "week": zod.number().int().min(resetSessionResponseScenarioDateWeekMin).max(resetSessionResponseScenarioDateWeekMax),
+  "date": zod.coerce.date(),
+  "dateLabel": zod.string(),
+  "evidenceThrough": zod.coerce.date(),
+  "evidenceDay": zod.literal(28)
+}),
+  "examples": zod.array(zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "conversationId": zod.string(),
+  "label": zod.string()
+}))
+})
+
+
+export const setScenarioDateBodyDayMin = 29;
+export const setScenarioDateBodyDayMax = 63;
+
+
+
+export const SetScenarioDateBody = zod.object({
+  "day": zod.number().int().min(setScenarioDateBodyDayMin).max(setScenarioDateBodyDayMax)
+})
+
+export const setScenarioDateResponseDayMin = 29;
+export const setScenarioDateResponseDayMax = 63;
+
+export const setScenarioDateResponseWeekMin = 5;
+export const setScenarioDateResponseWeekMax = 9;
+
+
+
+export const SetScenarioDateResponse = zod.object({
+  "day": zod.number().int().min(setScenarioDateResponseDayMin).max(setScenarioDateResponseDayMax),
+  "week": zod.number().int().min(setScenarioDateResponseWeekMin).max(setScenarioDateResponseWeekMax),
+  "date": zod.coerce.date(),
+  "dateLabel": zod.string(),
+  "evidenceThrough": zod.coerce.date(),
+  "evidenceDay": zod.literal(28)
+})
+
+
+export const getWorkspaceSummaryResponseOneDemoDateDayMin = 29;
+export const getWorkspaceSummaryResponseOneDemoDateDayMax = 63;
+
+export const getWorkspaceSummaryResponseOneDemoDateWeekMin = 5;
+export const getWorkspaceSummaryResponseOneDemoDateWeekMax = 9;
+
+
+
+export const GetWorkspaceSummaryResponse = zod.object({
   "learners": zod.number().int(),
   "learnerPaperRecords": zod.number().int(),
   "academicCategories": zod.object({
@@ -41,36 +221,45 @@ export const GetAdvisorSummaryResponse = zod.object({
   "followUpsDueToday": zod.number().int(),
   "followUpsOverdue": zod.number().int(),
   "demoDate": zod.object({
-  "day": zod.number().int().min(getAdvisorSummaryResponseDemoDateDayMin).max(getAdvisorSummaryResponseDemoDateDayMax),
-  "week": zod.literal(5),
+  "day": zod.number().int().min(getWorkspaceSummaryResponseOneDemoDateDayMin).max(getWorkspaceSummaryResponseOneDemoDateDayMax),
+  "week": zod.number().int().min(getWorkspaceSummaryResponseOneDemoDateWeekMin).max(getWorkspaceSummaryResponseOneDemoDateWeekMax),
   "date": zod.coerce.date(),
   "dateLabel": zod.string(),
   "evidenceThrough": zod.coerce.date(),
   "evidenceDay": zod.literal(28)
 })
-})
+}).and(zod.object({
+  "academicCategoryLearners": zod.object({
+  "highPriority": zod.number().int(),
+  "reviewRecommended": zod.number().int(),
+  "insufficientEvidence": zod.number().int(),
+  "noCurrentConcern": zod.number().int()
+}),
+  "unreadReplies": zod.number().int(),
+  "scheduledFollowUps": zod.number().int(),
+  "outstandingSupportActions": zod.number().int(),
+  "mixedCategoryLearners": zod.number().int()
+}))
 
 
-/**
- * @summary Search and filter learner-paper records
- */
-export const listRecordsQueryPageDefault = 1;
+export const listWorkspaceRecordsQueryPageDefault = 1;
 
-export const listRecordsQueryPageSizeDefault = 25;
+export const listWorkspaceRecordsQueryPageSizeDefault = 10;
 
-export const ListRecordsQueryParams = zod.object({
+export const ListWorkspaceRecordsQueryParams = zod.object({
   "search": zod.coerce.string().optional(),
   "paper": zod.coerce.string().optional(),
   "department": zod.coerce.string().optional(),
   "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']).optional(),
   "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']).optional(),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']).optional(),
   "sortBy": zod.enum(['category', 'learnerId', 'paper', 'reason', 'reviewStatus']).optional(),
   "sortDirection": zod.enum(['asc', 'desc']).optional(),
-  "page": zod.coerce.number().int().min(1).default(listRecordsQueryPageDefault),
-  "pageSize": zod.union([zod.literal(10),zod.literal(25),zod.literal(50)]).default(listRecordsQueryPageSizeDefault)
+  "page": zod.coerce.number().int().min(1).default(listWorkspaceRecordsQueryPageDefault),
+  "pageSize": zod.union([zod.literal(10),zod.literal(25),zod.literal(50)]).default(listWorkspaceRecordsQueryPageSizeDefault)
 })
 
-export const ListRecordsResponse = zod.object({
+export const ListWorkspaceRecordsResponse = zod.object({
   "records": zod.array(zod.object({
   "learnerId": zod.string(),
   "courseCode": zod.string(),
@@ -80,13 +269,20 @@ export const ListRecordsResponse = zod.object({
   "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
   "reason": zod.string(),
   "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
-  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response']),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
   "nextAction": zod.string().nullable(),
   "followUpDate": zod.coerce.date().nullable(),
   "followUpCompleted": zod.boolean(),
   "lastUpdatedAt": zod.coerce.date().nullable()
-})),
+}).and(zod.object({
+  "supportActionCount": zod.number().int(),
+  "latestSupportAction": zod.string().nullable(),
+  "supportProgress": zod.union([zod.literal('Planned'),zod.literal('In progress'),zod.literal('Completed'),zod.literal('Cancelled'),zod.literal(null)]).nullable(),
+  "nextFollowUpDate": zod.coerce.date().nullable(),
+  "outstandingFollowUpCount": zod.number().int()
+}))),
   "total": zod.number().int(),
+  "totalDistinctLearners": zod.number().int(),
   "page": zod.number().int(),
   "pageSize": zod.number().int(),
   "totalPages": zod.number().int(),
@@ -96,377 +292,31 @@ export const ListRecordsResponse = zod.object({
   "insufficientEvidence": zod.number().int(),
   "noCurrentConcern": zod.number().int()
 }),
+  "categoryLearnerCounts": zod.object({
+  "highPriority": zod.number().int(),
+  "reviewRecommended": zod.number().int(),
+  "insufficientEvidence": zod.number().int(),
+  "noCurrentConcern": zod.number().int()
+}),
   "countScope": zod.string()
 })
 
 
-/**
- * @summary Get academic evidence and saved advisor review for one learner-paper record
- */
-export const GetRecordParams = zod.object({
-  "learnerId": zod.coerce.string(),
-  "courseCode": zod.coerce.string()
-})
+export const listWorkspaceTrackerQueryPageDefault = 1;
 
-export const GetRecordResponse = zod.object({
-  "learnerId": zod.string(),
-  "courseCode": zod.string(),
-  "paperTitle": zod.string(),
-  "facultySchool": zod.string(),
-  "department": zod.string(),
-  "courseLevel": zod.string(),
-  "offeringPeriod": zod.string(),
-  "paperStructureType": zod.string(),
-  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
-  "reason": zod.string(),
-  "concernDomains": zod.array(zod.string()),
-  "registrationDay": zod.number().int(),
-  "opportunityDays": zod.number().int(),
-  "learning": zod.object({
-  "eligibleResources": zod.number().int(),
-  "interactedResources": zod.number().int(),
-  "engagementCoverage": zod.number().nullable(),
-  "activeLearningDays": zod.number().int(),
-  "latestActivityDay": zod.number().nullable(),
-  "daysSinceLastActivity": zod.number().nullable(),
-  "concern": zod.boolean(),
-  "resources": zod.array(zod.object({
-  "resourceTitle": zod.string(),
-  "activityType": zod.string(),
-  "availableFromDay": zod.number().int(),
-  "latestInteractionDay": zod.number().int(),
-  "interactionCount": zod.number().int()
-}))
-}),
-  "assessmentParticipation": zod.object({
-  "dueCount": zod.number().int(),
-  "submittedCount": zod.number().int(),
-  "missedCount": zod.number().int(),
-  "submissionCompletionRate": zod.number().nullable(),
-  "weightedSubmissionCoverage": zod.number().nullable(),
-  "missedAssessmentWeight": zod.number(),
-  "releasedResultCount": zod.number().int(),
-  "releasedAssessmentWeight": zod.number(),
-  "weightedAverageAvailableScore": zod.number().nullable(),
-  "concern": zod.boolean(),
-  "assessments": zod.array(zod.object({
-  "assessmentId": zod.string(),
-  "assessmentName": zod.string(),
-  "category": zod.string(),
-  "priorCredit": zod.boolean(),
-  "availableFromDay": zod.number().int(),
-  "availableUntilDay": zod.number().int().nullable(),
-  "learnerOpportunityDays": zod.number().int(),
-  "availabilityStatus": zod.enum(['Available during registered opportunity', 'Not yet available by Day 28', 'Availability ended before registration']),
-  "applicableDueDate": zod.coerce.date().nullable(),
-  "dueDay": zod.number().int().nullable(),
-  "dueState": zod.enum(['Due by Day 28', 'Not yet due', 'Prior credit', 'Not applicable']),
-  "submissionStatus": zod.enum(['Submitted', 'Not submitted by Day 28', 'Not yet due', 'Prior credit', 'No submission record']),
-  "submissionDate": zod.coerce.date().nullable(),
-  "weightPercent": zod.number(),
-  "result": zod.number().nullable(),
-  "resultAvailable": zod.boolean()
-}))
-}),
-  "earlyPerformanceConcern": zod.boolean(),
-  "learnerContext": zod.object({
-  "priorEducationLevel": zod.string().nullable(),
-  "previousAttemptCount": zod.number().int().nullable(),
-  "creditLoad": zod.number().int().nullable()
-}),
-  "review": zod.object({
-  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
-  "advisorNotes": zod.string(),
-  "outcome": zod.union([zod.literal('Further context needed'),zod.literal('Follow-up planned'),zod.literal('Support referral planned'),zod.literal('No further action at present'),zod.literal(null)]).nullable(),
-  "nextAction": zod.string().nullable(),
-  "followUpDate": zod.coerce.date().nullable(),
-  "followUpCompleted": zod.boolean(),
-  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response']),
-  "lastUpdatedAt": zod.coerce.date().nullable(),
-  "lastEffectiveDate": zod.coerce.date().nullable()
-}),
-  "history": zod.array(zod.object({
-  "id": zod.string(),
-  "actionType": zod.string(),
-  "effectiveDate": zod.coerce.date(),
-  "savedAt": zod.coerce.date(),
-  "method": zod.string().nullable(),
-  "note": zod.string().nullable(),
-  "summary": zod.string()
-}))
-})
+export const listWorkspaceTrackerQueryPageSizeDefault = 10;
 
-
-/**
- * @summary Save advisor review fields and append dated history
- */
-export const SaveReviewParams = zod.object({
-  "learnerId": zod.coerce.string(),
-  "courseCode": zod.coerce.string()
-})
-
-export const saveReviewBodyAdvisorNotesMax = 4000;
-
-export const saveReviewBodyNextActionMax = 500;
-
-
-
-export const SaveReviewBody = zod.object({
-  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
-  "advisorNotes": zod.string().max(saveReviewBodyAdvisorNotesMax),
-  "outcome": zod.union([zod.literal('Further context needed'),zod.literal('Follow-up planned'),zod.literal('Support referral planned'),zod.literal('No further action at present'),zod.literal(null)]).nullable(),
-  "nextAction": zod.string().max(saveReviewBodyNextActionMax).nullable(),
-  "followUpDate": zod.coerce.date().nullable(),
-  "followUpCompleted": zod.boolean(),
-  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response']),
-  "effectiveDate": zod.coerce.date()
-})
-
-export const SaveReviewResponse = zod.object({
-  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
-  "advisorNotes": zod.string(),
-  "outcome": zod.union([zod.literal('Further context needed'),zod.literal('Follow-up planned'),zod.literal('Support referral planned'),zod.literal('No further action at present'),zod.literal(null)]).nullable(),
-  "nextAction": zod.string().nullable(),
-  "followUpDate": zod.coerce.date().nullable(),
-  "followUpCompleted": zod.boolean(),
-  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response']),
-  "lastUpdatedAt": zod.coerce.date().nullable(),
-  "lastEffectiveDate": zod.coerce.date().nullable()
-})
-
-
-/**
- * @summary Record a synthetic contact attempt
- */
-export const LogContactParams = zod.object({
-  "learnerId": zod.coerce.string(),
-  "courseCode": zod.coerce.string()
-})
-
-export const logContactBodyMethodMax = 80;
-
-export const logContactBodyNoteMax = 2000;
-
-
-
-export const LogContactBody = zod.object({
-  "method": zod.string().min(1).max(logContactBodyMethodMax),
-  "effectiveDate": zod.coerce.date(),
-  "note": zod.string().max(logContactBodyNoteMax)
-})
-
-export const LogContactResponse = zod.object({
-  "learnerId": zod.string(),
-  "courseCode": zod.string(),
-  "paperTitle": zod.string(),
-  "facultySchool": zod.string(),
-  "department": zod.string(),
-  "courseLevel": zod.string(),
-  "offeringPeriod": zod.string(),
-  "paperStructureType": zod.string(),
-  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
-  "reason": zod.string(),
-  "concernDomains": zod.array(zod.string()),
-  "registrationDay": zod.number().int(),
-  "opportunityDays": zod.number().int(),
-  "learning": zod.object({
-  "eligibleResources": zod.number().int(),
-  "interactedResources": zod.number().int(),
-  "engagementCoverage": zod.number().nullable(),
-  "activeLearningDays": zod.number().int(),
-  "latestActivityDay": zod.number().nullable(),
-  "daysSinceLastActivity": zod.number().nullable(),
-  "concern": zod.boolean(),
-  "resources": zod.array(zod.object({
-  "resourceTitle": zod.string(),
-  "activityType": zod.string(),
-  "availableFromDay": zod.number().int(),
-  "latestInteractionDay": zod.number().int(),
-  "interactionCount": zod.number().int()
-}))
-}),
-  "assessmentParticipation": zod.object({
-  "dueCount": zod.number().int(),
-  "submittedCount": zod.number().int(),
-  "missedCount": zod.number().int(),
-  "submissionCompletionRate": zod.number().nullable(),
-  "weightedSubmissionCoverage": zod.number().nullable(),
-  "missedAssessmentWeight": zod.number(),
-  "releasedResultCount": zod.number().int(),
-  "releasedAssessmentWeight": zod.number(),
-  "weightedAverageAvailableScore": zod.number().nullable(),
-  "concern": zod.boolean(),
-  "assessments": zod.array(zod.object({
-  "assessmentId": zod.string(),
-  "assessmentName": zod.string(),
-  "category": zod.string(),
-  "priorCredit": zod.boolean(),
-  "availableFromDay": zod.number().int(),
-  "availableUntilDay": zod.number().int().nullable(),
-  "learnerOpportunityDays": zod.number().int(),
-  "availabilityStatus": zod.enum(['Available during registered opportunity', 'Not yet available by Day 28', 'Availability ended before registration']),
-  "applicableDueDate": zod.coerce.date().nullable(),
-  "dueDay": zod.number().int().nullable(),
-  "dueState": zod.enum(['Due by Day 28', 'Not yet due', 'Prior credit', 'Not applicable']),
-  "submissionStatus": zod.enum(['Submitted', 'Not submitted by Day 28', 'Not yet due', 'Prior credit', 'No submission record']),
-  "submissionDate": zod.coerce.date().nullable(),
-  "weightPercent": zod.number(),
-  "result": zod.number().nullable(),
-  "resultAvailable": zod.boolean()
-}))
-}),
-  "earlyPerformanceConcern": zod.boolean(),
-  "learnerContext": zod.object({
-  "priorEducationLevel": zod.string().nullable(),
-  "previousAttemptCount": zod.number().int().nullable(),
-  "creditLoad": zod.number().int().nullable()
-}),
-  "review": zod.object({
-  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
-  "advisorNotes": zod.string(),
-  "outcome": zod.union([zod.literal('Further context needed'),zod.literal('Follow-up planned'),zod.literal('Support referral planned'),zod.literal('No further action at present'),zod.literal(null)]).nullable(),
-  "nextAction": zod.string().nullable(),
-  "followUpDate": zod.coerce.date().nullable(),
-  "followUpCompleted": zod.boolean(),
-  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response']),
-  "lastUpdatedAt": zod.coerce.date().nullable(),
-  "lastEffectiveDate": zod.coerce.date().nullable()
-}),
-  "history": zod.array(zod.object({
-  "id": zod.string(),
-  "actionType": zod.string(),
-  "effectiveDate": zod.coerce.date(),
-  "savedAt": zod.coerce.date(),
-  "method": zod.string().nullable(),
-  "note": zod.string().nullable(),
-  "summary": zod.string()
-}))
-})
-
-
-/**
- * @summary Record a synthetic response
- */
-export const LogResponseParams = zod.object({
-  "learnerId": zod.coerce.string(),
-  "courseCode": zod.coerce.string()
-})
-
-export const logResponseBodyNoteMax = 2000;
-
-
-
-export const LogResponseBody = zod.object({
-  "effectiveDate": zod.coerce.date(),
-  "note": zod.string().max(logResponseBodyNoteMax)
-})
-
-export const LogResponseResponse = zod.object({
-  "learnerId": zod.string(),
-  "courseCode": zod.string(),
-  "paperTitle": zod.string(),
-  "facultySchool": zod.string(),
-  "department": zod.string(),
-  "courseLevel": zod.string(),
-  "offeringPeriod": zod.string(),
-  "paperStructureType": zod.string(),
-  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
-  "reason": zod.string(),
-  "concernDomains": zod.array(zod.string()),
-  "registrationDay": zod.number().int(),
-  "opportunityDays": zod.number().int(),
-  "learning": zod.object({
-  "eligibleResources": zod.number().int(),
-  "interactedResources": zod.number().int(),
-  "engagementCoverage": zod.number().nullable(),
-  "activeLearningDays": zod.number().int(),
-  "latestActivityDay": zod.number().nullable(),
-  "daysSinceLastActivity": zod.number().nullable(),
-  "concern": zod.boolean(),
-  "resources": zod.array(zod.object({
-  "resourceTitle": zod.string(),
-  "activityType": zod.string(),
-  "availableFromDay": zod.number().int(),
-  "latestInteractionDay": zod.number().int(),
-  "interactionCount": zod.number().int()
-}))
-}),
-  "assessmentParticipation": zod.object({
-  "dueCount": zod.number().int(),
-  "submittedCount": zod.number().int(),
-  "missedCount": zod.number().int(),
-  "submissionCompletionRate": zod.number().nullable(),
-  "weightedSubmissionCoverage": zod.number().nullable(),
-  "missedAssessmentWeight": zod.number(),
-  "releasedResultCount": zod.number().int(),
-  "releasedAssessmentWeight": zod.number(),
-  "weightedAverageAvailableScore": zod.number().nullable(),
-  "concern": zod.boolean(),
-  "assessments": zod.array(zod.object({
-  "assessmentId": zod.string(),
-  "assessmentName": zod.string(),
-  "category": zod.string(),
-  "priorCredit": zod.boolean(),
-  "availableFromDay": zod.number().int(),
-  "availableUntilDay": zod.number().int().nullable(),
-  "learnerOpportunityDays": zod.number().int(),
-  "availabilityStatus": zod.enum(['Available during registered opportunity', 'Not yet available by Day 28', 'Availability ended before registration']),
-  "applicableDueDate": zod.coerce.date().nullable(),
-  "dueDay": zod.number().int().nullable(),
-  "dueState": zod.enum(['Due by Day 28', 'Not yet due', 'Prior credit', 'Not applicable']),
-  "submissionStatus": zod.enum(['Submitted', 'Not submitted by Day 28', 'Not yet due', 'Prior credit', 'No submission record']),
-  "submissionDate": zod.coerce.date().nullable(),
-  "weightPercent": zod.number(),
-  "result": zod.number().nullable(),
-  "resultAvailable": zod.boolean()
-}))
-}),
-  "earlyPerformanceConcern": zod.boolean(),
-  "learnerContext": zod.object({
-  "priorEducationLevel": zod.string().nullable(),
-  "previousAttemptCount": zod.number().int().nullable(),
-  "creditLoad": zod.number().int().nullable()
-}),
-  "review": zod.object({
-  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
-  "advisorNotes": zod.string(),
-  "outcome": zod.union([zod.literal('Further context needed'),zod.literal('Follow-up planned'),zod.literal('Support referral planned'),zod.literal('No further action at present'),zod.literal(null)]).nullable(),
-  "nextAction": zod.string().nullable(),
-  "followUpDate": zod.coerce.date().nullable(),
-  "followUpCompleted": zod.boolean(),
-  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response']),
-  "lastUpdatedAt": zod.coerce.date().nullable(),
-  "lastEffectiveDate": zod.coerce.date().nullable()
-}),
-  "history": zod.array(zod.object({
-  "id": zod.string(),
-  "actionType": zod.string(),
-  "effectiveDate": zod.coerce.date(),
-  "savedAt": zod.coerce.date(),
-  "method": zod.string().nullable(),
-  "note": zod.string().nullable(),
-  "summary": zod.string()
-}))
-})
-
-
-/**
- * @summary Search and filter saved review workflow
- */
-export const listTrackerQueryPageDefault = 1;
-
-export const listTrackerQueryPageSizeDefault = 25;
-
-export const ListTrackerQueryParams = zod.object({
+export const ListWorkspaceTrackerQueryParams = zod.object({
   "search": zod.coerce.string().optional(),
   "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']).optional(),
-  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response']).optional(),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']).optional(),
+  "page": zod.coerce.number().int().min(1).default(listWorkspaceTrackerQueryPageDefault),
+  "pageSize": zod.union([zod.literal(10),zod.literal(25),zod.literal(50)]).default(listWorkspaceTrackerQueryPageSizeDefault),
   "followUp": zod.enum(['all', 'due', 'overdue', 'open']).optional(),
-  "page": zod.coerce.number().int().min(1).default(listTrackerQueryPageDefault),
-  "pageSize": zod.union([zod.literal(10),zod.literal(25),zod.literal(50)]).default(listTrackerQueryPageSizeDefault)
+  "supportProgress": zod.enum(['Planned', 'In progress', 'Completed', 'Cancelled']).optional()
 })
 
-export const ListTrackerResponse = zod.object({
+export const ListWorkspaceTrackerResponse = zod.object({
   "records": zod.array(zod.object({
   "learnerId": zod.string(),
   "courseCode": zod.string(),
@@ -476,77 +326,662 @@ export const ListTrackerResponse = zod.object({
   "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
   "reason": zod.string(),
   "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
-  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response']),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
+  "nextAction": zod.string().nullable(),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "lastUpdatedAt": zod.coerce.date().nullable()
+}).and(zod.object({
+  "supportActionCount": zod.number().int(),
+  "latestSupportAction": zod.string().nullable(),
+  "supportProgress": zod.union([zod.literal('Planned'),zod.literal('In progress'),zod.literal('Completed'),zod.literal('Cancelled'),zod.literal(null)]).nullable(),
+  "nextFollowUpDate": zod.coerce.date().nullable(),
+  "outstandingFollowUpCount": zod.number().int()
+}))),
+  "total": zod.number().int(),
+  "totalDistinctLearners": zod.number().int(),
+  "page": zod.number().int(),
+  "pageSize": zod.number().int(),
+  "totalPages": zod.number().int(),
+  "categoryCounts": zod.object({
+  "highPriority": zod.number().int(),
+  "reviewRecommended": zod.number().int(),
+  "insufficientEvidence": zod.number().int(),
+  "noCurrentConcern": zod.number().int()
+}),
+  "categoryLearnerCounts": zod.object({
+  "highPriority": zod.number().int(),
+  "reviewRecommended": zod.number().int(),
+  "insufficientEvidence": zod.number().int(),
+  "noCurrentConcern": zod.number().int()
+}),
+  "countScope": zod.string()
+})
+
+
+export const GetRecordWorkspaceParams = zod.object({
+  "learnerId": zod.coerce.string(),
+  "courseCode": zod.coerce.string()
+})
+
+export const getRecordWorkspaceResponseSupportActionsItemOneDestinationMax = 300;
+
+export const getRecordWorkspaceResponseSupportActionsItemOneDetailsMax = 4000;
+
+
+
+export const GetRecordWorkspaceResponse = zod.object({
+  "record": zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "paperTitle": zod.string(),
+  "facultySchool": zod.string(),
+  "department": zod.string(),
+  "courseLevel": zod.string(),
+  "offeringPeriod": zod.string(),
+  "paperStructureType": zod.string(),
+  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
+  "reason": zod.string(),
+  "concernDomains": zod.array(zod.string()),
+  "registrationDay": zod.number().int(),
+  "opportunityDays": zod.number().int(),
+  "learning": zod.object({
+  "eligibleResources": zod.number().int(),
+  "interactedResources": zod.number().int(),
+  "engagementCoverage": zod.number().nullable(),
+  "activeLearningDays": zod.number().int(),
+  "latestActivityDay": zod.number().nullable(),
+  "daysSinceLastActivity": zod.number().nullable(),
+  "concern": zod.boolean(),
+  "resources": zod.array(zod.object({
+  "resourceTitle": zod.string(),
+  "activityType": zod.string(),
+  "availableFromDay": zod.number().int(),
+  "latestInteractionDay": zod.number().int(),
+  "interactionCount": zod.number().int()
+}))
+}),
+  "assessmentParticipation": zod.object({
+  "dueCount": zod.number().int(),
+  "submittedCount": zod.number().int(),
+  "missedCount": zod.number().int(),
+  "submissionCompletionRate": zod.number().nullable(),
+  "weightedSubmissionCoverage": zod.number().nullable(),
+  "missedAssessmentWeight": zod.number(),
+  "releasedResultCount": zod.number().int(),
+  "releasedAssessmentWeight": zod.number(),
+  "weightedAverageAvailableScore": zod.number().nullable(),
+  "concern": zod.boolean(),
+  "assessments": zod.array(zod.object({
+  "assessmentId": zod.string(),
+  "assessmentName": zod.string(),
+  "category": zod.string(),
+  "priorCredit": zod.boolean(),
+  "availableFromDay": zod.number().int(),
+  "availableUntilDay": zod.number().int().nullable(),
+  "learnerOpportunityDays": zod.number().int(),
+  "availabilityStatus": zod.enum(['Available during registered opportunity', 'Not yet available by Day 28', 'Availability ended before registration']),
+  "applicableDueDate": zod.coerce.date().nullable(),
+  "dueDay": zod.number().int().nullable(),
+  "dueState": zod.enum(['Due by Day 28', 'Not yet due', 'Prior credit', 'Not applicable']),
+  "submissionStatus": zod.enum(['Submitted', 'Not submitted by Day 28', 'Not yet due', 'Prior credit', 'No submission record']),
+  "submissionDate": zod.coerce.date().nullable(),
+  "weightPercent": zod.number(),
+  "result": zod.number().nullable(),
+  "resultAvailable": zod.boolean()
+}))
+}),
+  "earlyPerformanceConcern": zod.boolean(),
+  "learnerContext": zod.object({
+  "priorEducationLevel": zod.string().nullable(),
+  "previousAttemptCount": zod.number().int().nullable(),
+  "creditLoad": zod.number().int().nullable()
+}),
+  "review": zod.object({
+  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
+  "advisorNotes": zod.string(),
+  "outcome": zod.union([zod.literal('Further context needed'),zod.literal('Follow-up planned'),zod.literal('Support referral planned'),zod.literal('No further action at present'),zod.literal(null)]).nullable(),
+  "nextAction": zod.string().nullable(),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
+  "lastUpdatedAt": zod.coerce.date().nullable(),
+  "lastEffectiveDate": zod.coerce.date().nullable()
+}),
+  "history": zod.array(zod.object({
+  "id": zod.string(),
+  "actionType": zod.string(),
+  "effectiveDate": zod.coerce.date(),
+  "savedAt": zod.coerce.date(),
+  "method": zod.string().nullable(),
+  "note": zod.string().nullable(),
+  "summary": zod.string(),
+  "academicCheckpoint": zod.coerce.date().optional()
+}))
+}),
+  "otherPapers": zod.array(zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "paperTitle": zod.string(),
+  "facultySchool": zod.string(),
+  "department": zod.string(),
+  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
+  "reason": zod.string(),
+  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
   "nextAction": zod.string().nullable(),
   "followUpDate": zod.coerce.date().nullable(),
   "followUpCompleted": zod.boolean(),
   "lastUpdatedAt": zod.coerce.date().nullable()
 })),
-  "total": zod.number().int(),
-  "page": zod.number().int(),
-  "pageSize": zod.number().int(),
-  "totalPages": zod.number().int()
+  "supportActions": zod.array(zod.object({
+  "actionType": zod.enum(['Seek further context', 'Arrange a meeting', 'Provide academic guidance', 'Refer to a support service', 'Check in later', 'No further action at present']),
+  "destination": zod.string().max(getRecordWorkspaceResponseSupportActionsItemOneDestinationMax).nullable(),
+  "details": zod.string().max(getRecordWorkspaceResponseSupportActionsItemOneDetailsMax).nullable(),
+  "progress": zod.enum(['Planned', 'In progress', 'Completed', 'Cancelled']),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "effectiveDate": zod.coerce.date()
+}).and(zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "offeringPeriod": zod.string(),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+}))),
+  "conversations": zod.array(zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "subject": zod.string(),
+  "courseCodes": zod.array(zod.string()),
+  "syntheticExample": zod.boolean(),
+  "unreadCount": zod.number().int(),
+  "lastMessageDate": zod.coerce.date(),
+  "lastIncomingDate": zod.coerce.date().nullable(),
+  "messageCount": zod.number().int()
+}))
 })
 
 
-/**
- * @summary Get selected demonstration date
- */
-export const getDemoDateResponseDayMin = 29;
-export const getDemoDateResponseDayMax = 35;
-
-
-
-export const GetDemoDateResponse = zod.object({
-  "day": zod.number().int().min(getDemoDateResponseDayMin).max(getDemoDateResponseDayMax),
-  "week": zod.literal(5),
-  "date": zod.coerce.date(),
-  "dateLabel": zod.string(),
-  "evidenceThrough": zod.coerce.date(),
-  "evidenceDay": zod.literal(28)
+export const SaveWorkspaceReviewParams = zod.object({
+  "learnerId": zod.coerce.string(),
+  "courseCode": zod.coerce.string()
 })
 
+export const saveWorkspaceReviewBodyAdvisorNotesMax = 4000;
 
-/**
- * @summary Change demonstration date within Day 29 to Day 35
- */
-export const setDemoDateBodyDayMin = 29;
-export const setDemoDateBodyDayMax = 35;
+export const saveWorkspaceReviewBodyNextActionMax = 500;
 
 
 
-export const SetDemoDateBody = zod.object({
-  "day": zod.number().int().min(setDemoDateBodyDayMin).max(setDemoDateBodyDayMax)
+export const SaveWorkspaceReviewBody = zod.object({
+  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
+  "advisorNotes": zod.string().max(saveWorkspaceReviewBodyAdvisorNotesMax),
+  "outcome": zod.union([zod.literal('Further context needed'),zod.literal('Follow-up planned'),zod.literal('Support referral planned'),zod.literal('No further action at present'),zod.literal(null)]).nullable(),
+  "nextAction": zod.string().max(saveWorkspaceReviewBodyNextActionMax).nullable(),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
+  "effectiveDate": zod.coerce.date()
 })
 
-export const setDemoDateResponseDayMin = 29;
-export const setDemoDateResponseDayMax = 35;
+export const saveWorkspaceReviewResponseSupportActionsItemOneDestinationMax = 300;
+
+export const saveWorkspaceReviewResponseSupportActionsItemOneDetailsMax = 4000;
 
 
 
-export const SetDemoDateResponse = zod.object({
-  "day": zod.number().int().min(setDemoDateResponseDayMin).max(setDemoDateResponseDayMax),
-  "week": zod.literal(5),
-  "date": zod.coerce.date(),
-  "dateLabel": zod.string(),
-  "evidenceThrough": zod.coerce.date(),
-  "evidenceDay": zod.literal(28)
-})
-
-
-/**
- * @summary Get category, indicator, and dataset reference information
- */
-export const GetReferenceGuideResponse = zod.object({
-  "categories": zod.array(zod.object({
+export const SaveWorkspaceReviewResponse = zod.object({
+  "record": zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "paperTitle": zod.string(),
+  "facultySchool": zod.string(),
+  "department": zod.string(),
+  "courseLevel": zod.string(),
+  "offeringPeriod": zod.string(),
+  "paperStructureType": zod.string(),
   "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
-  "explanation": zod.string(),
-  "count": zod.number().int()
+  "reason": zod.string(),
+  "concernDomains": zod.array(zod.string()),
+  "registrationDay": zod.number().int(),
+  "opportunityDays": zod.number().int(),
+  "learning": zod.object({
+  "eligibleResources": zod.number().int(),
+  "interactedResources": zod.number().int(),
+  "engagementCoverage": zod.number().nullable(),
+  "activeLearningDays": zod.number().int(),
+  "latestActivityDay": zod.number().nullable(),
+  "daysSinceLastActivity": zod.number().nullable(),
+  "concern": zod.boolean(),
+  "resources": zod.array(zod.object({
+  "resourceTitle": zod.string(),
+  "activityType": zod.string(),
+  "availableFromDay": zod.number().int(),
+  "latestInteractionDay": zod.number().int(),
+  "interactionCount": zod.number().int()
+}))
+}),
+  "assessmentParticipation": zod.object({
+  "dueCount": zod.number().int(),
+  "submittedCount": zod.number().int(),
+  "missedCount": zod.number().int(),
+  "submissionCompletionRate": zod.number().nullable(),
+  "weightedSubmissionCoverage": zod.number().nullable(),
+  "missedAssessmentWeight": zod.number(),
+  "releasedResultCount": zod.number().int(),
+  "releasedAssessmentWeight": zod.number(),
+  "weightedAverageAvailableScore": zod.number().nullable(),
+  "concern": zod.boolean(),
+  "assessments": zod.array(zod.object({
+  "assessmentId": zod.string(),
+  "assessmentName": zod.string(),
+  "category": zod.string(),
+  "priorCredit": zod.boolean(),
+  "availableFromDay": zod.number().int(),
+  "availableUntilDay": zod.number().int().nullable(),
+  "learnerOpportunityDays": zod.number().int(),
+  "availabilityStatus": zod.enum(['Available during registered opportunity', 'Not yet available by Day 28', 'Availability ended before registration']),
+  "applicableDueDate": zod.coerce.date().nullable(),
+  "dueDay": zod.number().int().nullable(),
+  "dueState": zod.enum(['Due by Day 28', 'Not yet due', 'Prior credit', 'Not applicable']),
+  "submissionStatus": zod.enum(['Submitted', 'Not submitted by Day 28', 'Not yet due', 'Prior credit', 'No submission record']),
+  "submissionDate": zod.coerce.date().nullable(),
+  "weightPercent": zod.number(),
+  "result": zod.number().nullable(),
+  "resultAvailable": zod.boolean()
+}))
+}),
+  "earlyPerformanceConcern": zod.boolean(),
+  "learnerContext": zod.object({
+  "priorEducationLevel": zod.string().nullable(),
+  "previousAttemptCount": zod.number().int().nullable(),
+  "creditLoad": zod.number().int().nullable()
+}),
+  "review": zod.object({
+  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
+  "advisorNotes": zod.string(),
+  "outcome": zod.union([zod.literal('Further context needed'),zod.literal('Follow-up planned'),zod.literal('Support referral planned'),zod.literal('No further action at present'),zod.literal(null)]).nullable(),
+  "nextAction": zod.string().nullable(),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
+  "lastUpdatedAt": zod.coerce.date().nullable(),
+  "lastEffectiveDate": zod.coerce.date().nullable()
+}),
+  "history": zod.array(zod.object({
+  "id": zod.string(),
+  "actionType": zod.string(),
+  "effectiveDate": zod.coerce.date(),
+  "savedAt": zod.coerce.date(),
+  "method": zod.string().nullable(),
+  "note": zod.string().nullable(),
+  "summary": zod.string(),
+  "academicCheckpoint": zod.coerce.date().optional()
+}))
+}),
+  "otherPapers": zod.array(zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "paperTitle": zod.string(),
+  "facultySchool": zod.string(),
+  "department": zod.string(),
+  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
+  "reason": zod.string(),
+  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
+  "nextAction": zod.string().nullable(),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "lastUpdatedAt": zod.coerce.date().nullable()
 })),
-  "indicators": zod.record(zod.string(), zod.string()),
-  "evidenceCutoff": zod.string(),
-  "syntheticData": zod.boolean(),
-  "datasetChecks": zod.array(zod.string())
+  "supportActions": zod.array(zod.object({
+  "actionType": zod.enum(['Seek further context', 'Arrange a meeting', 'Provide academic guidance', 'Refer to a support service', 'Check in later', 'No further action at present']),
+  "destination": zod.string().max(saveWorkspaceReviewResponseSupportActionsItemOneDestinationMax).nullable(),
+  "details": zod.string().max(saveWorkspaceReviewResponseSupportActionsItemOneDetailsMax).nullable(),
+  "progress": zod.enum(['Planned', 'In progress', 'Completed', 'Cancelled']),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "effectiveDate": zod.coerce.date()
+}).and(zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "offeringPeriod": zod.string(),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+}))),
+  "conversations": zod.array(zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "subject": zod.string(),
+  "courseCodes": zod.array(zod.string()),
+  "syntheticExample": zod.boolean(),
+  "unreadCount": zod.number().int(),
+  "lastMessageDate": zod.coerce.date(),
+  "lastIncomingDate": zod.coerce.date().nullable(),
+  "messageCount": zod.number().int()
+}))
 })
+
+
+export const CreateSupportActionParams = zod.object({
+  "learnerId": zod.coerce.string(),
+  "courseCode": zod.coerce.string()
+})
+
+export const createSupportActionBodyDestinationMax = 300;
+
+export const createSupportActionBodyDetailsMax = 4000;
+
+
+
+export const CreateSupportActionBody = zod.object({
+  "actionType": zod.enum(['Seek further context', 'Arrange a meeting', 'Provide academic guidance', 'Refer to a support service', 'Check in later', 'No further action at present']),
+  "destination": zod.string().max(createSupportActionBodyDestinationMax).nullable(),
+  "details": zod.string().max(createSupportActionBodyDetailsMax).nullable(),
+  "progress": zod.enum(['Planned', 'In progress', 'Completed', 'Cancelled']),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "effectiveDate": zod.coerce.date()
+})
+
+export const createSupportActionResponseOneDestinationMax = 300;
+
+export const createSupportActionResponseOneDetailsMax = 4000;
+
+
+
+export const CreateSupportActionResponse = zod.object({
+  "actionType": zod.enum(['Seek further context', 'Arrange a meeting', 'Provide academic guidance', 'Refer to a support service', 'Check in later', 'No further action at present']),
+  "destination": zod.string().max(createSupportActionResponseOneDestinationMax).nullable(),
+  "details": zod.string().max(createSupportActionResponseOneDetailsMax).nullable(),
+  "progress": zod.enum(['Planned', 'In progress', 'Completed', 'Cancelled']),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "effectiveDate": zod.coerce.date()
+}).and(zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "offeringPeriod": zod.string(),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+}))
+
+
+export const UpdateSupportActionParams = zod.object({
+  "actionId": zod.coerce.string()
+})
+
+export const updateSupportActionBodyDestinationMax = 300;
+
+export const updateSupportActionBodyDetailsMax = 4000;
+
+
+
+export const UpdateSupportActionBody = zod.object({
+  "actionType": zod.enum(['Seek further context', 'Arrange a meeting', 'Provide academic guidance', 'Refer to a support service', 'Check in later', 'No further action at present']),
+  "destination": zod.string().max(updateSupportActionBodyDestinationMax).nullable(),
+  "details": zod.string().max(updateSupportActionBodyDetailsMax).nullable(),
+  "progress": zod.enum(['Planned', 'In progress', 'Completed', 'Cancelled']),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "effectiveDate": zod.coerce.date()
+})
+
+export const updateSupportActionResponseOneDestinationMax = 300;
+
+export const updateSupportActionResponseOneDetailsMax = 4000;
+
+
+
+export const UpdateSupportActionResponse = zod.object({
+  "actionType": zod.enum(['Seek further context', 'Arrange a meeting', 'Provide academic guidance', 'Refer to a support service', 'Check in later', 'No further action at present']),
+  "destination": zod.string().max(updateSupportActionResponseOneDestinationMax).nullable(),
+  "details": zod.string().max(updateSupportActionResponseOneDetailsMax).nullable(),
+  "progress": zod.enum(['Planned', 'In progress', 'Completed', 'Cancelled']),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "effectiveDate": zod.coerce.date()
+}).and(zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "offeringPeriod": zod.string(),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+}))
+
+
+export const ListConversationsQueryParams = zod.object({
+  "unreadOnly": zod.coerce.boolean().optional(),
+  "learnerId": zod.coerce.string().optional()
+})
+
+export const ListConversationsResponse = zod.object({
+  "conversations": zod.array(zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "subject": zod.string(),
+  "courseCodes": zod.array(zod.string()),
+  "syntheticExample": zod.boolean(),
+  "unreadCount": zod.number().int(),
+  "lastMessageDate": zod.coerce.date(),
+  "lastIncomingDate": zod.coerce.date().nullable(),
+  "messageCount": zod.number().int()
+})),
+  "unreadReplies": zod.number().int()
+})
+
+
+
+export const createConversationBodySubjectMax = 300;
+
+export const createConversationBodyBodyMax = 10000;
+
+export const createConversationBodyClientMessageIdMin = 8;
+export const createConversationBodyClientMessageIdMax = 100;
+
+
+
+export const CreateConversationBody = zod.object({
+  "learnerId": zod.string(),
+  "courseCodes": zod.array(zod.string()).min(1),
+  "subject": zod.string().min(1).max(createConversationBodySubjectMax),
+  "body": zod.string().min(1).max(createConversationBodyBodyMax),
+  "clientMessageId": zod.string().min(createConversationBodyClientMessageIdMin).max(createConversationBodyClientMessageIdMax)
+})
+
+export const CreateConversationResponse = zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "subject": zod.string(),
+  "courseCodes": zod.array(zod.string()),
+  "syntheticExample": zod.boolean(),
+  "unreadCount": zod.number().int(),
+  "lastMessageDate": zod.coerce.date(),
+  "lastIncomingDate": zod.coerce.date().nullable(),
+  "messageCount": zod.number().int()
+}).and(zod.object({
+  "messages": zod.array(zod.object({
+  "id": zod.string(),
+  "conversationId": zod.string(),
+  "direction": zod.enum(['outgoing', 'incoming']),
+  "subject": zod.string(),
+  "body": zod.string(),
+  "scenarioDate": zod.coerce.date(),
+  "savedAt": zod.coerce.date(),
+  "read": zod.boolean(),
+  "advisorLabel": zod.string(),
+  "syntheticExample": zod.boolean()
+})),
+  "linkedRecords": zod.array(zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "paperTitle": zod.string(),
+  "facultySchool": zod.string(),
+  "department": zod.string(),
+  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
+  "reason": zod.string(),
+  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
+  "nextAction": zod.string().nullable(),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "lastUpdatedAt": zod.coerce.date().nullable()
+}))
+}))
+
+
+export const GetConversationParams = zod.object({
+  "conversationId": zod.coerce.string()
+})
+
+export const GetConversationResponse = zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "subject": zod.string(),
+  "courseCodes": zod.array(zod.string()),
+  "syntheticExample": zod.boolean(),
+  "unreadCount": zod.number().int(),
+  "lastMessageDate": zod.coerce.date(),
+  "lastIncomingDate": zod.coerce.date().nullable(),
+  "messageCount": zod.number().int()
+}).and(zod.object({
+  "messages": zod.array(zod.object({
+  "id": zod.string(),
+  "conversationId": zod.string(),
+  "direction": zod.enum(['outgoing', 'incoming']),
+  "subject": zod.string(),
+  "body": zod.string(),
+  "scenarioDate": zod.coerce.date(),
+  "savedAt": zod.coerce.date(),
+  "read": zod.boolean(),
+  "advisorLabel": zod.string(),
+  "syntheticExample": zod.boolean()
+})),
+  "linkedRecords": zod.array(zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "paperTitle": zod.string(),
+  "facultySchool": zod.string(),
+  "department": zod.string(),
+  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
+  "reason": zod.string(),
+  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
+  "nextAction": zod.string().nullable(),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "lastUpdatedAt": zod.coerce.date().nullable()
+}))
+}))
+
+
+export const SendConversationMessageParams = zod.object({
+  "conversationId": zod.coerce.string()
+})
+
+export const sendConversationMessageBodySubjectMax = 300;
+
+export const sendConversationMessageBodyBodyMax = 10000;
+
+export const sendConversationMessageBodyClientMessageIdMin = 8;
+export const sendConversationMessageBodyClientMessageIdMax = 100;
+
+
+
+export const SendConversationMessageBody = zod.object({
+  "subject": zod.string().min(1).max(sendConversationMessageBodySubjectMax),
+  "body": zod.string().min(1).max(sendConversationMessageBodyBodyMax),
+  "clientMessageId": zod.string().min(sendConversationMessageBodyClientMessageIdMin).max(sendConversationMessageBodyClientMessageIdMax)
+})
+
+export const SendConversationMessageResponse = zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "subject": zod.string(),
+  "courseCodes": zod.array(zod.string()),
+  "syntheticExample": zod.boolean(),
+  "unreadCount": zod.number().int(),
+  "lastMessageDate": zod.coerce.date(),
+  "lastIncomingDate": zod.coerce.date().nullable(),
+  "messageCount": zod.number().int()
+}).and(zod.object({
+  "messages": zod.array(zod.object({
+  "id": zod.string(),
+  "conversationId": zod.string(),
+  "direction": zod.enum(['outgoing', 'incoming']),
+  "subject": zod.string(),
+  "body": zod.string(),
+  "scenarioDate": zod.coerce.date(),
+  "savedAt": zod.coerce.date(),
+  "read": zod.boolean(),
+  "advisorLabel": zod.string(),
+  "syntheticExample": zod.boolean()
+})),
+  "linkedRecords": zod.array(zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "paperTitle": zod.string(),
+  "facultySchool": zod.string(),
+  "department": zod.string(),
+  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
+  "reason": zod.string(),
+  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
+  "nextAction": zod.string().nullable(),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "lastUpdatedAt": zod.coerce.date().nullable()
+}))
+}))
+
+
+export const MarkConversationReadParams = zod.object({
+  "conversationId": zod.coerce.string()
+})
+
+export const MarkConversationReadResponse = zod.object({
+  "id": zod.string(),
+  "learnerId": zod.string(),
+  "subject": zod.string(),
+  "courseCodes": zod.array(zod.string()),
+  "syntheticExample": zod.boolean(),
+  "unreadCount": zod.number().int(),
+  "lastMessageDate": zod.coerce.date(),
+  "lastIncomingDate": zod.coerce.date().nullable(),
+  "messageCount": zod.number().int()
+}).and(zod.object({
+  "messages": zod.array(zod.object({
+  "id": zod.string(),
+  "conversationId": zod.string(),
+  "direction": zod.enum(['outgoing', 'incoming']),
+  "subject": zod.string(),
+  "body": zod.string(),
+  "scenarioDate": zod.coerce.date(),
+  "savedAt": zod.coerce.date(),
+  "read": zod.boolean(),
+  "advisorLabel": zod.string(),
+  "syntheticExample": zod.boolean()
+})),
+  "linkedRecords": zod.array(zod.object({
+  "learnerId": zod.string(),
+  "courseCode": zod.string(),
+  "paperTitle": zod.string(),
+  "facultySchool": zod.string(),
+  "department": zod.string(),
+  "category": zod.enum(['High Priority', 'Review Recommended', 'Insufficient Evidence', 'No Current Concern']),
+  "reason": zod.string(),
+  "reviewStatus": zod.enum(['Awaiting review', 'In review', 'Reviewed']),
+  "contactStatus": zod.enum(['Not contacted', 'Awaiting response', 'Response received', 'No response recorded']),
+  "nextAction": zod.string().nullable(),
+  "followUpDate": zod.coerce.date().nullable(),
+  "followUpCompleted": zod.boolean(),
+  "lastUpdatedAt": zod.coerce.date().nullable()
+}))
+}))
 
 

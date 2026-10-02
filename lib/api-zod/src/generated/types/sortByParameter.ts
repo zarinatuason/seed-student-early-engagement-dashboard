@@ -6,10 +6,10 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export type ListRecordsSortBy = typeof ListRecordsSortBy[keyof typeof ListRecordsSortBy];
+export type SortByParameter = typeof SortByParameter[keyof typeof SortByParameter];
 
 
-export const ListRecordsSortBy = {
+export const SortByParameter = {
   category: 'category',
   learnerId: 'learnerId',
   paper: 'paper',

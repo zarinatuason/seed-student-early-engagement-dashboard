@@ -6,10 +6,10 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export type ListRecordsSortDirection = typeof ListRecordsSortDirection[keyof typeof ListRecordsSortDirection];
+export type SortDirectionParameter = typeof SortDirectionParameter[keyof typeof SortDirectionParameter];
 
 
-export const ListRecordsSortDirection = {
+export const SortDirectionParameter = {
   asc: 'asc',
   desc: 'desc',
 } as const;

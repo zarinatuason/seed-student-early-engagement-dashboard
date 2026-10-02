@@ -26,246 +26,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
-  /advisor/summary:
-    get:
-      operationId: getAdvisorSummary
-      tags: [advisor]
-      summary: Get cohort and review workflow totals
-      responses:
-        "200":
-          description: Cohort summary
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdvisorSummary"
-  /records:
-    get:
-      operationId: listRecords
-      tags: [records]
-      summary: Search and filter learner-paper records
-      parameters:
-        - name: search
-          in: query
-          schema: { type: string }
-        - name: paper
-          in: query
-          schema: { type: string }
-        - name: department
-          in: query
-          schema: { type: string }
-        - name: category
-          in: query
-          schema: { $ref: "#/components/schemas/AcademicCategory" }
-        - name: reviewStatus
-          in: query
-          schema: { $ref: "#/components/schemas/ReviewStatus" }
-        - name: sortBy
-          in: query
-          schema:
-            type: string
-            enum: [category, learnerId, paper, reason, reviewStatus]
-        - name: sortDirection
-          in: query
-          schema: { type: string, enum: [asc, desc] }
-        - name: page
-          in: query
-          schema: { type: integer, minimum: 1, default: 1 }
-        - name: pageSize
-          in: query
-          schema: { type: integer, enum: [10, 25, 50], default: 25 }
-      responses:
-        "200":
-          description: Page of matching records and counts calculated without the selected category filter
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RecordsPage"
-  /records/{learnerId}/{courseCode}:
-    get:
-      operationId: getRecord
-      tags: [records]
-      summary: Get academic evidence and saved advisor review for one learner-paper record
-      parameters:
-        - name: learnerId
-          in: path
-          required: true
-          schema: { type: string }
-        - name: courseCode
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        "200":
-          description: Record and evidence
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RecordDetail"
-        "404":
-          description: Record not found
-  /records/{learnerId}/{courseCode}/review:
-    put:
-      operationId: saveReview
-      tags: [records]
-      summary: Save advisor review fields and append dated history
-      parameters:
-        - name: learnerId
-          in: path
-          required: true
-          schema: { type: string }
-        - name: courseCode
-          in: path
-          required: true
-          schema: { type: string }
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ReviewInput"
-      responses:
-        "200":
-          description: Saved review state
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ReviewState"
-        "400":
-          description: Invalid review values or action date
-        "404":
-          description: Record not found
-        "409":
-          description: Action date precedes an existing action or is later than the selected demo date
-  /records/{learnerId}/{courseCode}/contact:
-    post:
-      operationId: logContact
-      tags: [records]
-      summary: Record a synthetic contact attempt
-      parameters:
-        - name: learnerId
-          in: path
-          required: true
-          schema: { type: string }
-        - name: courseCode
-          in: path
-          required: true
-          schema: { type: string }
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ContactInput"
-      responses:
-        "201":
-          description: Contact entry recorded
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RecordDetail"
-        "400":
-          description: Invalid contact entry
-        "404":
-          description: Record not found
-        "409":
-          description: Action date conflicts with the selected demo date or saved history
-  /records/{learnerId}/{courseCode}/response:
-    post:
-      operationId: logResponse
-      tags: [records]
-      summary: Record a synthetic response
-      parameters:
-        - name: learnerId
-          in: path
-          required: true
-          schema: { type: string }
-        - name: courseCode
-          in: path
-          required: true
-          schema: { type: string }
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ResponseInput"
-      responses:
-        "201":
-          description: Response entry recorded
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RecordDetail"
-        "400":
-          description: Invalid response entry
-        "404":
-          description: Record not found
-        "409":
-          description: Action date conflicts with the selected demo date or saved history
-  /tracker:
-    get:
-      operationId: listTracker
-      tags: [tracker]
-      summary: Search and filter saved review workflow
-      parameters:
-        - name: search
-          in: query
-          schema: { type: string }
-        - name: reviewStatus
-          in: query
-          schema: { $ref: "#/components/schemas/ReviewStatus" }
-        - name: contactStatus
-          in: query
-          schema: { $ref: "#/components/schemas/ContactStatus" }
-        - name: followUp
-          in: query
-          schema: { type: string, enum: [all, due, overdue, open] }
-        - name: page
-          in: query
-          schema: { type: integer, minimum: 1, default: 1 }
-        - name: pageSize
-          in: query
-          schema: { type: integer, enum: [10, 25, 50], default: 25 }
-      responses:
-        "200":
-          description: Page of matching tracked records
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TrackerPage"
-  /demo-date:
-    get:
-      operationId: getDemoDate
-      tags: [advisor]
-      summary: Get selected demonstration date
-      responses:
-        "200":
-          description: Current demonstration calendar date
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DemoDate"
-    put:
-      operationId: setDemoDate
-      tags: [advisor]
-      summary: Change demonstration date within Day 29 to Day 35
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/DemoDateInput"
-      responses:
-        "200":
-          description: Updated demonstration date
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DemoDate"
-        "400":
-          description: Date is outside the demonstration range
-        "409":
-          description: Date cannot move earlier than an already saved action
   /reference:
     get:
       operationId: getReferenceGuide
@@ -278,8 +38,314 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ReferenceGuide"
+  /session:
+    get:
+      operationId: getSession
+      responses:
+        "200": { description: Current cookie-scoped advisor session, content: { application/json: { schema: { $ref: "#/components/schemas/SessionInfo" } } } }
+    post:
+      operationId: startSession
+      requestBody: { required: true, content: { application/json: { schema: { $ref: "#/components/schemas/SessionInput" } } } }
+      responses:
+        "201": { description: Separate new session, content: { application/json: { schema: { $ref: "#/components/schemas/SessionInfo" } } } }
+  /session/resume:
+    post:
+      operationId: resumeSession
+      requestBody: { required: true, content: { application/json: { schema: { $ref: "#/components/schemas/ResumeSessionInput" } } } }
+      responses:
+        "200": { description: Resumed session, content: { application/json: { schema: { $ref: "#/components/schemas/SessionInfo" } } } }
+  /session/reset:
+    post:
+      operationId: resetSession
+      requestBody: { required: true, content: { application/json: { schema: { $ref: "#/components/schemas/ResetSessionInput" } } } }
+      responses:
+        "200": { description: Only current session reset and examples restored, content: { application/json: { schema: { $ref: "#/components/schemas/SessionInfo" } } } }
+  /session/date:
+    put:
+      operationId: setScenarioDate
+      requestBody: { required: true, content: { application/json: { schema: { $ref: "#/components/schemas/DemoDateInput" } } } }
+      responses:
+        "200": { description: Scenario present, content: { application/json: { schema: { $ref: "#/components/schemas/DemoDate" } } } }
+  /workspace/summary:
+    get:
+      operationId: getWorkspaceSummary
+      responses:
+        "200": { description: Academic and scoped workflow counts, content: { application/json: { schema: { $ref: "#/components/schemas/WorkspaceSummary" } } } }
+  /workspace/records:
+    get:
+      operationId: listWorkspaceRecords
+      parameters:
+        - { $ref: "#/components/parameters/Search" }
+        - { $ref: "#/components/parameters/Paper" }
+        - { $ref: "#/components/parameters/Department" }
+        - { $ref: "#/components/parameters/Category" }
+        - { $ref: "#/components/parameters/ReviewFilter" }
+        - { $ref: "#/components/parameters/ContactFilter" }
+        - { $ref: "#/components/parameters/SortBy" }
+        - { $ref: "#/components/parameters/SortDirection" }
+        - { $ref: "#/components/parameters/Page" }
+        - { $ref: "#/components/parameters/PageSize" }
+      responses:
+        "200": { description: Records and distinct learner counts, content: { application/json: { schema: { $ref: "#/components/schemas/WorkspaceRecordsPage" } } } }
+  /workspace/tracker:
+    get:
+      operationId: listWorkspaceTracker
+      parameters:
+        - { $ref: "#/components/parameters/Search" }
+        - { $ref: "#/components/parameters/ReviewFilter" }
+        - { $ref: "#/components/parameters/ContactFilter" }
+        - { $ref: "#/components/parameters/Page" }
+        - { $ref: "#/components/parameters/PageSize" }
+        - { name: followUp, in: query, schema: { type: string, enum: [all, due, overdue, open] } }
+        - { name: supportProgress, in: query, schema: { $ref: "#/components/schemas/SupportProgress" } }
+      responses:
+        "200": { description: Reviews and support tracker, content: { application/json: { schema: { $ref: "#/components/schemas/WorkspaceRecordsPage" } } } }
+  /workspace/records/{learnerId}/{courseCode}:
+    get:
+      operationId: getRecordWorkspace
+      parameters:
+        - { $ref: "#/components/parameters/LearnerId" }
+        - { $ref: "#/components/parameters/CourseCode" }
+      responses:
+        "200": { description: Evidence and scoped workflow, content: { application/json: { schema: { $ref: "#/components/schemas/RecordWorkspace" } } } }
+  /workspace/records/{learnerId}/{courseCode}/review:
+    put:
+      operationId: saveWorkspaceReview
+      parameters:
+        - { $ref: "#/components/parameters/LearnerId" }
+        - { $ref: "#/components/parameters/CourseCode" }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: "#/components/schemas/ReviewInput" } } } }
+      responses:
+        "200": { description: Saved review, content: { application/json: { schema: { $ref: "#/components/schemas/RecordWorkspace" } } } }
+  /workspace/records/{learnerId}/{courseCode}/support-actions:
+    post:
+      operationId: createSupportAction
+      parameters:
+        - { $ref: "#/components/parameters/LearnerId" }
+        - { $ref: "#/components/parameters/CourseCode" }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: "#/components/schemas/SupportActionInput" } } } }
+      responses:
+        "201": { description: Saved action, content: { application/json: { schema: { $ref: "#/components/schemas/SupportAction" } } } }
+  /workspace/support-actions/{actionId}:
+    put:
+      operationId: updateSupportAction
+      parameters:
+        - { name: actionId, in: path, required: true, schema: { type: string } }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: "#/components/schemas/SupportActionInput" } } } }
+      responses:
+        "200": { description: Saved action, content: { application/json: { schema: { $ref: "#/components/schemas/SupportAction" } } } }
+  /conversations:
+    get:
+      operationId: listConversations
+      parameters:
+        - { name: unreadOnly, in: query, schema: { type: boolean } }
+        - { name: learnerId, in: query, schema: { type: string } }
+      responses:
+        "200": { description: Scoped inbox, content: { application/json: { schema: { $ref: "#/components/schemas/ConversationList" } } } }
+    post:
+      operationId: createConversation
+      requestBody: { required: true, content: { application/json: { schema: { $ref: "#/components/schemas/CreateConversationInput" } } } }
+      responses:
+        "201": { description: Exact saved outgoing message, content: { application/json: { schema: { $ref: "#/components/schemas/ConversationDetail" } } } }
+  /conversations/{conversationId}:
+    get:
+      operationId: getConversation
+      parameters:
+        - { $ref: "#/components/parameters/ConversationId" }
+      responses:
+        "200": { description: Shared saved conversation, content: { application/json: { schema: { $ref: "#/components/schemas/ConversationDetail" } } } }
+  /conversations/{conversationId}/messages:
+    post:
+      operationId: sendConversationMessage
+      parameters:
+        - { $ref: "#/components/parameters/ConversationId" }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: "#/components/schemas/MessageInput" } } } }
+      responses:
+        "201": { description: Idempotent simulated send, content: { application/json: { schema: { $ref: "#/components/schemas/ConversationDetail" } } } }
+  /conversations/{conversationId}/read:
+    post:
+      operationId: markConversationRead
+      parameters:
+        - { $ref: "#/components/parameters/ConversationId" }
+      responses:
+        "200": { description: Reply read-state only updated, content: { application/json: { schema: { $ref: "#/components/schemas/ConversationDetail" } } } }
 components:
+  parameters:
+    Search: { name: search, in: query, schema: { type: string } }
+    Paper: { name: paper, in: query, schema: { type: string } }
+    Department: { name: department, in: query, schema: { type: string } }
+    Category: { name: category, in: query, schema: { $ref: "#/components/schemas/AcademicCategory" } }
+    ReviewFilter: { name: reviewStatus, in: query, schema: { $ref: "#/components/schemas/ReviewStatus" } }
+    ContactFilter: { name: contactStatus, in: query, schema: { $ref: "#/components/schemas/ContactStatus" } }
+    SortBy: { name: sortBy, in: query, schema: { type: string, enum: [category, learnerId, paper, reason, reviewStatus] } }
+    SortDirection: { name: sortDirection, in: query, schema: { type: string, enum: [asc, desc] } }
+    Page: { name: page, in: query, schema: { type: integer, minimum: 1, default: 1 } }
+    PageSize: { name: pageSize, in: query, schema: { type: integer, enum: [10, 25, 50], default: 10 } }
+    LearnerId: { name: learnerId, in: path, required: true, schema: { type: string } }
+    CourseCode: { name: courseCode, in: path, required: true, schema: { type: string } }
+    ConversationId: { name: conversationId, in: path, required: true, schema: { type: string } }
   schemas:
+    SessionInput:
+      type: object
+      properties:
+        label: { type: string, minLength: 1, maxLength: 100 }
+      required: [label]
+    ResumeSessionInput:
+      type: object
+      properties:
+        resumeCode: { type: string, minLength: 20, maxLength: 200 }
+      required: [resumeCode]
+    ResetSessionInput:
+      type: object
+      properties:
+        confirm: { type: string, const: "RESET CURRENT SESSION" }
+      required: [confirm]
+    SessionInfo:
+      type: object
+      properties:
+        id: { type: string }
+        label: { type: string }
+        resumeCode: { type: string }
+        scenarioDate: { $ref: "#/components/schemas/DemoDate" }
+        examples: { type: array, items: { $ref: "#/components/schemas/ExampleInfo" } }
+      required: [id, label, resumeCode, scenarioDate, examples]
+    ExampleInfo:
+      type: object
+      properties:
+        learnerId: { type: string }
+        courseCode: { type: string }
+        conversationId: { type: string }
+        label: { type: string }
+      required: [learnerId, courseCode, conversationId, label]
+    WorkspaceSummary:
+      allOf:
+        - { $ref: "#/components/schemas/AdvisorSummary" }
+        - type: object
+          properties:
+            academicCategoryLearners: { $ref: "#/components/schemas/AcademicCategories" }
+            unreadReplies: { type: integer }
+            scheduledFollowUps: { type: integer }
+            outstandingSupportActions: { type: integer }
+            mixedCategoryLearners: { type: integer }
+          required: [academicCategoryLearners, unreadReplies, scheduledFollowUps, outstandingSupportActions, mixedCategoryLearners]
+    WorkspaceRecordSummary:
+      allOf:
+        - { $ref: "#/components/schemas/RecordSummary" }
+        - type: object
+          properties:
+            supportActionCount: { type: integer }
+            latestSupportAction: { type: ["string", "null"] }
+            supportProgress: { type: ["string", "null"], enum: [Planned, In progress, Completed, Cancelled, null] }
+            nextFollowUpDate: { type: ["string", "null"], format: date }
+            outstandingFollowUpCount: { type: integer }
+          required: [supportActionCount, latestSupportAction, supportProgress, nextFollowUpDate, outstandingFollowUpCount]
+    WorkspaceRecordsPage:
+      type: object
+      properties:
+        records: { type: array, items: { $ref: "#/components/schemas/WorkspaceRecordSummary" } }
+        total: { type: integer }
+        totalDistinctLearners: { type: integer }
+        page: { type: integer }
+        pageSize: { type: integer }
+        totalPages: { type: integer }
+        categoryCounts: { $ref: "#/components/schemas/AcademicCategories" }
+        categoryLearnerCounts: { $ref: "#/components/schemas/AcademicCategories" }
+        countScope: { type: string }
+      required: [records, total, totalDistinctLearners, page, pageSize, totalPages, categoryCounts, categoryLearnerCounts, countScope]
+    RecordWorkspace:
+      type: object
+      properties:
+        record: { $ref: "#/components/schemas/RecordDetail" }
+        otherPapers: { type: array, items: { $ref: "#/components/schemas/RecordSummary" } }
+        supportActions: { type: array, items: { $ref: "#/components/schemas/SupportAction" } }
+        conversations: { type: array, items: { $ref: "#/components/schemas/ConversationSummary" } }
+      required: [record, otherPapers, supportActions, conversations]
+    SupportProgress:
+      type: string
+      enum: [Planned, In progress, Completed, Cancelled]
+    SupportActionType:
+      type: string
+      enum: [Seek further context, Arrange a meeting, Provide academic guidance, Refer to a support service, Check in later, No further action at present]
+    SupportActionInput:
+      type: object
+      properties:
+        actionType: { $ref: "#/components/schemas/SupportActionType" }
+        destination: { type: ["string", "null"], maxLength: 300 }
+        details: { type: ["string", "null"], maxLength: 4000 }
+        progress: { $ref: "#/components/schemas/SupportProgress" }
+        followUpDate: { type: ["string", "null"], format: date }
+        followUpCompleted: { type: boolean }
+        effectiveDate: { type: string, format: date }
+      required: [actionType, destination, details, progress, followUpDate, followUpCompleted, effectiveDate]
+    SupportAction:
+      allOf:
+        - { $ref: "#/components/schemas/SupportActionInput" }
+        - type: object
+          properties:
+            id: { type: string }
+            learnerId: { type: string }
+            courseCode: { type: string }
+            offeringPeriod: { type: string }
+            createdAt: { type: string, format: date-time }
+            updatedAt: { type: string, format: date-time }
+          required: [id, learnerId, courseCode, offeringPeriod, createdAt, updatedAt]
+    CreateConversationInput:
+      type: object
+      properties:
+        learnerId: { type: string }
+        courseCodes: { type: array, minItems: 1, uniqueItems: true, items: { type: string } }
+        subject: { type: string, minLength: 1, maxLength: 300 }
+        body: { type: string, minLength: 1, maxLength: 10000 }
+        clientMessageId: { type: string, minLength: 8, maxLength: 100 }
+      required: [learnerId, courseCodes, subject, body, clientMessageId]
+    MessageInput:
+      type: object
+      properties:
+        subject: { type: string, minLength: 1, maxLength: 300 }
+        body: { type: string, minLength: 1, maxLength: 10000 }
+        clientMessageId: { type: string, minLength: 8, maxLength: 100 }
+      required: [subject, body, clientMessageId]
+    Message:
+      type: object
+      properties:
+        id: { type: string }
+        conversationId: { type: string }
+        direction: { type: string, enum: [outgoing, incoming] }
+        subject: { type: string }
+        body: { type: string }
+        scenarioDate: { type: string, format: date }
+        savedAt: { type: string, format: date-time }
+        read: { type: boolean }
+        advisorLabel: { type: string }
+        syntheticExample: { type: boolean }
+      required: [id, conversationId, direction, subject, body, scenarioDate, savedAt, read, advisorLabel, syntheticExample]
+    ConversationSummary:
+      type: object
+      properties:
+        id: { type: string }
+        learnerId: { type: string }
+        subject: { type: string }
+        courseCodes: { type: array, items: { type: string } }
+        syntheticExample: { type: boolean }
+        unreadCount: { type: integer }
+        lastMessageDate: { type: string, format: date }
+        lastIncomingDate: { type: ["string", "null"], format: date }
+        messageCount: { type: integer }
+      required: [id, learnerId, subject, courseCodes, syntheticExample, unreadCount, lastMessageDate, lastIncomingDate, messageCount]
+    ConversationDetail:
+      allOf:
+        - { $ref: "#/components/schemas/ConversationSummary" }
+        - type: object
+          properties:
+            messages: { type: array, items: { $ref: "#/components/schemas/Message" } }
+            linkedRecords: { type: array, items: { $ref: "#/components/schemas/RecordSummary" } }
+          required: [messages, linkedRecords]
+    ConversationList:
+      type: object
+      properties:
+        conversations: { type: array, items: { $ref: "#/components/schemas/ConversationSummary" } }
+        unreadReplies: { type: integer }
+      required: [conversations, unreadReplies]
     HealthStatus:
       type: object
       properties:
@@ -293,7 +359,7 @@ components:
       enum: [Awaiting review, In review, Reviewed]
     ContactStatus:
       type: string
-      enum: [Not contacted, Awaiting response, Response received, No response]
+      enum: [Not contacted, Awaiting response, Response received, No response recorded]
     ReviewOutcome:
       type: ["string", "null"]
       enum: [Further context needed, Follow-up planned, Support referral planned, No further action at present, null]
@@ -315,8 +381,8 @@ components:
     DemoDate:
       type: object
       properties:
-        day: { type: integer, minimum: 29, maximum: 35 }
-        week: { type: integer, const: 5 }
+        day: { type: integer, minimum: 29, maximum: 63 }
+        week: { type: integer, minimum: 5, maximum: 9 }
         date: { type: string, format: date }
         dateLabel: { type: string }
         evidenceThrough: { type: string, format: date }
@@ -325,7 +391,7 @@ components:
     DemoDateInput:
       type: object
       properties:
-        day: { type: integer, minimum: 29, maximum: 35 }
+        day: { type: integer, minimum: 29, maximum: 63 }
       required: [day]
     AdvisorSummary:
       type: object
@@ -458,6 +524,7 @@ components:
         method: { type: ["string", "null"] }
         note: { type: ["string", "null"] }
         summary: { type: string }
+        academicCheckpoint: { type: string, format: date }
       required: [id, actionType, effectiveDate, savedAt, method, note, summary]
     RecordDetail:
       type: object

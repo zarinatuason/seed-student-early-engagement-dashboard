@@ -6,10 +6,10 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export type ListRecordsPageSize = typeof ListRecordsPageSize[keyof typeof ListRecordsPageSize];
+export type PageSizeParameter = typeof PageSizeParameter[keyof typeof PageSizeParameter];
 
 
-export const ListRecordsPageSize = {
+export const PageSizeParameter = {
   NUMBER_10: 10,
   NUMBER_25: 25,
   NUMBER_50: 50,

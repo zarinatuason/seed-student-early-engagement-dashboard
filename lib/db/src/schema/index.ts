@@ -1,4 +1,5 @@
 export * from "./advisor";
+export * from "./workspace";
 //
 // Each model/table should ideally be split into different files.
 // Each model/table should define a Drizzle table, insert schema, and types:

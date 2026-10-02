@@ -5,9 +5,102 @@
  * SEED advisor review application API
  * OpenAPI spec version: 0.1.0
  */
-export interface HealthStatus {
-  status: string;
+export interface SessionInput {
+  /**
+     * @minLength 1
+     * @maxLength 100
+     */
+  label: string;
 }
+
+export interface ResumeSessionInput {
+  /**
+     * @minLength 20
+     * @maxLength 200
+     */
+  resumeCode: string;
+}
+
+export const ResetSessionInputValue = {
+  confirm: 'RESET CURRENT SESSION',
+} as const;
+export type ResetSessionInput = typeof ResetSessionInputValue;
+
+export interface DemoDate {
+  /**
+     * @minimum 29
+     * @maximum 63
+     */
+  day: number;
+  /**
+     * @minimum 5
+     * @maximum 9
+     */
+  week: number;
+  date: string;
+  dateLabel: string;
+  evidenceThrough: string;
+  evidenceDay: 28;
+}
+
+export interface ExampleInfo {
+  learnerId: string;
+  courseCode: string;
+  conversationId: string;
+  label: string;
+}
+
+export interface SessionInfo {
+  id: string;
+  label: string;
+  resumeCode: string;
+  scenarioDate: DemoDate;
+  examples: ExampleInfo[];
+}
+
+export interface AcademicCategories {
+  highPriority: number;
+  reviewRecommended: number;
+  insufficientEvidence: number;
+  noCurrentConcern: number;
+}
+
+export interface ReviewStatusTotals {
+  awaitingReview: number;
+  inReview: number;
+  reviewed: number;
+}
+
+export interface AdvisorSummary {
+  learners: number;
+  learnerPaperRecords: number;
+  academicCategories: AcademicCategories;
+  reviewStatuses: ReviewStatusTotals;
+  followUpsDueToday: number;
+  followUpsOverdue: number;
+  demoDate: DemoDate;
+}
+
+export type WorkspaceSummary = AdvisorSummary & {
+  academicCategoryLearners: AcademicCategories;
+  unreadReplies: number;
+  scheduledFollowUps: number;
+  outstandingSupportActions: number;
+  mixedCategoryLearners: number;
+};
+
+/**
+ * @nullable
+ */
+export type WorkspaceRecordSummarySupportProgress = typeof WorkspaceRecordSummarySupportProgress[keyof typeof WorkspaceRecordSummarySupportProgress] | null;
+
+
+export const WorkspaceRecordSummarySupportProgress = {
+  Planned: 'Planned',
+  In_progress: 'In progress',
+  Completed: 'Completed',
+  Cancelled: 'Cancelled',
+} as const;
 
 export type AcademicCategory = typeof AcademicCategory[keyof typeof AcademicCategory];
 
@@ -35,81 +128,8 @@ export const ContactStatus = {
   Not_contacted: 'Not contacted',
   Awaiting_response: 'Awaiting response',
   Response_received: 'Response received',
-  No_response: 'No response',
+  No_response_recorded: 'No response recorded',
 } as const;
-
-/**
- * @nullable
- */
-export type ReviewOutcome = typeof ReviewOutcome[keyof typeof ReviewOutcome] | null;
-
-
-export const ReviewOutcome = {
-  Further_context_needed: 'Further context needed',
-  'Follow-up_planned': 'Follow-up planned',
-  Support_referral_planned: 'Support referral planned',
-  No_further_action_at_present: 'No further action at present',
-} as const;
-
-export interface AcademicCategories {
-  highPriority: number;
-  reviewRecommended: number;
-  insufficientEvidence: number;
-  noCurrentConcern: number;
-}
-
-export interface ReviewStatusTotals {
-  awaitingReview: number;
-  inReview: number;
-  reviewed: number;
-}
-
-export interface DemoDate {
-  /**
-     * @minimum 29
-     * @maximum 35
-     */
-  day: number;
-  week: 5;
-  date: string;
-  dateLabel: string;
-  evidenceThrough: string;
-  evidenceDay: 28;
-}
-
-export interface DemoDateInput {
-  /**
-     * @minimum 29
-     * @maximum 35
-     */
-  day: number;
-}
-
-export interface AdvisorSummary {
-  learners: number;
-  learnerPaperRecords: number;
-  academicCategories: AcademicCategories;
-  reviewStatuses: ReviewStatusTotals;
-  followUpsDueToday: number;
-  followUpsOverdue: number;
-  demoDate: DemoDate;
-}
-
-export interface ReviewState {
-  reviewStatus: ReviewStatus;
-  advisorNotes: string;
-  outcome: ReviewOutcome | null;
-  /** @nullable */
-  nextAction: string | null;
-  /** @nullable */
-  followUpDate: string | null;
-  followUpCompleted: boolean;
-  contactStatus: ContactStatus;
-  /** @nullable */
-  lastUpdatedAt: string | null;
-  /** @nullable */
-  lastEffectiveDate: string | null;
-}
 
 export interface RecordSummary {
   learnerId: string;
@@ -130,13 +150,26 @@ export interface RecordSummary {
   lastUpdatedAt: string | null;
 }
 
-export interface RecordsPage {
-  records: RecordSummary[];
+export type WorkspaceRecordSummary = RecordSummary & ({
+  supportActionCount: number;
+  /** @nullable */
+  latestSupportAction: string | null;
+  /** @nullable */
+  supportProgress: WorkspaceRecordSummarySupportProgress;
+  /** @nullable */
+  nextFollowUpDate: string | null;
+  outstandingFollowUpCount: number;
+});
+
+export interface WorkspaceRecordsPage {
+  records: WorkspaceRecordSummary[];
   total: number;
+  totalDistinctLearners: number;
   page: number;
   pageSize: number;
   totalPages: number;
   categoryCounts: AcademicCategories;
+  categoryLearnerCounts: AcademicCategories;
   countScope: string;
 }
 
@@ -242,6 +275,35 @@ export interface LearnerContext {
   creditLoad: number | null;
 }
 
+/**
+ * @nullable
+ */
+export type ReviewOutcome = typeof ReviewOutcome[keyof typeof ReviewOutcome] | null;
+
+
+export const ReviewOutcome = {
+  Further_context_needed: 'Further context needed',
+  'Follow-up_planned': 'Follow-up planned',
+  Support_referral_planned: 'Support referral planned',
+  No_further_action_at_present: 'No further action at present',
+} as const;
+
+export interface ReviewState {
+  reviewStatus: ReviewStatus;
+  advisorNotes: string;
+  outcome: ReviewOutcome | null;
+  /** @nullable */
+  nextAction: string | null;
+  /** @nullable */
+  followUpDate: string | null;
+  followUpCompleted: boolean;
+  contactStatus: ContactStatus;
+  /** @nullable */
+  lastUpdatedAt: string | null;
+  /** @nullable */
+  lastEffectiveDate: string | null;
+}
+
 export interface HistoryEntry {
   id: string;
   actionType: string;
@@ -252,6 +314,7 @@ export interface HistoryEntry {
   /** @nullable */
   note: string | null;
   summary: string;
+  academicCheckpoint?: string;
 }
 
 export interface RecordDetail {
@@ -274,6 +337,168 @@ export interface RecordDetail {
   learnerContext: LearnerContext;
   review: ReviewState;
   history: HistoryEntry[];
+}
+
+export type SupportActionType = typeof SupportActionType[keyof typeof SupportActionType];
+
+
+export const SupportActionType = {
+  Seek_further_context: 'Seek further context',
+  Arrange_a_meeting: 'Arrange a meeting',
+  Provide_academic_guidance: 'Provide academic guidance',
+  Refer_to_a_support_service: 'Refer to a support service',
+  Check_in_later: 'Check in later',
+  No_further_action_at_present: 'No further action at present',
+} as const;
+
+export type SupportProgress = typeof SupportProgress[keyof typeof SupportProgress];
+
+
+export const SupportProgress = {
+  Planned: 'Planned',
+  In_progress: 'In progress',
+  Completed: 'Completed',
+  Cancelled: 'Cancelled',
+} as const;
+
+export interface SupportActionInput {
+  actionType: SupportActionType;
+  /**
+     * @maxLength 300
+     * @nullable
+     */
+  destination: string | null;
+  /**
+     * @maxLength 4000
+     * @nullable
+     */
+  details: string | null;
+  progress: SupportProgress;
+  /** @nullable */
+  followUpDate: string | null;
+  followUpCompleted: boolean;
+  effectiveDate: string;
+}
+
+export type SupportAction = SupportActionInput & {
+  id: string;
+  learnerId: string;
+  courseCode: string;
+  offeringPeriod: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export interface ConversationSummary {
+  id: string;
+  learnerId: string;
+  subject: string;
+  courseCodes: string[];
+  syntheticExample: boolean;
+  unreadCount: number;
+  lastMessageDate: string;
+  /** @nullable */
+  lastIncomingDate: string | null;
+  messageCount: number;
+}
+
+export interface RecordWorkspace {
+  record: RecordDetail;
+  otherPapers: RecordSummary[];
+  supportActions: SupportAction[];
+  conversations: ConversationSummary[];
+}
+
+export interface CreateConversationInput {
+  learnerId: string;
+  /** @minItems 1 */
+  courseCodes: string[];
+  /**
+     * @minLength 1
+     * @maxLength 300
+     */
+  subject: string;
+  /**
+     * @minLength 1
+     * @maxLength 10000
+     */
+  body: string;
+  /**
+     * @minLength 8
+     * @maxLength 100
+     */
+  clientMessageId: string;
+}
+
+export interface MessageInput {
+  /**
+     * @minLength 1
+     * @maxLength 300
+     */
+  subject: string;
+  /**
+     * @minLength 1
+     * @maxLength 10000
+     */
+  body: string;
+  /**
+     * @minLength 8
+     * @maxLength 100
+     */
+  clientMessageId: string;
+}
+
+export type MessageDirection = typeof MessageDirection[keyof typeof MessageDirection];
+
+
+export const MessageDirection = {
+  outgoing: 'outgoing',
+  incoming: 'incoming',
+} as const;
+
+export interface Message {
+  id: string;
+  conversationId: string;
+  direction: MessageDirection;
+  subject: string;
+  body: string;
+  scenarioDate: string;
+  savedAt: string;
+  read: boolean;
+  advisorLabel: string;
+  syntheticExample: boolean;
+}
+
+export type ConversationDetail = ConversationSummary & {
+  messages: Message[];
+  linkedRecords: RecordSummary[];
+};
+
+export interface ConversationList {
+  conversations: ConversationSummary[];
+  unreadReplies: number;
+}
+
+export interface HealthStatus {
+  status: string;
+}
+
+export interface DemoDateInput {
+  /**
+     * @minimum 29
+     * @maximum 63
+     */
+  day: number;
+}
+
+export interface RecordsPage {
+  records: RecordSummary[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+  categoryCounts: AcademicCategories;
+  countScope: string;
 }
 
 export interface ReviewInput {
@@ -334,25 +559,22 @@ export interface ReferenceGuide {
   datasetChecks: string[];
 }
 
-export type ListRecordsParams = {
-search?: string;
-paper?: string;
-department?: string;
-category?: AcademicCategory;
-reviewStatus?: ReviewStatus;
-sortBy?: ListRecordsSortBy;
-sortDirection?: ListRecordsSortDirection;
-/**
- * @minimum 1
- */
-page?: number;
-pageSize?: ListRecordsPageSize;
-};
+export type SearchParameter = string;
 
-export type ListRecordsSortBy = typeof ListRecordsSortBy[keyof typeof ListRecordsSortBy];
+export type PaperParameter = string;
+
+export type DepartmentParameter = string;
+
+export type CategoryParameter = AcademicCategory;
+
+export type ReviewFilterParameter = ReviewStatus;
+
+export type ContactFilterParameter = ContactStatus;
+
+export type SortByParameter = typeof SortByParameter[keyof typeof SortByParameter];
 
 
-export const ListRecordsSortBy = {
+export const SortByParameter = {
   category: 'category',
   learnerId: 'learnerId',
   paper: 'paper',
@@ -360,51 +582,66 @@ export const ListRecordsSortBy = {
   reviewStatus: 'reviewStatus',
 } as const;
 
-export type ListRecordsSortDirection = typeof ListRecordsSortDirection[keyof typeof ListRecordsSortDirection];
+export type SortDirectionParameter = typeof SortDirectionParameter[keyof typeof SortDirectionParameter];
 
 
-export const ListRecordsSortDirection = {
+export const SortDirectionParameter = {
   asc: 'asc',
   desc: 'desc',
 } as const;
 
-export type ListRecordsPageSize = typeof ListRecordsPageSize[keyof typeof ListRecordsPageSize];
+export type PageParameter = number;
+
+export type PageSizeParameter = typeof PageSizeParameter[keyof typeof PageSizeParameter];
 
 
-export const ListRecordsPageSize = {
+export const PageSizeParameter = {
   NUMBER_10: 10,
   NUMBER_25: 25,
   NUMBER_50: 50,
 } as const;
 
-export type ListTrackerParams = {
-search?: string;
-reviewStatus?: ReviewStatus;
-contactStatus?: ContactStatus;
-followUp?: ListTrackerFollowUp;
+export type ListWorkspaceRecordsParams = {
+search?: SearchParameter;
+paper?: PaperParameter;
+department?: DepartmentParameter;
+category?: CategoryParameter;
+reviewStatus?: ReviewFilterParameter;
+contactStatus?: ContactFilterParameter;
+sortBy?: SortByParameter;
+sortDirection?: SortDirectionParameter;
 /**
  * @minimum 1
  */
-page?: number;
-pageSize?: ListTrackerPageSize;
+page?: PageParameter;
+pageSize?: PageSizeParameter;
 };
 
-export type ListTrackerFollowUp = typeof ListTrackerFollowUp[keyof typeof ListTrackerFollowUp];
+export type ListWorkspaceTrackerParams = {
+search?: SearchParameter;
+reviewStatus?: ReviewFilterParameter;
+contactStatus?: ContactFilterParameter;
+/**
+ * @minimum 1
+ */
+page?: PageParameter;
+pageSize?: PageSizeParameter;
+followUp?: ListWorkspaceTrackerFollowUp;
+supportProgress?: SupportProgress;
+};
+
+export type ListWorkspaceTrackerFollowUp = typeof ListWorkspaceTrackerFollowUp[keyof typeof ListWorkspaceTrackerFollowUp];
 
 
-export const ListTrackerFollowUp = {
+export const ListWorkspaceTrackerFollowUp = {
   all: 'all',
   due: 'due',
   overdue: 'overdue',
   open: 'open',
 } as const;
 
-export type ListTrackerPageSize = typeof ListTrackerPageSize[keyof typeof ListTrackerPageSize];
-
-
-export const ListTrackerPageSize = {
-  NUMBER_10: 10,
-  NUMBER_25: 25,
-  NUMBER_50: 50,
-} as const;
+export type ListConversationsParams = {
+unreadOnly?: boolean;
+learnerId?: string;
+};
 

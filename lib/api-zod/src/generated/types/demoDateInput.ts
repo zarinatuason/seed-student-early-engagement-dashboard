@@ -9,7 +9,7 @@
 export interface DemoDateInput {
   /**
      * @minimum 29
-     * @maximum 35
+     * @maximum 63
      */
   day: number;
 }

@@ -13,5 +13,5 @@ export const ContactStatus = {
   Not_contacted: 'Not contacted',
   Awaiting_response: 'Awaiting response',
   Response_received: 'Response received',
-  No_response: 'No response',
+  No_response_recorded: 'No response recorded',
 } as const;

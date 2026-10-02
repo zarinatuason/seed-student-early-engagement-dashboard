@@ -123,8 +123,10 @@ def get_health():
 
 
 def main():
-    health = get_health()
-    require(health.get("status") == "ok", "health endpoint ready", health)
+    source_only = "--source-only" in sys.argv
+    if not source_only:
+        health = get_health()
+        require(health.get("status") == "ok", "health endpoint ready", health)
 
     courses = csv_rows("01")
     assessments = csv_rows("02")
@@ -315,6 +317,12 @@ def main():
     counts["aggregateReconstructionMismatches"] = len(aggregate_mismatches)
     require(not aggregate_mismatches, "reconstruct due/submission/missed/released/weighted-average aggregates incl prior credit",
             aggregate_mismatches[:10])
+
+    if source_only:
+        result = {"status": "FAIL" if failures else "PASS", "checksRun": len(checks),
+                  "failureCount": len(failures), "counts": counts, "failures": failures}
+        print(json.dumps(result, indent=2))
+        return 1 if failures else 0
 
     # Fetch every summary page; compare full API totals and source category-order sorting.
     first_status, first = api("/records", {"page": 1, "pageSize": 50})

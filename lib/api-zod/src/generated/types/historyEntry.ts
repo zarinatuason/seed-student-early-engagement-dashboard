@@ -16,4 +16,5 @@ export interface HistoryEntry {
   /** @nullable */
   note: string | null;
   summary: string;
+  academicCheckpoint?: Date;
 }

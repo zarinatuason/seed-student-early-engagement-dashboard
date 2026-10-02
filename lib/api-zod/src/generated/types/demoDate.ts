@@ -9,10 +9,14 @@
 export interface DemoDate {
   /**
      * @minimum 29
-     * @maximum 35
+     * @maximum 63
      */
   day: number;
-  week: 5;
+  /**
+     * @minimum 5
+     * @maximum 9
+     */
+  week: number;
   date: Date;
   dateLabel: string;
   evidenceThrough: Date;

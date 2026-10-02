@@ -6,10 +6,10 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export type ListTrackerFollowUp = typeof ListTrackerFollowUp[keyof typeof ListTrackerFollowUp];
+export type ListWorkspaceTrackerFollowUp = typeof ListWorkspaceTrackerFollowUp[keyof typeof ListWorkspaceTrackerFollowUp];
 
 
-export const ListTrackerFollowUp = {
+export const ListWorkspaceTrackerFollowUp = {
   all: 'all',
   due: 'due',
   overdue: 'overdue',
